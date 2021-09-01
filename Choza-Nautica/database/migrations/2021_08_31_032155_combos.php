@@ -21,7 +21,7 @@ class Combos extends Migration
             $table->decimal('precio',5,2);            
             $table->timestamps();
             
-            $table->foreign('id_administrador')->references('id_users')->on('usuarios');
+            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 

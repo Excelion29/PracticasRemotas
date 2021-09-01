@@ -22,7 +22,7 @@ class Productos extends Migration
             $table->unsignedBigInteger('id_administrador');     
             $table->timestamps();
             $table->foreign('id_categoria')->references('ID_Categoria')->on('categorias');
-            $table->foreign('id_administrador')->references('id_users')->on('usuarios');
+            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 

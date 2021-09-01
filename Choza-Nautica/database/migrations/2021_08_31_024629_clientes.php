@@ -20,7 +20,7 @@ class Clientes extends Migration
             $table->boolean('tipo')->default(1);            
             $table->timestamps();
 
-            $table->foreign('id_usuario')->references('id_users')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('Users');
         });
     }
 
