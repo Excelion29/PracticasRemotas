@@ -13,6 +13,10 @@
 
 @endif
 </div>
+<div class="form-group">
+    <label for="id_administrador">Admin</label>
+    <input type="text" class="form-control" name="id_administrador" value="{{auth()->id()}}" id="id_administrador">
+</div>
 
 <div class="form-group">
     <label for="nombre">Categoría</label>
