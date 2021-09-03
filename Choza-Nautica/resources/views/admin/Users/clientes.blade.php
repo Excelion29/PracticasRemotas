@@ -7,15 +7,15 @@
 @section('content')
     <div class="container-fluid">
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Nro. Celular</th>
                     <th>Email</th>
-                    <th>Rol</th>
                     <th>Creado</th>
                     <th>Actualizado</th>
+                    <th>Rol</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,9 +25,9 @@
                         <td>{{$user->apellidos}}</td>
                         <td>{{$user->celular}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->nombre}}</td>
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->updated_at}}</td>
+                        <td class="bg-info">{{$user->nombre}}</td>
                     </tr>
                 @endforeach
             </tbody>

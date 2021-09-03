@@ -1,11 +1,11 @@
 @extends('Admin.index')
 
 @section('template_title')
-    Categorias
+    Combos
 @endsection
 
 @section('content')
-<h1>Gestión de Categorias</h1>
+<h1>Gestión de Combos</h1>
 
 <div class="alert alert-succes alert-dismissible" role="alert">
 @if(Session::get('mensaje')){{
@@ -18,34 +18,38 @@
 @else
 @endif
 
-<a class="btn btn-success" href="{{url('dashboard/categorias/create')}}">Registrar nueva categoría</a>
+<a class="btn btn-success" href="{{url('dashboard/combos/create')}}">Registrar nuevos combo</a>
 <br>
 <br>
 <div class="container-fluid">
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Categorias</th>
+                <th>Combo</th>
                 <th>Descripción</th>
+                <th>Precio</th>
+                <th>Administrador</th>
                 <th>Imagen</th>
-                <th>Creado</th>
-                <th>Actualizado</th>
+                <th>Creación</th>
+                <th>Actualización</th>
                 <th>Acciones</th>
                 <th>Productos</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($categorias as $categoria)
+            @foreach ($combos as $combo)
             <tr>
-                <td>{{$categoria->nombre}}</td>
-                <td>{{$categoria->descripcion}}</td>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$categoria->foto}}"  width="100" alt=""></td>
-                <th>{{$categoria->created_at}}</th>
-                <th>{{$categoria->updated_at}}</th>
+                <td>{{$combo->nombre}}</td>
+                <td>{{$combo->descripcion}}</td>
+                <td>{{$combo->precio}}</td>
+                <td>{{$combo->name}}</td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}"  width="100" alt=""></td>
+                <th>{{$combo->created_at}}</th>
+                <th>{{$combo->updated_at}}</th>
                 <td>
-                    <a class="btn btn-warning" href="{{url('dashboard/categorias/'.$categoria->id.'/edit')}}">Editar</a>
+                    <a class="btn btn-warning" href="{{url('dashboard/combos/'.$combo->id.'/edit')}}">Editar</a>
                     
-                    <form class="d-inline"  action="{{ url('dashboard/categorias/'.$categoria->id)  }}" method="POST">
+                    <form class="d-inline"  action="{{ url('dashboard/combos/'.$combo->id)  }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
                         <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')" value="Borrar">
@@ -58,6 +62,6 @@
             @endforeach
         </tbody>
     </table>
-{!! $categorias->links() !!}
+{!! $combos->links() !!}
 </div>
 @endsection

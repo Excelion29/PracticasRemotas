@@ -253,10 +253,21 @@ return [
             // 'label'       => 4,
             'label_color' => 'success',
         ],
+        ['header' => 'Perfil'],
+        [
+            'text' => 'Mi usuario',
+            'url'  => '#',
+            'icon' => 'fas fa-user-shield',
+        ],
         ['header' => 'Administración'],
         [
             'text' => 'Categorias',
             'url'  => 'dashboard/categorias',
+            'icon' => 'fas fa-clipboard-list',
+        ],
+        [
+            'text' => 'Combos',
+            'url'  => 'dashboard/combos',
             'icon' => 'fas fa-clipboard-list',
         ],
         [

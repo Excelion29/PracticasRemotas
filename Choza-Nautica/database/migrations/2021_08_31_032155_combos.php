@@ -18,10 +18,10 @@ class Combos extends Migration
             $table->unsignedBigInteger('id_administrador');
             $table->string('nombre',150);
             $table->longText('descripcion');
-            $table->decimal('precio',5,2);            
+            $table->decimal('precio',5,2); 
+            $table->string('foto');           
             $table->timestamps();
             
-            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 

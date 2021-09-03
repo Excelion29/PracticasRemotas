@@ -15,10 +15,14 @@ class Categorias extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id('id');
+            $table->unsignedBigInteger('id_administrador');
             $table->string('nombre');
             $table->text('descripcion'); 
             $table->string('foto');           
             $table->timestamps();
+
+            
+            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 
