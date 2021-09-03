@@ -15,7 +15,7 @@ class AdministradoresController extends Controller
     public function index(){
 
         $users= User::join('roles','roles.id','=','users.id_rol')
-        ->select('users.id', 'users.name', 'users.apellidos', 'users.celular', 'users.email', 'roles.nombre', 'users.created_at', 'users.updated_at')
+        ->select('users.*','roles.nombre')
         ->where('users.id_rol','=','1')
         ->paginate();
 
