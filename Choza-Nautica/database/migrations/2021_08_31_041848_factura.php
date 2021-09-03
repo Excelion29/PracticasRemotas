@@ -14,7 +14,7 @@ class Factura extends Migration
     public function up()
     {
         Schema::create('Factura', function (Blueprint $table) {
-            $table->bigIncrements('id_Factura');
+            $table->bigIncrements('id');
             $table->decimal('IGV',5,2);
             $table->decimal('Precio_total',5,2);
             $table->unsignedBigInteger('id_compra');
@@ -25,9 +25,9 @@ class Factura extends Migration
             $table->string('NroFactura',480);                        
             $table->timestamps();
 
-            $table->foreign('id_compra')->references('ID_Compra')->on('detalle_compra');
-            $table->foreign('id_pago')->references('ID_Pago')->on('metodo_pago');
-            $table->foreign('id_reserva')->references('ID_Reserva')->on('Reserva');
+            $table->foreign('id_compra')->references('id')->on('detalle_compra');
+            $table->foreign('id_pago')->references('id')->on('metodo_pago');
+            $table->foreign('id_reserva')->references('id')->on('Reserva');
 
         });
     }

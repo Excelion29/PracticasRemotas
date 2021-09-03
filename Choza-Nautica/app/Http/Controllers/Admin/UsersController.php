@@ -14,7 +14,7 @@ class UsersController extends Controller
     }
     public function index(){
 
-        $users= User::join('roles','roles.id_roles','=','users.id_rol')
+        $users= User::join('roles','roles.id','=','users.id_rol')
         ->select('users.id', 'users.name', 'users.apellidos', 'users.celular', 'users.email', 'roles.nombre', 'users.created_at', 'users.updated_at')
         ->where('users.id_rol','=','2')
         ->paginate();

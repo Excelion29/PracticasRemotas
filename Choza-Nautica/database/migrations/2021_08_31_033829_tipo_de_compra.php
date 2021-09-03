@@ -14,7 +14,7 @@ class TipoDeCompra extends Migration
     public function up()
     {
         Schema::create('tipo_compra', function (Blueprint $table) {
-            $table->id('ID_Tipo');
+            $table->id('id');
             $table->string('tipo',50);            
             $table->timestamps();
         });

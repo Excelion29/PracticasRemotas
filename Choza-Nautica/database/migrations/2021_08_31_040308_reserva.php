@@ -14,7 +14,7 @@ class Reserva extends Migration
     public function up()
     {
         Schema::create('Reserva', function (Blueprint $table) {
-            $table->ID('ID_Reserva');
+            $table->ID('id');
             $table->unsignedBigInteger('id_usuario');           
             $table->unsignedBigInteger('id_mesa');
             $table->integer('NPersonas');
@@ -22,8 +22,8 @@ class Reserva extends Migration
             $table->time('hora');
             $table->timestamps();
 
-            $table->foreign('id_usuario')->references('ID_Cliente')->on('Clientes');
-            $table->foreign('id_mesa')->references('ID_Mesa')->on('mesa');
+            $table->foreign('id_usuario')->references('id')->on('Clientes');
+            $table->foreign('id_mesa')->references('id')->on('mesa');
         });
     }
 

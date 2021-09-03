@@ -14,7 +14,7 @@ class MetodoPago extends Migration
     public function up()
     {
         Schema::create('metodo_pago', function (Blueprint $table) {
-            $table->ID('ID_Pago');
+            $table->ID('id');
             $table->string('name',150);
             $table->boolean('estado')->default(1);            
             $table->timestamps();

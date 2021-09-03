@@ -14,7 +14,7 @@ class Combos extends Migration
     public function up()
     {
         Schema::create('Combos', function (Blueprint $table) {
-            $table->id('ID_Combo');
+            $table->id('id');
             $table->unsignedBigInteger('id_administrador');
             $table->string('nombre',150);
             $table->longText('descripcion');

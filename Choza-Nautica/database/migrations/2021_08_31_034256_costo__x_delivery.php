@@ -14,7 +14,7 @@ class CostoXDelivery extends Migration
     public function up()
     {
         Schema::create('Costo_x_delivery', function (Blueprint $table) {
-            $table->ID('ID_Lugar');
+            $table->ID('id');
             $table->mediumText('direccion');
             $table->decimal('delivery',5,2);            
             $table->timestamps();

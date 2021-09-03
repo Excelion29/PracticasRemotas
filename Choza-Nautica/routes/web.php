@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdministradoresController;
+use App\Http\Controllers\Admin\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
@@ -25,6 +26,8 @@ Auth::routes(['verify' => true]);
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
 Route::resource('dashboard/clientes', UsersController::class);
 Route::resource('dashboard/administradores', AdministradoresController::class);
+Route::resource('dashboard/categorias', CategoriaController::class);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

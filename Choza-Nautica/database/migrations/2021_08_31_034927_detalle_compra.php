@@ -14,7 +14,7 @@ class DetalleCompra extends Migration
     public function up()
     {
         Schema::create('detalle_compra', function (Blueprint $table) {
-            $table->id('ID_Compra');
+            $table->id('id');
             $table->unsignedBigInteger('id_usuario');   
             $table->unsignedBigInteger('id_pedido');
             $table->unsignedBigInteger('id_lugar');
@@ -22,10 +22,10 @@ class DetalleCompra extends Migration
             $table->mediumText('Ubicación');
             $table->timestamps();
 
-            $table->foreign('id_usuario')->references('ID_Cliente')->on('Clientes');
-            $table->foreign('id_pedido')->references('ID_Pedido')->on('pedidos');
-            $table->foreign('id_lugar')->references('ID_Lugar')->on('Costo_x_delivery');
-            $table->foreign('id_tipo')->references('ID_Tipo')->on('tipo_compra');
+            $table->foreign('id_usuario')->references('id')->on('Clientes');
+            $table->foreign('id_pedido')->references('id')->on('pedidos');
+            $table->foreign('id_lugar')->references('id')->on('Costo_x_delivery');
+            $table->foreign('id_tipo')->references('id')->on('tipo_compra');
 
 
         });

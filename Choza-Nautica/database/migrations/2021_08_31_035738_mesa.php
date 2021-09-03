@@ -14,7 +14,7 @@ class Mesa extends Migration
     public function up()
     {
         Schema::create('mesa', function (Blueprint $table) {
-            $table->id('ID_Mesa');
+            $table->id('id');
             $table->integer('capacidad');
             $table->decimal('precio',5,2);
             $table->boolean('estado')->default(1);            
@@ -29,6 +29,6 @@ class Mesa extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('mesa');
     }
 }

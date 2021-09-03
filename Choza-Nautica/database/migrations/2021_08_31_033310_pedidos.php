@@ -14,15 +14,15 @@ class Pedidos extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->id('ID_Pedido');
+            $table->id('id');
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_combo');
             $table->integer('cantidad');
             $table->decimal('precio',5,2);            
             $table->timestamps();
 
-            $table->foreign('id_producto')->references('ID_Producto')->on('productos');
-            $table->foreign('id_combo')->references('id_combo')->on('Combos');
+            $table->foreign('id_producto')->references('id')->on('productos');
+            $table->foreign('id_combo')->references('id')->on('Combos');
         });
     }
 

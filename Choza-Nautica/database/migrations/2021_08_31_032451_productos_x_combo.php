@@ -19,8 +19,8 @@ class ProductosXCombo extends Migration
             $table->unsignedBigInteger('id_combo');            
             $table->timestamps();
 
-            $table->foreign('id_producto')->references('ID_Producto')->on('productos');
-            $table->foreign('id_combo')->references('ID_Combo')->on('Combos');
+            $table->foreign('id_producto')->references('id')->on('productos');
+            $table->foreign('id_combo')->references('id')->on('Combos');
         });
     }
 

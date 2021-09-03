@@ -14,14 +14,14 @@ class Productos extends Migration
     public function up()
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->ID('ID_Producto');
+            $table->ID('id');
             $table->unsignedBigInteger('id_categoria');
             $table->string('nombre',50);
             $table->decimal('precio',5,2);
             $table->boolean('estado')->default(1);
             $table->unsignedBigInteger('id_administrador');     
             $table->timestamps();
-            $table->foreign('id_categoria')->references('ID_Categoria')->on('categorias');
+            $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }

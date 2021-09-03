@@ -14,16 +14,16 @@ class Boleta extends Migration
     public function up()
     {
         Schema::create('Boleta', function (Blueprint $table) {
-            $table->bigIncrements('id_Boleta');
+            $table->bigIncrements('id');
             $table->decimal('Precio_total',5,2);
             $table->unsignedBigInteger('id_compra');
             $table->unsignedBigInteger('id_pago');            
             $table->unsignedBigInteger('id_reserva');                        
             $table->timestamps();
 
-            $table->foreign('id_compra')->references('ID_Compra')->on('detalle_compra');
-            $table->foreign('id_pago')->references('ID_Pago')->on('metodo_pago');
-            $table->foreign('id_reserva')->references('ID_Reserva')->on('Reserva');
+            $table->foreign('id_compra')->references('id')->on('detalle_compra');
+            $table->foreign('id_pago')->references('id')->on('metodo_pago');
+            $table->foreign('id_reserva')->references('id')->on('Reserva');
 
         });
     }

@@ -14,7 +14,7 @@ class ProductoDetalles extends Migration
     public function up()
     {
         Schema::create('producto_detalles', function (Blueprint $table) {
-            $table->bigIncrements('ID_Detalles');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('id_producto');
             $table->longText('descripcion');
             $table->longText('recomendaciones');
@@ -24,7 +24,7 @@ class ProductoDetalles extends Migration
             $table->integer('stock');            
             $table->timestamps();
 
-            $table->foreign('id_producto')->references('ID_Producto')->on('productos');
+            $table->foreign('id_producto')->references('id')->on('productos');
         });
     }
 

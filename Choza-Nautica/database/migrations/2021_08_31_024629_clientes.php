@@ -15,7 +15,7 @@ class Clientes extends Migration
     public function up()
     {
         Schema::create('Clientes', function (Blueprint $table) {
-            $table->id('ID_Cliente');
+            $table->id('id');
             $table->unsignedBigInteger('id_usuario');
             $table->boolean('tipo')->default(1);            
             $table->timestamps();

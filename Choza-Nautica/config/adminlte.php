@@ -255,14 +255,9 @@ return [
         ],
         ['header' => 'Administración'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Categorias',
+            'url'  => 'dashboard/categorias',
+            'icon' => 'fas fa-clipboard-list',
         ],
         [
             'text'    => 'Usuarios',

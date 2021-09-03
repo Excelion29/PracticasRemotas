@@ -14,9 +14,10 @@ class Categorias extends Migration
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->id('ID_Categoria');
+            $table->id('id');
             $table->string('nombre');
-            $table->text('descripción');            
+            $table->text('descripcion'); 
+            $table->string('foto');           
             $table->timestamps();
         });
     }
