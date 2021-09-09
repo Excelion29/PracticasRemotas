@@ -16,7 +16,9 @@ class CategoriaController extends Controller
     }
     public function index(){
 
-        $datos['categorias']=categorias::paginate(1);
+        $datos['categorias']=categorias::join('users','users.id','=','categorias.id_administrador')
+        ->select('categorias.*','users.name')
+        ->paginate(1);
 
         return view('admin.categorias.index',$datos);
     }

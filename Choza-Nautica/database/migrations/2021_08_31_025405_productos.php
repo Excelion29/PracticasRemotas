@@ -17,7 +17,9 @@ class Productos extends Migration
             $table->ID('id');
             $table->unsignedBigInteger('id_categoria');
             $table->string('nombre',50);
+            $table->text('descripción');
             $table->decimal('precio',5,2);
+            $table->string('foto'); 
             $table->boolean('estado')->default(1);
             $table->unsignedBigInteger('id_administrador');     
             $table->timestamps();

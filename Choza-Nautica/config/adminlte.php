@@ -259,17 +259,29 @@ return [
             'url'  => '#',
             'icon' => 'fas fa-user-shield',
         ],
-        ['header' => 'Administración'],
+        ['header' => 'Administración de mercado'],
         [
-            'text' => 'Categorias',
-            'url'  => 'dashboard/categorias',
-            'icon' => 'fas fa-clipboard-list',
+            'text'    => 'Tienda',
+            'icon'    => 'fas fa-store',
+            'submenu' => [
+                [
+                    'text' => 'Categorias',
+                    'url'  => 'dashboard/categorias',
+                    'icon' => 'fas fa-clipboard-list',
+                ],
+                [
+                    'text' => 'Combos',
+                    'url'  => 'dashboard/combos',
+                    'icon' => 'fas fa-clipboard-list',
+                ],
+                [
+                    'text' => 'Productos',
+                    'url'  => 'dashboard/productos',
+                    'icon' => 'fas fa-clipboard-list',
+                ],
+            ],
         ],
-        [
-            'text' => 'Combos',
-            'url'  => 'dashboard/combos',
-            'icon' => 'fas fa-clipboard-list',
-        ],
+        ['header' => 'Administración de usuarios'],
         [
             'text'    => 'Usuarios',
             'icon'    => 'fas fa-users-cog',
