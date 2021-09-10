@@ -16,7 +16,7 @@
     </div>
     @else
     @endif
-{{-- <a class="btn btn-success" href="{{url('dashboard/categorias/create')}}">Registrar nueva categoría</a> --}}
+<a class="btn btn-success" href="{{url('dashboard/productos/create')}}">Registrar nueva categoría</a>
 <br>
 <br>
 <div class="container-fluid">
@@ -41,18 +41,18 @@
                 <td>{{$producto->descripcion}}</td>
                 <td>{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
-                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->categoria}}</td>
                 <td>{{$producto->name}}</td>
                 <th>{{$producto->created_at}}</th>
                 <th>{{$producto->updated_at}}</th>
                 <td>
-                    {{-- <a class="btn btn-warning" href="{{url('dashboard/categorias/'.$categoria->id.'/edit')}}">Editar</a>
+                    <a class="btn btn-warning" href="{{url('dashboard/productos/'.$producto->id.'/edit')}}">Editar</a>
                     
-                    <form class="d-inline"  action="{{ url('dashboard/categorias/'.$categoria->id)  }}" method="POST">
+                    <form class="d-inline"  action="{{ url('dashboard/productos/'.$producto->id)  }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
                         <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')" value="Borrar">
-                    </form> --}}
+                    </form>
                 </td>
             </tr>
             @endforeach

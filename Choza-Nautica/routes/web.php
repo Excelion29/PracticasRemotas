@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::view('/products', 'products')->name('products');
+
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
 Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');
 Route::resource('dashboard/clientes', UsersController::class);

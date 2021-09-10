@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\categorias;
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductosController extends Controller
 {
@@ -17,23 +18,27 @@ class ProductosController extends Controller
 
         $datos['productos']=Productos::join('users','users.id','=','productos.id_administrador')
         ->join('categorias','categorias.id','=','productos.id_categoria')
-        ->select('productos.*','users.name','categorias.nombre')
+        ->select('productos.*','users.name','categorias.nombre as categoria')
         ->paginate(1);
 
         return view('admin.productos.index',$datos);
     }
 
+     
+
     public function create(){
-        return view('admin.productos.create');
+        $datos['productos'] = new Productos();
+        $datos['categorias'] = categorias::pluck('nombre','id');
+        return view('admin.productos.create',$datos);
     }
+
     public function store(Request $request){
 
         $campos=[
             'nombre'=>'required|string|max:100',
             'descripcion'=>'required|string|max:1500',
-            'precio'=>'required|float|max:1500',
+            'id_categoria'=>'required|string|max:1500',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
-            'nombre'=>'required|string|max:1500',
         ];
 
         $mensaje=[
@@ -43,16 +48,74 @@ class ProductosController extends Controller
         $this->validate($request,$campos,$mensaje);
 
         // $datosCategorias = request()->all();
-        $datosCategorias = request()->except('_token','enviar');
+        $datosProductos = request()->except('_token','enviar');
 
         if($request->hasFile('foto')){
-            $datosCategorias['foto']=$request->file('foto')->store('uploads','public');
+            $datosProductos['foto']=$request->file('foto')->store('uploads','public');
         }
 
-        categorias::insert($datosCategorias);
+        Productos::insert($datosProductos);
         // return response()->json($datosCategorias);
-        return redirect('dashboard/categorias')->with('mensaje','Categoria creada!');
+        return redirect('dashboard/productos')->with('mensaje','Producto creado!');
+    }
+    public function show(Productos $productos){
+
+    }
+    //
+    public function edit($id){
+            $datos['producto'] = Productos::join('categorias','categorias.id','=','productos.id_categoria')
+            ->select('productos.*','categorias.nombre as categorianame')
+            ->findOrFail($id);
+            $datos['categorias'] = categorias::pluck('nombre','id');
+         return view('admin.Productos.edit',$datos);
     }
 
+    public function update(Request $request, $id){
+        
+        $campos=[
+            'nombre'=>'required|string|max:100',
+            'descripcion'=>'required|string|max:1500',
+            'id_categoria'=>'required|string|max:1500',
+            
+        ];
 
+        $mensaje=[
+            'required'=>'Rellene el campo :attribute'
+        ];
+        if($request->hasFile('foto')){
+            
+            $campos=['foto'=>'required|max:10000|mimes:jpeg,png,jpg',];
+        }
+        $this->validate($request,$campos,$mensaje);
+
+
+        $datosproductos = request()->except('_token','enviar','_method');
+        
+        if($request->hasFile('foto')){
+            $producto = Productos::findOrFail($id);
+
+            Storage::delete('public/'.$producto->foto);
+
+            $datosproductos['foto']=$request->file('foto')->store('uploads','public');
+        }
+
+        Productos::where('id','=',$id)->update($datosproductos);
+
+        $producto = Productos::findOrFail($id);
+        // return view('admin.categorias.edit', compact('categoria'));
+        return redirect('dashboard/productos')->with('mensaje','Producto modificado!');
+    }
+    //
+
+
+    public function destroy($id){
+
+        $producto = Productos::findOrFail($id);
+        
+        if(storage::delete('public/'.$producto->foto)){
+            Productos::destroy($id);
+        }
+
+        return redirect('dashboard/productos')->with('mensaje','Producto Eliminado!');
+    }
 }

@@ -44,7 +44,7 @@
                     <a href="">Preguntas Frecuentes</a>
                 </li>
                 <li>
-                    <a href="{{ url('/products') }}">Ordena Aquí</a>
+                    <a href="{{ url('category') }}">Ordena Aquí</a>
                 </li>
 
                 <ul class="navbar-nav ml-auto">

@@ -23,7 +23,7 @@
 <br>
 <div class="container-fluid">
     <table class="table table-bordered">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>Categorias</th>
                 <th>Descripción</th>

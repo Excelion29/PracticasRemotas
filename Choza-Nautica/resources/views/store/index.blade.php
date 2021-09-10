@@ -1,20 +1,28 @@
+@extends('layouts.nav')
+@section('title', 'Orden' )
 
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($categorias as $categoria)
-            <tr>
-                <td>{{$categoria->nombre}}</td>
-                <td>{{$categoria->descripcion}}</td>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$categoria->foto}}"  width="100" alt=""></td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
+@section('content')
+<div class="contenedor-u">
+  
+  <div class="contenedor-comida">
+    <p class="titulo">CATEGORIAS</p>
+    @foreach ($categorias as $categoria)
+    <div class="outer">
+        <div class="inner" style="background: url({{asset('storage').'/'.$categoria->foto}})no-repeat center center/cover"></div>
+        <div class="item">
+          <div class="item-name">
+            <h4>{{$categoria->nombre}}</h4>
+            <p>{{$categoria->descripcion}}</p>
+          </div>
+          <div class="item-price">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+        </div>
+    </div>
+    @endforeach
+  </div>
+</div>
+@endsection

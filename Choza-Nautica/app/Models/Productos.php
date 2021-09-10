@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Productos extends Model
 {
     use HasFactory;
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function listacategorias()
+    {
+        return $this->hasOne('App\Models\categorias', 'id', 'id_categoria');
+    }
 }
