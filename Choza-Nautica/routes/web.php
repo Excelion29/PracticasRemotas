@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::view('/products', 'products')->name('products');
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
 Route::resource('dashboard/clientes', UsersController::class);
 Route::resource('dashboard/administradores', AdministradoresController::class);
@@ -32,5 +33,4 @@ Route::resource('dashboard/categorias', CategoriaController::class);
 Route::resource('dashboard/combos', CombosController::class);
 Route::resource('dashboard/productos', ProductosController::class);
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
