@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\MostrarCategorias;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +28,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
+Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');
 Route::resource('dashboard/clientes', UsersController::class);
 Route::resource('dashboard/administradores', AdministradoresController::class);
 Route::resource('dashboard/categorias', CategoriaController::class);

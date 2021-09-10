@@ -21,17 +21,17 @@
 <br>
 <div class="container-fluid">
     <table class="table table-bordered">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Imagen</th>
+                <th>Categoría</th>
                 <th>Administrador</th>
                 <th>Creado</th>
                 <th>Actualizado</th>
                 <th>Acciones</th>
-                <th>Productos</th>
             </tr>
         </thead>
         <tbody>
@@ -39,8 +39,10 @@
             <tr>
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->descripcion}}</td>
-                <td>{{$producto->name}}</td>
+                <td>{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->name}}</td>
                 <th>{{$producto->created_at}}</th>
                 <th>{{$producto->updated_at}}</th>
                 <td>
@@ -51,9 +53,6 @@
                         {{ method_field('DELETE') }}
                         <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')" value="Borrar">
                     </form> --}}
-                </td>
-                <td>
-                    <a class="btn btn-info" href="#">Productos</a>
                 </td>
             </tr>
             @endforeach
