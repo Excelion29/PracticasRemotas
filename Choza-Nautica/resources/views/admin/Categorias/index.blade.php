@@ -3,27 +3,24 @@
 @section('template_title')
     Categorias
 @endsection
-
 @section('content')
-<h1>Gestión de Categorias</h1>
-
 <div class="alert alert-succes alert-dismissible" role="alert">
-@if(Session::get('mensaje')){{
-    Session::get('mensaje')
-}}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
+    @if(Session::get('mensaje')){{
+        Session::get('mensaje')
+    }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    @endif
 </div>
-@else
-@endif
-
+<h1>Gestión de Categorias</h1>
 <a class="btn btn-success" href="{{url('dashboard/categorias/create')}}">Registrar nueva categoría</a>
 <br>
 <br>
-<div class="container-fluid">
-    <table class="table table-bordered">
-        <thead class="thead-dark">
+<div class="card">
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead class="thead-dark">
             <tr>
                 <th>Categorias</th>
                 <th>Descripción</th>
@@ -44,18 +41,19 @@
                 <th>{{$categoria->created_at}}</th>
                 <th>{{$categoria->updated_at}}</th>
                 <td>
-                    <a class="btn btn-warning" href="{{url('dashboard/categorias/'.$categoria->id.'/edit')}}">Editar</a>
+                    <a class="btn btn-warning" href="{{url('dashboard/categorias/'.$categoria->id.'/edit')}}"><i class="fas fa-edit"></i></a>
                     
                     <form class="d-inline"  action="{{ url('dashboard/categorias/'.$categoria->id)  }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')" value="Borrar">
+                        <button class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')"><i class="far fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
 {!! $categorias->links() !!}
 </div>
 @endsection

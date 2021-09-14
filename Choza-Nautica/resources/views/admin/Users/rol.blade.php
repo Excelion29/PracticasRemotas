@@ -6,14 +6,16 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    </div>
     @else
     @endif
+</div>
 <a class="btn btn-success" onclick="mostrarregistro()">Registrar nuevo {{$rol}}</a>
 <br>
 <br>
-    <div class="container-fluid">
-        <table class="table table-bordered">
+   
+<div class="card">
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th>Rol</th>                    
@@ -41,7 +43,7 @@
                                 @csrf    
                                 {{method_field('PATCH')}}
                                 <input type="hidden" value="0" id="estado" name="estado">
-                                <input class="btn btn-danger" type="submit" name="enviar" onclick="return confirm('¿Estas seguro de borrarlo?')" value="Desabilitar" id="enviar">
+                                <button class="btn btn-danger" type="submit" name="enviar" id="enviar" onclick="return confirm('¿Estas seguro de borrarlo?')"><i class="far fa-trash-alt"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -49,7 +51,8 @@
             </tbody>
         </table>
     </div>
-
+    {!! $users->links() !!}
+</div>
     <div class="modal" id="modal">
         <div class="modalcrear">
             <div class="container" id="container">
