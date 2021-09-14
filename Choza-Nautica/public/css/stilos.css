@@ -4,9 +4,275 @@
     text-decoration: none;
 }
 
+/* Loader------------------------------------------------------------------------------------------------------------------------------------------------*/
+@keyframes bubble {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(0.5) translate(0, 1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1) translate(0, -20px);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1) translate(0, -30px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(0, -60px);
+    opacity: 0;
+  }
+}
+@keyframes stove {
+  0% {
+    transform: translate(0, 1);
+  }
+  10% {
+    transform: translate(0, -10%) rotate(5deg);
+  }
+  20% {
+    transform: translate(0, 10%) rotate(-10deg);
+  }
+  40% {
+    transform: translate(0, -40%);
+  }
+  95% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: translate(0, 1) rotate(0deg);
+  }
+}
+@keyframes stove-handle {
+  0% {
+    transform: translate(0, 1);
+  }
+  10% {
+    transform: translate(0, -10%) rotate(25deg);
+  }
+  20% {
+    transform: translate(0, 10%) rotate(-10deg);
+  }
+  40% {
+    transform: translate(0, -40%) rotate(10deg);
+  }
+  100% {
+    transform: translate(0, 1);
+  }
+}
+@keyframes food-2 {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(55px, -1px);
+  }
+  20% {
+    transform: translate(63px, -5px) rotate(0deg);
+  }
+  28% {
+    transform: translate(70px, -50px);
+  }
+  35% {
+    transform: translate(68px, -55px) rotate(180deg);
+  }
+  40% {
+    transform: translate(60px, -60px);
+  }
+  45% {
+    transform: translate(52px, -65px) rotate(360deg);
+  }
+  50% {
+    transform: translate(42px, -69px);
+  }
+  55% {
+    transform: translate(31px, -67px);
+  }
+  60% {
+    transform: translate(22px, -64px) rotate(-180deg);
+  }
+  65% {
+    transform: translate(15px, -60px);
+  }
+  70% {
+    transform: translate(6px, -54px);
+  }
+  75% {
+    transform: translate(-1px, -47px) rotate(-90deg);
+  }
+  80% {
+    transform: translate(-7px, -36px);
+  }
+  85% {
+    transform: translate(-9px, -24px) rotate(0deg);
+  }
+  90% {
+    transform: translate(-7px, -8px) rotate(90deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  transition:  2.3s ease-in-out ;
+  clip-path: circle(74.6% at 50% 50%);
+}
+.loader2{
+  clip-path: circle(0% at 50% 55%);
+  
+}
+
+.spinner-container {
+  width: 400px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  position: relative;
+}
+
+.stove {
+  position: relative;
+}
+.stove--handle {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 8px;
+  position: absolute;
+  left: -74px;
+  bottom: -65px;
+  background-color: transparent;
+  border-top: 5px solid rgb(255, 255, 255);
+  border-left: 3px solid transparent;
+  border-radius: 100%;
+  transform: rotate(15deg);
+  transform-origin: right;
+  animation: stove-handle 1500ms 250ms infinite;
+}
+.stove--base {
+  width: 100px;
+  height: 23px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 40px 40px;
+  position: absolute;
+  top: 50px;
+  transform-origin: left;
+  animation: stove 1500ms 250ms infinite;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(173deg, #fffb00 0%, #fffb00 39%, #fffb00 85%, #fffb00 100%);
+  opacity: 1;
+  animation: bubble 2000ms infinite ease-in;
+}
+.bubble--1 {
+  animation-delay: 166.6666666667ms;
+}
+.bubble--2 {
+  animation-delay: 333.3333333333ms;
+}
+.bubble--3 {
+  animation-delay: 500ms;
+}
+.bubble--4 {
+  animation-delay: 666.6666666667ms;
+}
+.bubble--5 {
+  animation-delay: 833.3333333333ms;
+}
+.bubble--6 {
+  animation-delay: 1000ms;
+}
+.bubble--1 {
+  top: 32px;
+  left: -25px;
+  width: 15px;
+  height: 15px;
+}
+.bubble--2 {
+  top: 30px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+}
+.bubble--3 {
+  top: 3px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+}
+.bubble--4 {
+  top: -15px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+}
+.bubble--5 {
+  top: 5px;
+  left: -41px;
+  width: 10px;
+  height: 10px;
+}
+.bubble--6 {
+  top: 55px;
+  left: -43px;
+  width: 8px;
+  height: 8px;
+}
+
+.aliment {
+  left: 13px;
+  bottom: -64px;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  animation: food-2 1500ms infinite ease-in;
+}
+.aliment--1 {
+  animation-delay: 250ms;
+}
+.aliment--2 {
+  animation-delay: 500ms;
+}
+.aliment--3 {
+  animation-delay: 750ms;
+}
+
+.aliment--1 {
+  background-color: #ff9100;
+}
+
+.aliment--2 {
+  background-color: #BC5268;
+}
+
+.aliment--3 {
+  background-color: #00f514;
+}
+/* Navbar------------------------------------------------------------------------------------------------------------------------------------------------*/
 .navbar{
     font-family: 'Bubblegum Sans', cursive;
-    background-color: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0);
+    color: #ffffff;
     width: 100%;
     height: 111px;
     text-align: center;
@@ -15,13 +281,26 @@
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    
+    transition:  1s ease-in-out ;
+}
+.active{
+  background-color: white;
+  color: rgb(39, 39, 39);
+  box-shadow: 2px 2px 5px #07070781;
+}
+.cls-1{
+  fill: #fff;
+}
+.svglog{
+  fill: rgb(77, 0, 0);
 }
 .logo{
     width: 200px;
     height: 86px;
-    margin-left: 30px;
+    margin-left: 60px;
     text-align: center;
-    float: left;
+    
     
 }
 .logo img{
@@ -29,7 +308,7 @@
     height: 86px;
 }
 .list-container{
-    margin-right: 180px;
+    margin-left: 70vh;
 }
 
 .list{
@@ -42,20 +321,11 @@
 
 .list li a{
     text-decoration: none;
-    margin: 0px 60px;
+    margin: 0px 20px;
+    float: right;
     font-size: 18px;
-    color: #707070;
+    color: inherit;
     
-}
-
-.shadow{
-    background-color: rgb(117, 117, 117);
-    width: 100%;
-    height: 23px;
-    position: fixed;
-    margin-top: 130px;
-    z-index: 98;
-    box-shadow: 2px 2px 5px #07070781;
 }
 
 /* Slider------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -112,3 +382,541 @@
     color: white;
 }
 /* Body-----------------*/
+@import url("https://fonts.googleapis.com/css?family=Alex+Brush|Overpass+Mono:600,700");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+body {
+  overflow-x: hidden;
+}
+
+/*
+  GLOBAL
+*/
+h2 {
+  margin-top: 0;
+}
+
+button {
+  border: 0;
+  background: 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+  HEADER
+*/
+.header {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("https://images6.alphacoders.com/366/366291.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  /*
+    NAV
+  */
+  /*
+    CENTER HEADER TEXT
+  */
+}
+.header nav {
+  padding: 15px 35px;
+  display: flex;
+  position: fixed;
+}
+.header nav h2 {
+  margin-bottom: 0;
+  flex: 1;
+  letter-spacing: 3px;
+  font-family: "Overpass Mono", monospace !important;
+}
+.header nav h2 #logo {
+  color: lightgray;
+  text-transform: uppercase;
+  border-bottom: solid 2px lightgray;
+}
+.header nav .nav-button {
+  color: #c0c0c0;
+  font-size: 23px;
+}
+.header nav div {
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  text-align: center;
+  transform: scale(0);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.header nav div ul {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header nav div ul .exit-menu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: lightgray;
+  font-size: 20px;
+  padding: 10px;
+}
+.header nav div ul li {
+  font-family: "PT Sans", sans-serif !important;
+  text-transform: uppercase;
+}
+.header nav div ul li a {
+  display: block;
+  color: lightgray;
+  padding: 15px 5px;
+  transition: all 0.4s;
+}
+.header nav div ul li a:hover, header nav div ul li a .active:hover {
+  color: #be8040;
+  border-bottom-color: #be8040;
+}
+.header .center {
+  line-height: 0;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+.header .center h1 {
+  font-family: "Alex Brush", cursive !important;
+  color: #be8040;
+  font-size: 80px;
+  margin-bottom: 34px;
+}
+.header .center h2 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 80px;
+}
+.header .center #asterisk {
+  color: #be8040;
+  line-height: 0.5;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+.header .center #asterisk:before, header .center #asterisk:after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  height: 1px;
+  width: 0%;
+  opacity: 0;
+  background: white;
+}
+.header .center #asterisk:before {
+  margin-right: 10px;
+}
+.header .center #asterisk:after {
+  margin-left: 10px;
+}
+.header .center p {
+  text-transform: uppercase;
+  margin-top: 50px;
+  font-size: 50px;
+  text-shadow: -2px -1px 20px #ffd000;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+nav div.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/*
+  SECTIONS
+*/
+/*
+  CLASSES
+*/
+.custom-font {
+  font-family: "Alex Brush", cursive;
+  color: #8e0101;
+  font-size: 75px;
+  line-height: 0;
+}
+
+.add-padding {
+  padding: 25px;
+}
+
+.center-text {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  color: #4d4d4d;
+}
+.center-text h2 {
+  margin-top: 25px;
+  line-height: 0;
+}
+.center-text p {
+  margin-top: 0;
+  font-family: "PT Sans", sans-serif;
+  line-height: 1.5;
+}
+.center-text a {
+  font-family: "PT Sans", sans-serif;
+  color: #be8040;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-bottom: solid 2px #be8040;
+}
+
+.add-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.add-flex .stuffed-cherries {
+  background: url("https://s-media-cache-ak0.pinimg.com/736x/61/b1/98/61b19844448b2bad5c78e9a2c6347986.jpg") no-repeat center center;
+  background-size: cover;
+  height: 315px;
+  width: 320px;
+}
+
+.center-h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-h1 {
+  text-align: center;
+  color: white;
+  letter-spacing: 5px;
+  margin-bottom: 0;
+}
+.custom-h1 span {
+  letter-spacing: 0;
+}
+
+/*
+  TASTEFUL RECIPES SECTION
+*/
+.bread-background {
+  background: black url("http://www.performerprosites.com/development/clients/showpalace/wp-content/uploads/2014/05/tasteful-recipies-dinner-theatre.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 300px;
+}
+
+/*
+  MENU SECTION
+*/
+.menu {
+  padding: 30px;
+}
+.menu-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+.menu-images img {
+  width: 100%;
+}
+
+/*
+  THE PERFECT BLEND SECTION
+*/
+.cake-background {
+  background: black url("http://www.rustiquerichmond.co.uk/wp-content/uploads/2014/06/desert.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 300px;
+}
+
+/*
+  CULINARY DELIGHT SECTION
+*/
+.reservation-section {
+  margin-bottom: 40px;
+}
+.reservation-section div:first-child {
+  flex: 1;
+}
+.reservation-section div:last-child {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  flex: 1;
+}
+.reservation-section div:last-child img {
+  margin: auto;
+  width: 85%;
+}
+
+/*
+  FOOTER
+*/
+footer {
+  margin: 0;
+  position: relative;
+  background: #141414;
+  color: lightgray;
+}
+footer button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+  border-radius: 50%;
+  margin-top: 0;
+}
+footer h4 {
+  margin-bottom: 0;
+}
+footer h5 {
+  line-height: 1.5;
+}
+footer .restaurant-info {
+  padding: 35px 40px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer .copyright {
+  background: #232323;
+  color: #969696;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+footer .copyright span {
+  border-bottom: solid 1px;
+}
+
+/*
+  MEDIA QUERIES
+*/
+@media screen and (max-width: 425px) {
+  header, .bread-background, .cake-background {
+    background-attachment: scroll;
+  }
+}
+@media (min-width: 768px) {
+  footer .restaurant-info {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+}
+@media (min-width: 769px) {
+  /*
+    NAV
+  */
+  nav {
+    position: initial !important;
+    align-items: baseline;
+    padding: 20px 70px !important;
+  }
+  nav .nav-button {
+    display: none;
+  }
+  nav div {
+    position: initial !important;
+    background: none !important;
+    opacity: initial !important;
+    transform: initial !important;
+  }
+  nav div ul {
+    position: initial !important;
+    flex-direction: row !important;
+  }
+  nav div ul .exit-menu {
+    display: none;
+  }
+  nav div ul li a {
+    font-size: 12.8px;
+    margin: 0 10px;
+    letter-spacing: 1px;
+    padding: 5px 0 !important;
+  }
+  nav div ul .active {
+    border-bottom: solid 1px lightgray;
+  }
+
+  .add-padding {
+    padding: 80px 70px 50px 80px;
+
+  }
+
+  .add-flex {
+    flex-direction: row;
+    align-items: center;
+    height: 850px;
+  }
+  .add-flex div:first-child {
+    flex: 1;
+    padding: 0 50px;
+  }
+  .add-flex div:last-child {
+    min-width: 400px;
+    margin: 50px;
+  }
+
+  .menu-images {
+    flex: 1;
+  }
+  .menu div:last-child {
+    flex: 1;
+  }
+
+  /*
+    FOOTER
+  */
+  footer .restaurant-info {
+    padding: 20px 80px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  footer .restaurant-info .locations {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  footer .restaurant-info .locations h4 {
+    flex: 1 0 100%;
+  }
+  footer .restaurant-info .hours {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  footer .restaurant-info .hours h4 {
+    flex: 1 0 100%;
+  }
+  footer .copyright {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+/* ANIMATIONS */
+#asterisk {
+  opacity: 0;
+  transform-origin: 50% 4%;
+  animation: spin 0.5s forwards;
+  animation-delay: 0.3s;
+  animation-delay: 3s;
+}
+
+#asterisk::before, #asterisk::after {
+  transform-origin: center center;
+  animation: grow 0.5s forwards;
+  animation-delay: 0.8s;
+}
+
+.center p {
+  transform: translateY(-40px);
+  opacity: 0;
+  animation: fadeDown 0.9s forwards;
+  animation-delay: 4s;
+}
+
+.center h2 {
+  transform: scale(2);
+  opacity: 0;
+  animation: fade 0.5s forwards;
+  animation-delay: 3s;
+}
+
+.center h1 {
+  transform: translateY(40px);
+  opacity: 0;
+  animation: fadeUp 0.5s forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes grow {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    width: 40%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}

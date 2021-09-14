@@ -1,4 +1,5 @@
 @extends('layouts.nav')
+
 @section('title', 'Orden' )
 
 @section('content')
@@ -8,6 +9,7 @@
     <p class="titulo">CATEGORIAS</p>
     @foreach ($categorias as $categoria)
     <div class="outer">
+      <a href="#">
         <div class="inner" style="background: url({{asset('storage').'/'.$categoria->foto}})no-repeat center center/cover"></div>
         <div class="item">
           <div class="item-name">
@@ -21,8 +23,10 @@
               <div></div>
           </div>
         </div>
+        </a>
     </div>
     @endforeach
   </div>
 </div>
+
 @endsection
