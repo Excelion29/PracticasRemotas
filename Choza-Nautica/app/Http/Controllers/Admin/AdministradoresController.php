@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 Use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradoresController extends Controller
 {
@@ -25,6 +26,7 @@ class AdministradoresController extends Controller
     }
     public function create(){
         return view('admin.Users.rol');
+       
     }
     public function store(Request $request){
 
@@ -35,11 +37,11 @@ class AdministradoresController extends Controller
              'password'=>'required|string|max:1500',
              'id_rol'=>'required|string|max:1500',
          ];
-
          $mensaje=[
              'required'=>'Rellene el campo :attribute'
          ];
-
+         
+        
         $this->validate($request,$campos,$mensaje);
 
         // $datosCategorias = request()->all();

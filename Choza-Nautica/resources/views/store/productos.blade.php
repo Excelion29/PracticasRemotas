@@ -7,14 +7,14 @@
   
   <div class="contenedor-comida">
     <p class="titulo">CATEGORIAS</p>
-    @foreach ($categorias as $categoria)
+    @foreach ($productos as $producto)
     <div class="outer">
-      <a href="{{url('/products/'.$categoria->id)}}">
-        <div class="inner" style="background: url({{asset('storage').'/'.$categoria->foto}})no-repeat center center/cover"></div>
+      <a href="#">
+        <div class="inner" style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover"></div>
         <div class="item">
           <div class="item-name">
-            <h4>{{$categoria->nombre}}</h4>
-            <p>{{$categoria->descripcion}}</p>
+            <h4>{{$producto->nombre}}</h4>
+            <p>{{$producto->descripcion}}</p>
           </div>
           <div class="item-price">
               <div></div>

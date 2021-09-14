@@ -43,7 +43,7 @@
                 <td>
                     <a class="btn btn-warning" href="{{url('dashboard/categorias/'.$categoria->id.'/edit')}}"><i class="fas fa-edit"></i></a>
                     
-                    <form class="d-inline"  action="{{ url('dashboard/categorias/'.$categoria->id)  }}" method="POST">
+                    <form class="d-inline"  action="{{ url('dashboard/categorias/'.$categoria->id)}}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
                         <button class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')"><i class="far fa-trash-alt"></i></button>

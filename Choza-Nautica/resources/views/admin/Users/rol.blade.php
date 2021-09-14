@@ -95,7 +95,7 @@
 
                         <div class="form-group">
                             <label for="password">Constraseña</label>
-                            <input type="text" class="form-control" name="password" value="{{ isset($users->password)?$users->password:old('password')}}" id="password" required>
+                            <input type="password" class="form-control" name="password" value="{{ isset($users->password)?$users->password:old('password')}}" id="password" required>
                         </div>
                         
                         <input type="hidden" class="form-control" name="id_rol" value="{{$id}}" id="id_rol">
