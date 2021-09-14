@@ -12,14 +12,14 @@ class ProductosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     public function index(){
 
         $datos['productos']=Productos::join('users','users.id','=','productos.id_administrador')
         ->join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','users.name','categorias.nombre as categoria')
-        ->paginate(1);
+        ->paginate(5);
 
         return view('admin.productos.index',$datos);
     }

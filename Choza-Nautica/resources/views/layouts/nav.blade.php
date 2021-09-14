@@ -19,9 +19,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choza N. - @yield('title')</title>
+
+    
 </head>
 <body>
 
@@ -57,7 +60,7 @@
                     <a href="{{ url('/') }}">Inicio</a>
                 </li>
                 @isset(auth()->user()->id_rol)
-                @if (auth()->user()->id_rol !=2)
+                @if (auth()->user()->id_rol ==1)
                 <li>
                     <a href="{{url('dashboard')}}">Dashboard</a>
                 </li>
@@ -110,6 +113,7 @@
         <div class="shadow">     
         </div> 
     </div>
+    
     <!--Contenido-->
     @yield('content') 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -119,3 +123,4 @@
     <script src="{{asset('js/main.js')}}"></script>
 </body>
 </html>
+

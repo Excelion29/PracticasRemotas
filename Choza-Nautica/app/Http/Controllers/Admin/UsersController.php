@@ -10,15 +10,55 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     public function index(){
 
-        $users= User::join('roles','roles.id','=','users.id_rol')
+        $datos['users']= User::join('roles','roles.id','=','users.id_rol')
         ->select('users.*','roles.nombre')
         ->where('users.id_rol','=','2')
-        ->paginate();
+        ->where('users.estado','=','1')
+        ->paginate(5);
 
-        return view('Admin.users.clientes', compact('users'))->with('i',(request()->input('page',1)-1)*$users->perpage());
+        return view('admin.Users.clientes',$datos);
     }
+    public function create(){
+        return view('admin.Users.rol');
+    }
+    public function store(Request $request){
+
+        $campos=[
+            'name'=>'required|string|max:100',
+            'apellidos'=>'required|string|max:1500',
+            'email'=>'required|string|max:1500',
+            'password'=>'required|string|max:1500',
+            'id_rol'=>'required|string|max:1500',
+        ];
+
+         $mensaje=[
+             'required'=>'Rellene el campo :attribute'
+         ];
+        
+        $this->validate($request,$campos,$mensaje);
+
+        // $datosCategorias = request()->all();
+        $datosCliente = request()->except('_token','enviar');
+        User::insert($datosCliente);
+        // return response()->json($datosCategorias);
+        return redirect('dashboard/cliente')->with('mensaje','Cliente creado!');
+    }
+
+    public function edit($id){
+        $user = User::findOrFail($id);
+         return view('admin.Users.rol', compact('user'));
+    }
+
+    public function update($id){
+        $datoscliente = request()->except('_token','enviar','_method');
+        
+        User::where('id','=',$id)->update($datoscliente);
+        return redirect('dashboard/cliente')->with('mensaje','Cliente desabilitado!');
+    }
+
+    
 }

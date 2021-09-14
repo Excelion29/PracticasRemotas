@@ -2,10 +2,13 @@
 
 @section('title', 'Dashboard')
 
-@section('content_header')
-    <h1>Dashboard</h1>
-@stop
-
+<style>
+    .table {
+        max-width: none;
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+    </style>
 @section('content')
     @yield('content')
 @stop

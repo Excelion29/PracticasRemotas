@@ -226,21 +226,21 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -289,17 +289,17 @@ return [
                 [
                     'text' => 'Clientes',
                     'icon' => 'fas fa-fw fa-user',
-                    'url'  => 'dashboard/clientes',
+                    'url'  => 'dashboard/cliente',
                 ],
                 [
                     'text' => 'Empleados',
                     'icon' => 'fas fa-user-tie',
-                    'url'  => '#',
+                    'url'  => 'dashboard/empleado',
                 ],
                 [
                     'text'    => 'Administradores',
                     'icon' => 'fas fa-user-shield',
-                    'url'     => 'dashboard/administradores',
+                    'url'     => 'dashboard/administrador',
                     
                     // 'submenu' => [
                     //     [

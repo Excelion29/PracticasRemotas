@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@extends('layouts.js')
 @section('content')
     <div class="container">
         <form action="{{url('dashboard/productos/'.$producto->id)}}" method="POST"  enctype="multipart/form-data">

@@ -13,13 +13,13 @@ class CombosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     public function index(){
 
         $datos['combos']=combos::join('users','users.id','=','combos.id_administrador')
         ->select('combos.*','users.name')
-        ->paginate(1);
+        ->paginate(5);
         return view('admin.Combos.index',$datos);
     }
 
