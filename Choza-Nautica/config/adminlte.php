@@ -289,17 +289,17 @@ return [
                 [
                     'text' => 'Clientes',
                     'icon' => 'fas fa-fw fa-user',
-                    'url'  => 'dashboard/clientes',
+                    'url'  => 'dashboard/cliente',
                 ],
                 [
                     'text' => 'Empleados',
                     'icon' => 'fas fa-user-tie',
-                    'url'  => '#',
+                    'url'  => 'dashboard/empleado',
                 ],
                 [
                     'text'    => 'Administradores',
                     'icon' => 'fas fa-user-shield',
-                    'url'     => 'dashboard/administradores',
+                    'url'     => 'dashboard/administrador',
                     
                     // 'submenu' => [
                     //     [

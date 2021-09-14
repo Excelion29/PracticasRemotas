@@ -1,5 +1,5 @@
 @extends('Admin.index')
-
+@extends('layouts.js')
 @section('template_title')
     Productos
 @endsection
@@ -38,7 +38,15 @@
             @foreach ($productos as $producto)
             <tr>
                 <td>{{$producto->nombre}}</td>
-                <td>{{$producto->descripcion}}</td>
+                <td ><textarea name="summernote" id="summernote">{{$producto->descripcion}}</textarea></td>
+                <script>
+                $("#summernote").summernote({
+                    height:120,
+                    toolbar: false,
+                    redonly:1,
+                  });           
+                </script>
+                
                 <td>{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->categoria}}</td>

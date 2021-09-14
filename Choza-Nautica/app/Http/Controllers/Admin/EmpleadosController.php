@@ -1,40 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-Use App\Models\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdministradoresController extends Controller
+class EmpleadosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');     
+        $this->middleware('admin');
     }
-
     public function index(){
 
         $datos['users']= User::join('roles','roles.id','=','users.id_rol')
         ->select('users.*','roles.nombre')
-        ->where('users.id_rol','=','1')
+        ->where('users.id_rol','=','3')        
         ->where('users.estado','=','1')
         ->paginate(5);
 
-        return view('admin.Users.Admins',$datos);
+        return view('admin.Users.empleados',$datos);
     }
     public function create(){
         return view('admin.Users.rol');
     }
     public function store(Request $request){
 
-         $campos=[
-             'name'=>'required|string|max:100',
-             'apellidos'=>'required|string|max:1500',
-             'email'=>'required|string|max:1500',
-             'password'=>'required|string|max:1500',
-             'id_rol'=>'required|string|max:1500',
-         ];
+        $campos=[
+            'name'=>'required|string|max:100',
+            'apellidos'=>'required|string|max:1500',
+            'email'=>'required|string|max:1500',
+            'password'=>'required|string|max:1500',
+            'id_rol'=>'required|string|max:1500',
+        ];
 
          $mensaje=[
              'required'=>'Rellene el campo :attribute'
@@ -46,8 +45,7 @@ class AdministradoresController extends Controller
         $datosCliente = request()->except('_token','enviar');
         User::insert($datosCliente);
         // return response()->json($datosCategorias);
-        
-        return redirect('dashboard/administrador')->with('mensaje','Administrador creado!');
+        return redirect('dashboard/empleado')->with('mensaje','Empleado creado!');
     }
 
     public function edit($id){
@@ -59,7 +57,7 @@ class AdministradoresController extends Controller
         $datoscliente = request()->except('_token','enviar','_method');
         
         User::where('id','=',$id)->update($datoscliente);
-        return redirect('dashboard/administrador')->with('mensaje','Administrador desabilitado!');
+        return redirect('dashboard/empleado')->with('mensaje','Empleado desabilitado!');
     }
 
 }

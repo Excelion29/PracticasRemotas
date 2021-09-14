@@ -3,12 +3,15 @@
 use App\Http\Controllers\Admin\AdministradoresController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CombosController;
+use App\Http\Controllers\admin\EmpleadosController;
 use App\Http\Controllers\Admin\ProductosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\MostrarCategorias;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +33,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
 Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');
-Route::resource('dashboard/clientes', UsersController::class);
-Route::resource('dashboard/administradores', AdministradoresController::class);
+Route::resource('dashboard/cliente', UsersController::class);
+Route::resource('dashboard/empleado', EmpleadosController::class);
+Route::resource('dashboard/administrador', AdministradoresController::class);
 Route::resource('dashboard/categorias', CategoriaController::class);
 Route::resource('dashboard/combos', CombosController::class);
 Route::resource('dashboard/productos', ProductosController::class);

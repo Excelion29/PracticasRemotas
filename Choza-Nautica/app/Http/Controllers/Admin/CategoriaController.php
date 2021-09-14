@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\categorias;
+use Closure;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,13 +13,13 @@ class CategoriaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     public function index(){
 
         $datos['categorias']=categorias::join('users','users.id','=','categorias.id_administrador')
         ->select('categorias.*','users.name')
-        ->paginate(1);
+        ->paginate(5);
 
         return view('admin.categorias.index',$datos);
     }

@@ -33,7 +33,6 @@
                 <th>Creación</th>
                 <th>Actualización</th>
                 <th>Acciones</th>
-                <th>Productos</th>
             </tr>
         </thead>
         <tbody>
@@ -54,9 +53,6 @@
                         {{ method_field('DELETE') }}
                         <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')" value="Borrar">
                     </form>
-                </td>
-                <td>
-                    <a class="btn btn-info" href="#">Productos</a>
                 </td>
             </tr>
             @endforeach
