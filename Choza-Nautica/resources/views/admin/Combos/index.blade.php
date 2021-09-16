@@ -22,9 +22,9 @@
         <br>
         <br>
         <div class="card">
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead class="thead-dark">
+            <div class="card-body">
+                <table id="example1" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="thead-dark">
                     <tr>
                         <th>Combo</th>
                         <th>Descripción</th>

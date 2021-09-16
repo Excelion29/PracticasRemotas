@@ -13,12 +13,17 @@ class Mesa extends Migration
      */
     public function up()
     {
-        Schema::create('mesa', function (Blueprint $table) {
+        Schema::create('mesas', function (Blueprint $table) {
             $table->id('id');
+            $table->unsignedBigInteger('id_administrador');     
+            $table->string('nombre',50);
             $table->integer('capacidad');
             $table->decimal('precio',5,2);
-            $table->boolean('estado')->default(1);            
+            $table->string('foto'); 
+            $table->boolean('estado')->default(1); 
             $table->timestamps();
+            
+            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 
@@ -29,6 +34,6 @@ class Mesa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesa');
+        Schema::dropIfExists('mesas');
     }
 }

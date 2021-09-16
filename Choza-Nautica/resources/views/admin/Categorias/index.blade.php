@@ -3,6 +3,7 @@
 @section('template_title')
     Categorias
 @endsection
+
 @section('content')
 <div class="alert alert-succes alert-dismissible" role="alert">
     @if(Session::get('mensaje')){{
@@ -13,13 +14,15 @@
     </button>
     @endif
 </div>
+
 <h1>Gestión de Categorias</h1>
 <a class="btn btn-success" href="{{url('dashboard/categorias/create')}}">Registrar nueva categoría</a>
 <br>
 <br>
+
 <div class="card">
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="example1"  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
             <thead class="thead-dark">
             <tr>
                 <th>Categorias</th>
@@ -54,6 +57,7 @@
         </tbody>
     </table>
 </div>
-{!! $categorias->links() !!}
 </div>
+{!! $categorias->links() !!}
 @endsection
+

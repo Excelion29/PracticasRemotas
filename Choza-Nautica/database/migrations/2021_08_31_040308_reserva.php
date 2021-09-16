@@ -23,7 +23,7 @@ class Reserva extends Migration
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('Clientes');
-            $table->foreign('id_mesa')->references('id')->on('mesa');
+            $table->foreign('id_mesa')->references('id')->on('mesas');
         });
     }
 

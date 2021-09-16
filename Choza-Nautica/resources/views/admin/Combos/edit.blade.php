@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('Admin.index')
 @section('content')
 <div class="container">
 <form action="{{url('dashboard/combos/'.$combos->id)}}" method="POST" enctype="multipart/form-data">
