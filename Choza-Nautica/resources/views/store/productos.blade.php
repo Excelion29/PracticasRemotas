@@ -9,7 +9,7 @@
     <p class="titulo">CATEGORIAS</p>
     @foreach ($productos as $producto)
     <div class="outer">
-      <a href="#">
+      <a href="#id/.{{$producto->id}}">
         <div class="inner" style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover"></div>
         <div class="item">
           <div class="item-name">
