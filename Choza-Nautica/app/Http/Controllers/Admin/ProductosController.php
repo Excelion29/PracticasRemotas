@@ -23,9 +23,7 @@ class ProductosController extends Controller
 
         return view('admin.productos.index',$datos);
     }
-
-     
-
+    
     public function create(){
         $datos['productos'] = new Productos();
         $datos['categorias'] = categorias::pluck('nombre','id');
