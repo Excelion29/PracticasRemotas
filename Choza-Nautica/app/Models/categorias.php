@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class categorias extends Model
 {
     use HasFactory;
-
+    
+    protected $fillable = [
+        'estado',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

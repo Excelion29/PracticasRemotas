@@ -18,6 +18,13 @@
 <br>
 <br>
 
+{{-- diseño para no mostrar tooblar air --}}
+<style>
+    .note-popover .popover-content, .panel-heading.note-toolbar {
+        display:none;
+    }
+</style>
+
 <div class="card">
     <div class="card-body">
         <table id="example1" class="table table-striped table-bordered" style="width:100%">
@@ -31,6 +38,7 @@
                 <th>Administrador</th>
                 <th>Creado</th>
                 <th>Actualizado</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -38,24 +46,24 @@
             @foreach ($productos as $producto)
             <tr>
                 <td>{{$producto->nombre}}</td>
-                <td ><textarea name="summernote" id="summernote">{{$producto->descripcion}}</textarea></td>
-                <script>
-                $("#summernote").summernote({
-                    height:120,
-                    toolbar: false,
-                    redonly:1,
-                  });           
-                </script>
-                
+                <td><textarea class="descripcion" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+                </td>
                 <td>{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->categoria}}</td>
                 <td>{{$producto->name}}</td>
-                <th>{{$producto->created_at}}</th>
-                <th>{{$producto->updated_at}}</th>
+                <td>{{$producto->created_at}}</td>
+                <td>{{$producto->updated_at}}</td>
+                <td>
+                    @if ($producto->estado == 1)
+                        <a class="btn btn-success" href="{{route('change.status.productos',$producto)}}">Activa</a>
+                        @else
+                        <a class="btn btn-danger" href="{{route('change.status.productos',$producto)}}">Inactiva</a>
+                    @endif
+                </td>
                 <td>
                     <a class="btn btn-warning" href="{{url('dashboard/productos/'.$producto->id.'/edit')}}"><i class="fas fa-edit"></i></a>
-                    
+
                     <form class="d-inline"  action="{{ url('dashboard/productos/'.$producto->id)  }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
@@ -63,10 +71,27 @@
                     </form>
                 </td>
             </tr>
+            {{-- Id textarea = descripcion
+            code = traer el texto (traduce)
+            disable = textarea(no edit) --}}
+            <script>
+                $('#descripcion').summernote({
+                    //sacar el toolbar(barra de tareas)
+                    airMode :true,
+                    lang: "es-ES",
+                });
+                $('#descripcion').summernote('disable');
+                $('#descripcion').summernote('code', {!! json_encode($producto->descripcion) !!});
+            </script>
+            
             @endforeach
         </tbody>
     </table>
 </div>
+
 {!! $productos->links() !!}
 </div>
+
+
+
 @endsection

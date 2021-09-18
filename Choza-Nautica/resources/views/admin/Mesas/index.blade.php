@@ -31,6 +31,7 @@
                 <th>Foto</th>
                 <th>Creada</th>
                 <th>Actualizada</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -44,6 +45,13 @@
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$mesa->foto}}"  width="100" alt=""></td>
                 <th>{{$mesa->created_at}}</th>
                 <th>{{$mesa->updated_at}}</th>
+                <td>
+                    @if ($mesa->estado == 1)
+                        <a class="btn btn-success" href="{{route('change.status.mesas',$mesa)}}">Activa</a>
+                        @else
+                        <a class="btn btn-danger" href="{{route('change.status.mesas',$mesa)}}">Inactiva</a>
+                    @endif 
+                </td>
                 <td>
                     <a class="btn btn-warning" href="{{url('dashboard/mesas/'.$mesa->id.'/edit')}}"><i class="fas fa-edit"></i></a>
                     

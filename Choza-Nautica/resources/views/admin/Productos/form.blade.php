@@ -36,11 +36,12 @@
 <script>
   $('#descripcion').summernote({
     height: 300,
-        toolbar: [
-            [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-            [ 'para', [ 'ol', 'ul']],
-            [ 'view', [ 'undo', 'redo', 'fullscreen', 'codeview', 'help' ] ]
-        ]
+    lang: "es-ES", 
+    toolbar: [
+        [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+        [ 'para', [ 'ol', 'ul']],
+        [ 'view', [ 'undo', 'redo', 'fullscreen', 'codeview', 'help' ] ]
+    ],
   });
 </script>
 

@@ -24,6 +24,15 @@ class ProductosController extends Controller
         return view('admin.productos.index',$datos);
     }
     
+    public function change_status(Productos $producto){
+        if($producto->estado == '1'){
+            $producto->update(['estado'=>'0']);
+            return redirect()->back();
+        }else{
+            $producto->update(['estado'=>'1']);
+            return redirect()->back();
+        }
+    }
     public function create(){
         $datos['productos'] = new Productos();
         $datos['categorias'] = categorias::pluck('nombre','id');

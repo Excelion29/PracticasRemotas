@@ -24,6 +24,16 @@ class CategoriaController extends Controller
         return view('admin.categorias.index',$datos);
     }
 
+    public function change_status(categorias $categoria){
+        if($categoria->estado == '1'){
+            $categoria->update(['estado'=>'0']);
+            return redirect()->back();
+        }else{
+            $categoria->update(['estado'=>'1']);
+            return redirect()->back();
+        }
+    }
+
     public function create(){
         return view('admin.categorias.create');
     }

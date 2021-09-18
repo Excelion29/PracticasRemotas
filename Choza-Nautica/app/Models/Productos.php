@@ -11,6 +11,10 @@ class Productos extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
+    protected $fillable = [
+        'estado',
+    ];
+    
     public function listacategorias()
     {
         return $this->hasOne('App\Models\categorias', 'id', 'id_categoria');

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mesas extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'estado',
+    ];
 }

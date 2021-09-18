@@ -23,6 +23,16 @@ class CombosController extends Controller
         return view('admin.Combos.index',$datos);
     }
 
+    public function change_status(combos $combo){
+        if($combo->estado == '1'){
+            $combo->update(['estado'=>'0']);
+            return redirect()->back();
+        }else{
+            $combo->update(['estado'=>'1']);
+            return redirect()->back();
+        }
+    }
+
     public function create(){
         return view('admin.Combos.create');
     }
