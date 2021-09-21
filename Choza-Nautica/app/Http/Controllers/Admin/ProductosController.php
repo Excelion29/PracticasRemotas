@@ -20,10 +20,18 @@ class ProductosController extends Controller
         ->join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','users.name','categorias.nombre as categoria')
         ->paginate(5);
-
         return view('admin.productos.index',$datos);
     }
     
+    public function change_status(Productos $producto){
+        if($producto->estado == '1'){
+            $producto->update(['estado'=>'0']);
+            return redirect()->back();
+        }else{
+            $producto->update(['estado'=>'1']);
+            return redirect()->back();
+        }
+    }
     public function create(){
         $datos['productos'] = new Productos();
         $datos['categorias'] = categorias::pluck('nombre','id');

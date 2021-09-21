@@ -18,6 +18,10 @@ class Productos extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->string('nombre',50);
             $table->text('descripcion');
+<<<<<<< HEAD
+=======
+            $table->integer('cantidad');
+>>>>>>> d2a30b6c6460bfe4aa5a83f2631a42cd9a492126
             $table->decimal('precio',5,2);
             $table->string('foto'); 
             $table->boolean('estado')->default(1);

@@ -25,7 +25,7 @@ class Factura extends Migration
             $table->string('NroFactura',480);                        
             $table->timestamps();
 
-            $table->foreign('id_compra')->references('id')->on('detalle_compra');
+            $table->foreign('id_compra')->references('id')->on('detalle_compras');
             $table->foreign('id_pago')->references('id')->on('metodo_pago');
             $table->foreign('id_reserva')->references('id')->on('Reserva');
 

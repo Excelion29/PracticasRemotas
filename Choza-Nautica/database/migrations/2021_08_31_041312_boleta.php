@@ -21,7 +21,7 @@ class Boleta extends Migration
             $table->unsignedBigInteger('id_reserva');                        
             $table->timestamps();
 
-            $table->foreign('id_compra')->references('id')->on('detalle_compra');
+            $table->foreign('id_compra')->references('id')->on('tipo_compras');
             $table->foreign('id_pago')->references('id')->on('metodo_pago');
             $table->foreign('id_reserva')->references('id')->on('Reserva');
 

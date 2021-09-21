@@ -26,6 +26,7 @@
                 <table id="example1" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead-dark">
                     <tr>
+                        <th>#</th>
                         <th>Combo</th>
                         <th>Descripción</th>
                          <th>Precio</th>
@@ -33,12 +34,14 @@
                         <th>Imagen</th>
                         <th>Creación</th>
                         <th>Actualización</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($combos as $combo)
+                    @foreach ($combos as  $id=>$combo)
                     <tr>
+                        <td>{{$id}}</td>
                         <td>{{$combo->nombre}}</td>
                         <td>{{$combo->descripcion}}</td>
                         <td>{{$combo->precio}}</td>
@@ -46,6 +49,13 @@
                         <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}" width="80px"></td>
                         <td>{{$combo->created_at}}</td>
                         <td>{{$combo->updated_at}}</td>
+                        <td>
+                            @if ($combo->estado == 1)
+                                <a class="btn btn-success" href="{{route('change.status.combos',$combo)}}">Activa</a>
+                                @else
+                                <a class="btn btn-danger" href="{{route('change.status.combos',$combo)}}">Inactiva</a>
+                            @endif 
+                        </td>
                         <td>
                             <a class="btn btn-warning" href="{{url('dashboard/combos/'.$combo->id.'/edit')}}"><i class="fas fa-edit"></i></a>
                             <form class="d-inline"  action="{{ url('dashboard/combos/'.$combo->id)  }}" method="POST">

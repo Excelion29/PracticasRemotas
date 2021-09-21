@@ -21,6 +21,17 @@ class MesaController extends Controller
 
         return view('admin.Mesas.index',$datos);
     }
+
+    public function change_status(Mesas $mesa){
+        if($mesa->estado == '1'){
+            $mesa->update(['estado'=>'0']);
+            return redirect()->back();
+        }else{
+            $mesa->update(['estado'=>'1']);
+            return redirect()->back();
+        }
+    }
+
     public function create(){
         return view('admin.Mesas.create');
     }

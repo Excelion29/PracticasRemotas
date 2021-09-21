@@ -20,6 +20,7 @@ class Combos extends Migration
             $table->longText('descripcion');
             $table->decimal('precio',5,2); 
             $table->string('foto');           
+            $table->boolean('estado')->default(1);
             $table->timestamps();
             
         });
