@@ -13,7 +13,7 @@ class TipoDeCompra extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_compra', function (Blueprint $table) {
+        Schema::create('tipo_compras', function (Blueprint $table) {
             $table->id('id');
             $table->string('tipo',50);            
             $table->timestamps();
@@ -27,6 +27,6 @@ class TipoDeCompra extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_compra');
+        Schema::dropIfExists('tipo_compras');
     }
 }

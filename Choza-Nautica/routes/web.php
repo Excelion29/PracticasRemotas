@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\DetalleCommpra;
 use App\Http\Controllers\MostrarCategorias;
+use App\Http\Controllers\MostrarMesas;
 use App\Http\Controllers\MostrarProductos;
+use App\Http\Controllers\ObtenerOrder;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -35,7 +38,11 @@ Auth::routes(['verify' => true]);
 
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
 Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');
+Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
 Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.show');
+
+Route::resource('order',ObtenerOrder::class)->only(['store','update','destroy'])->names('order');
+
 Route::resource('dashboard/cliente', UsersController::class);
 Route::resource('dashboard/empleado', EmpleadosController::class);
 Route::resource('dashboard/administrador', AdministradoresController::class);

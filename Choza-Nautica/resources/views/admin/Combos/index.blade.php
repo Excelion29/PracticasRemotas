@@ -26,6 +26,7 @@
                 <table id="example1" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead-dark">
                     <tr>
+                        <th>#</th>
                         <th>Combo</th>
                         <th>Descripción</th>
                          <th>Precio</th>
@@ -38,8 +39,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($combos as $combo)
+                    @foreach ($combos as  $id=>$combo)
                     <tr>
+                        <td>{{$id}}</td>
                         <td>{{$combo->nombre}}</td>
                         <td>{{$combo->descripcion}}</td>
                         <td>{{$combo->precio}}</td>

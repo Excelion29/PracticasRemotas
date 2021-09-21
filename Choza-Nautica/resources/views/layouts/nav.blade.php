@@ -66,6 +66,9 @@
                 </li>
                 @endif
                 @endisset
+                <li>
+                    @include('layouts.mini_cart')
+                </li>
 
                 <li>
                     <a href="">Contacto</a>

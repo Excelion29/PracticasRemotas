@@ -20,7 +20,6 @@ class ProductosController extends Controller
         ->join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','users.name','categorias.nombre as categoria')
         ->paginate(5);
-
         return view('admin.productos.index',$datos);
     }
     

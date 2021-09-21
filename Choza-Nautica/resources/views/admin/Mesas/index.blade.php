@@ -24,6 +24,7 @@
         <table id="example1"  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
             <thead class="thead-dark">
             <tr>
+                <th>#</th>
                 <th>Nro de Mesa</th>
                 <th>Capacidad</th>
                 <th>Precio</th>
@@ -36,8 +37,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($mesas as $mesa)
+            @foreach ($mesas as  $id=>$mesa)
             <tr>
+                <td>{{$id}}</td>
                 <td>{{$mesa->nombre}}</td>
                 <td>{{$mesa->capacidad}}</td>
                 <td>{{$mesa->precio}}</td>

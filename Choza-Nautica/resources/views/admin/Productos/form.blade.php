@@ -45,6 +45,12 @@
   });
 </script>
 
+<div class="col-md-12 col-lg-8">
+    <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="text" class="form-control" name="cantidad" value="{{ isset($producto->cantidad)?$producto->cantidad:old('cantidad')}}" id="nombre">
+    </div>
+</div>
 
 <div class="col-md-12 col-lg-8">
     <div class="form-group">
@@ -52,6 +58,7 @@
         <input type="text" class="form-control" name="precio" id="precio" value="{{ isset($producto->precio)?$producto->precio:old('precio')}}">
     </div>
 </div>
+
 <div class="col-md-12 col-lg-8">
     <div class="form-group">
         <label for="id_categoria ">Categoría</label>
