@@ -68,6 +68,7 @@
                 @endisset
                 <li>
                     @include('layouts.mini_cart')
+                
                 </li>
 
                 <li>

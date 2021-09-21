@@ -13,21 +13,30 @@
         <div class="item">
           <div class="item-name">
             <h4>{{$producto->nombre}}</h4>
-            <p>{{$producto->descripcion}}</p>
+            <p>{{substr($producto->descripcion,0,80)}}......</p>
           </div>
           <div class="item-price">
               <div></div>
               <div></div>
               <div></div>
-              <div></div>
           </div>
+          <div><a href="{{route('store_a_product',$producto)}}">
+            <i class="fa fa-shopping-cart"></i></a></div>
         </div>
-        </a>
+      </a>
     </div>
+
     <div class="modal">
-     {!! Form::open(['route'=>'order.store','method'=>'POST']) !!}
+     {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
         <div class="quantity-cart-box d-flex align-items-center mt-20">
- 
+          
+          <div class="item-name">
+            <h4>{{$producto->nombre}}</h4>
+            <p>{{$producto->descripcion}}</p>
+            <div class="item-price">
+              <div>{{$producto->precio}}</div>
+          </div>
+          </div>
           <div class="cantidad">
             <input type="hidden" name="id_producto" value="{{$producto->id}}">
             <div class="pro-cant"><input type="text" name="cantidad" value="1">

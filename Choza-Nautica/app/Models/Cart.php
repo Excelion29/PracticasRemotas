@@ -33,8 +33,8 @@ class Cart extends Model
     }
     public function total_price(){
         $total = 0;
-        foreach ($this->order_details as $key => $order_details) {
-            $total += $order_details->precio * $order_details->cantidad;
+        foreach ($this->order_details as $key => $order_detail) {
+            $total += $order_detail->precio * $order_detail->cantidad;
         }
         return $total;
     }
@@ -48,6 +48,14 @@ class Cart extends Model
         $this->order_details()->create([
             'cart_id'=>$request,
             'cantidad'=>$request->cantidad,
+            'precio'=>$product->precio*$request->cantidad, 
+            'id_producto'=>$product->id,
+            // 'id_combo'=>$combo->id,
+        ]);
+    }
+
+    public function store_a_product($product){
+        $this->order_details()->create([
             'precio'=>$product->precio, 
             'id_producto'=>$product->id,
             // 'id_combo'=>$combo->id,

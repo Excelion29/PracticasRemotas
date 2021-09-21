@@ -10,13 +10,11 @@ class order extends Model
     protected $fillable = [
         'cart_id',
         'cantidad',
-        'foto',
         'precio', 
         'id_producto', 
         'id_combo', 
-        'created_at',
     ];
     public function product(){
-        return $this->belongsTo(Productos::class);
+        return $this->belongsTo(Productos::class,'id_producto');
     }
 }

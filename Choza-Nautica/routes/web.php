@@ -15,6 +15,7 @@ use App\Http\Controllers\MostrarCategorias;
 use App\Http\Controllers\MostrarMesas;
 use App\Http\Controllers\MostrarProductos;
 use App\Http\Controllers\ObtenerOrder;
+use App\Models\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -35,14 +36,21 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-
-Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
+// SERVICIOS DE LA PÄGINA AL USUARIO
 Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');
 Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
 Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.show');
 
-Route::resource('order',ObtenerOrder::class)->only(['store','update','destroy'])->names('order');
 
+// Carrito de compras
+Route::resource('order',ObtenerOrder::class)->only(['update','destroy'])->names('order');
+Route::post('order/{product}/store',[ObtenerOrder::class,'store'])->name('order.store');
+Route::get('order_direct/{product}/store',[ObtenerOrder::class,'store_a_product'])->name('store_a_product');
+
+
+
+// dashboard
+Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
 Route::resource('dashboard/cliente', UsersController::class);
 Route::resource('dashboard/empleado', EmpleadosController::class);
 Route::resource('dashboard/administrador', AdministradoresController::class);
@@ -55,4 +63,6 @@ Route::resource('dashboard/combos', CombosController::class);
 Route::resource('dashboard/productos', ProductosController::class);
 Route::resource('dashboard/mesas', MesaController::class);
 Auth::routes();
+
+// home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
