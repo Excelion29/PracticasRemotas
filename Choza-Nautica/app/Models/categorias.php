@@ -10,7 +10,9 @@ class categorias extends Model
     use HasFactory;
     
     protected $fillable = [
+        'nombre',
         'estado',
+        
     ];
 
     /**
@@ -18,6 +20,6 @@ class categorias extends Model
      */
     public function ListaProductos()
     {
-        return $this->hasMany('App\Models\Productos', 'id_categoria', 'id');
+        return $this->hasMany(Productos::class);
     }
 }
