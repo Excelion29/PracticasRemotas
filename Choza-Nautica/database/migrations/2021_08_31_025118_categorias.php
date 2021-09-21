@@ -18,7 +18,8 @@ class Categorias extends Migration
             $table->unsignedBigInteger('id_administrador');
             $table->string('nombre');
             $table->text('descripcion'); 
-            $table->string('foto');           
+            $table->string('foto');   
+            $table->boolean('estado')->default(1);        
             $table->timestamps();
 
             
