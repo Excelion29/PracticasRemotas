@@ -26,15 +26,20 @@
         <input type="text" class="form-control" name="nombre" value="{{ isset($producto->nombre)?$producto->nombre:old('nombre')}}" id="nombre">
     </div>
 </div>
-<body>
 <div class="col-md-12 col-lg-8">
     <div class="form-group">
         <label for="descripcion">Descripción</label>
         <textarea type="text" class="form-control" name="descripcion" id="descripcion">{{ isset($producto->descripcion)?$producto->descripcion:old('descripcion')}}</textarea>
     </div>
 </div>
+<div class="col-md-12 col-lg-8">
+    <div class="form-group">
+        <label for="detalles">Descripción</label>
+        <textarea type="text" class="form-control" name="detalles" id="detalles">{{ isset($producto->detalles)?$producto->detalles:old('detalles')}}</textarea>
+    </div>
+</div>
 <script>
-  $('#descripcion').summernote({
+  $('#detalles').summernote({
     height: 300,
     lang: "es-ES", 
     toolbar: [

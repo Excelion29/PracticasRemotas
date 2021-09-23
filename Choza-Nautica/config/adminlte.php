@@ -329,6 +329,12 @@ return [
                 ],
             ],
         ],
+        ['header' => 'Punto de venta'],
+        [
+            'text'    => 'Ventas',
+            'icon'    => '',
+            'url'  => 'dashboard/cliente',
+        ],
         ['header' => 'labels'],
         [
             'text'       => 'important',

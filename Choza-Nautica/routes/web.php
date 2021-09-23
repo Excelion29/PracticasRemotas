@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DetalleCommpra;
 use App\Http\Controllers\MostrarCategorias;
 use App\Http\Controllers\MostrarMesas;
 use App\Http\Controllers\MostrarProductos;
+use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\ObtenerOrder;
 use App\Models\Cart;
 use Illuminate\Contracts\Session\Session;
@@ -43,11 +45,16 @@ Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.sho
 
 
 // Carrito de compras
-Route::resource('order',ObtenerOrder::class)->only(['update','destroy'])->names('order');
+Route::resource('order',ObtenerOrder::class)->only(['update'])->names('order');
+Route::get('order/{DetalleCommpra}/destroy',[ObtenerOrder::class,'destroy'])->name('orders.destroy');
 Route::post('order/{product}/store',[ObtenerOrder::class,'store'])->name('order.store');
 Route::get('order_direct/{product}/store',[ObtenerOrder::class,'store_a_product'])->name('store_a_product');
+Route::put('carrito_update',[CarritoController::class,'update'])->name('carrito.update');
 
 
+//Cuenta
+Route::get('micuenta',[MyAccountController::class,'my_account'])->name('mi_cuenta');
+Route::get('pagar',[MyAccountController::class,'pagar'])->name('shop.index');
 
 // dashboard
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');

@@ -39,8 +39,11 @@
           </div>
           <div class="cantidad">
             <input type="hidden" name="id_producto" value="{{$producto->id}}">
-            <div class="pro-cant"><input type="text" name="cantidad" value="1">
+            
+            <div class="quantity">
+              <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
             </div>
+            
           </div>
 
           <div class="action_link">

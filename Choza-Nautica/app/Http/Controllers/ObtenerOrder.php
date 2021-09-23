@@ -20,10 +20,11 @@ class ObtenerOrder extends Controller
         $cart->store_a_product($product);
         return back();
     }
-    public function update(Request $request,DetalleCommpra $DetalleCommpra){
+    public function update(Request $request,order $DetalleCommpra){
 
     }
-    public function destroy(DetalleCommpra  $DetalleCommpra){
-
+    public function destroy(order  $DetalleCommpra){
+        $DetalleCommpra->delete();
+        return back();
     }
 }

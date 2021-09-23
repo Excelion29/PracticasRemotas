@@ -16,8 +16,8 @@ class Order extends Migration
     Schema::create('orders', function (Blueprint $table) {
             $table->id('id');              
             $table->unsignedBigInteger('cart_id');   
-            $table->unsignedBigInteger('id_producto');             
-            $table->unsignedBigInteger('id_combo');         
+            $table->unsignedBigInteger('id_producto')->nullable();             
+            $table->unsignedBigInteger('id_combo')->nullable();         
             $table->integer('cantidad')->default(1);
             $table->decimal('precio',5,2);      
             $table->timestamps();
