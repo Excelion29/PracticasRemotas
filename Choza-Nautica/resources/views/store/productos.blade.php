@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="contenedor-u">
-  
+
   <div class="contenedor-comida">
     <p class="titulo">CATEGORIAS</p>
     @foreach ($productos as $producto)
@@ -29,7 +29,7 @@
     <div class="modal">
      {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
         <div class="quantity-cart-box d-flex align-items-center mt-20">
-          
+
           <div class="item-name">
             <h4>{{$producto->nombre}}</h4>
             <p>{{$producto->descripcion}}</p>

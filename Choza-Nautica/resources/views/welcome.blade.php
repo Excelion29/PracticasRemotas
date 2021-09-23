@@ -4,7 +4,7 @@
   
   @section('content')
       <!-- Contenido -->
-      <div class="header">
+      <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://images6.alphacoders.com/366/366291.jpg)peat  no-recenter center;">
       <div class="center">
         <h1 class="alex-brush"></h1>
         <h2>Bienvenidos</h2>
