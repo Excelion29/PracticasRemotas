@@ -25,6 +25,7 @@
         </div>
       </a>
     </div>
+ 
 
     <div class="modal">
      {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
@@ -52,8 +53,7 @@
         </div>
      {!! Form::close() !!}
     </div>
-    @endforeach
+    @endforeach 
   </div>
-</div>
-
+  </div>
 @endsection

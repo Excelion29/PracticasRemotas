@@ -23,7 +23,6 @@ $(document).ready(function() {
 
 
 
-<<<<<<< HEAD
 jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
 jQuery('.quantity').each(function() {
   var spinner = jQuery(this),
@@ -59,6 +58,3 @@ jQuery('.quantity').each(function() {
 
 
  
-=======
-
->>>>>>> cbbe730ed3c66b47ed9ae878ec91c7ebeeb7ee47

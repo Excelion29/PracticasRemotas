@@ -1,5 +1,5 @@
 
-    <div class="header-mini-cart"> 
+    <div class="header-mini-cart" > 
     <div class="mini-cart-btn">
         <i class="fa fa-shopping-cart"></i>
         @if ($cart->quantity_of_products() != 0)
@@ -37,7 +37,7 @@
         </li>
         {!! Form::close() !!}
         <li class="mini-cart-price">
-            <h4>Subtotal:<span class="subtotal-price">S/.{{$cart->total_price()}}</span></h4>
+            Subtotal:<span class="subtotal-price">S/.{{$cart->total_price()}}</span>
         </li>
         @if ($cart->quantity_of_products() != 0)
         <li class="checkout-btn">
