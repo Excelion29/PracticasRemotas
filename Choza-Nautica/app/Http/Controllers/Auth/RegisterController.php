@@ -80,4 +80,11 @@ class RegisterController extends Controller
         ]);
         return $user;
     }
+    public function redirectTo()
+{
+    if (session()->has('redirect_to'))
+        return session()->pull('redirect_to');
+
+    return $this->redirectTo;
+}
 }

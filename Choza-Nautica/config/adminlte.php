@@ -329,11 +329,22 @@ return [
                 ],
             ],
         ],
-        ['header' => 'Punto de venta'],
+        ['header' => 'Administración de mercado'],
         [
-            'text'    => 'Ventas',
-            'icon'    => '',
-            'url'  => 'dashboard/cliente',
+            'text'    => 'Puntos de venta',
+            'icon'    => 'fab fa-shopify',
+            'submenu' => [
+                [
+                    'text' => 'Carritos',
+                    'icon' => 'fas fa-shopping-cart',
+                    'url'  => 'dashboard/carritos',
+                ],
+                [
+                    'text' => 'Ventas',
+                    'icon' => 'fas fa-shopping-cart',
+                    'url'  => '',
+                ],
+            ]
         ],
         ['header' => 'labels'],
         [

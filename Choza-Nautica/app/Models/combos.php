@@ -9,7 +9,9 @@ class combos extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'foto',
         'estado',
+        'nombre',
+        'precio',
     ];
-
 }

@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choza N. - @yield('title')</title>
@@ -92,9 +92,17 @@
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            @if (auth()->check())
+                            <form action="{{ url('/job/'.$job->id.'/apply') }}" method="post">
+                                <a type="submit" class="btn blue no-margin">
+                                    {{ __('Login') }}
+                                </a>
+                            </form>
+                            @else
+                                <a href="{{ url('/login?redirect_to='.url()->current()) }}" class="btn blue no-margin">
+                                    {{ __('Login') }}
+                                </a>
+                            @endif
                         @endif
                     @else
                         <li class="nav-item dropdown">

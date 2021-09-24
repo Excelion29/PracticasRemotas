@@ -12,6 +12,7 @@ class MostrarProductos extends Controller
         $datos['productos']= Productos::join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','categorias.nombre as categoria')
         ->where('productos.id_categoria','=',$id)
+        ->where('productos.estado','=','1')
         ->paginate(5);
         return view('store.productos',$datos);
     }

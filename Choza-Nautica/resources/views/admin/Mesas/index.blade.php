@@ -42,7 +42,7 @@
                 <td>{{$id}}</td>
                 <td>{{$mesa->nombre}}</td>
                 <td>{{$mesa->capacidad}}</td>
-                <td>{{$mesa->precio}}</td>
+                <td>S/.{{$mesa->precio}}</td>
                 <td>{{$mesa->name}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$mesa->foto}}"  width="100" alt=""></td>
                 <th>{{$mesa->created_at}}</th>
