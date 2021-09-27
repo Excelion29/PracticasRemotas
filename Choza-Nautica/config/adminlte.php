@@ -341,7 +341,7 @@ return [
                 ],
                 [
                     'text' => 'Ventas',
-                    'icon' => 'fas fa-shopping-cart',
+                    'icon' => 'fas fa-cash-register',
                     'url'  => '',
                 ],
             ]

@@ -1,6 +1,5 @@
 
-    {{-- <div class="header-mini-cart" style="position: absolute">  --}}
-    <div class="header-mini-cart"> 
+    <div class="header-mini-cart" style="display:none;"> 
     <div class="mini-cart-btn">
         <i class="fa fa-shopping-cart"></i>
         @if ($cart->quantity_of_products() != 0)
