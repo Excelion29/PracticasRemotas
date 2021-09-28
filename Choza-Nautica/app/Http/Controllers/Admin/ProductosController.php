@@ -42,6 +42,7 @@ class ProductosController extends Controller
 
         $campos=[
             'nombre'=>'required|string|max:100',
+            'detalles'=>'required|string|max:1500',
             'descripcion'=>'required|string|max:1500',
             'id_categoria'=>'required|string|max:1500',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
@@ -80,6 +81,7 @@ class ProductosController extends Controller
         
         $campos=[
             'nombre'=>'required|string|max:100',
+            'detalles'=>'required|string|max:1500',
             'descripcion'=>'required|string|max:1500',
             'id_categoria'=>'required|string|max:1500',
             

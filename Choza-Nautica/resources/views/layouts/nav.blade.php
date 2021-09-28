@@ -70,10 +70,6 @@
                 </li>
                 @endif
                 @endisset
-                <li>
-                    @include('layouts.mini_cart')
-                
-                </li>
 
                 <li>
                     <a href="">Contacto</a>
@@ -86,6 +82,9 @@
                 </li>
                 <li>
                     <a href="{{ url('category') }}">Ordena Aquí</a>
+                </li>
+                <li>
+                   <a href=""> Carrito</a>
                 </li>
 
                 <ul class="navbar-nav ml-auto">

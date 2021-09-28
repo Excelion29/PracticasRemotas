@@ -35,6 +35,7 @@
         </div>
       </a>
     </div>
+ 
 
     <div class="modal">
      {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
@@ -49,8 +50,11 @@
           </div>
           <div class="cantidad">
             <input type="hidden" name="id_producto" value="{{$producto->id}}">
-            <div class="pro-cant"><input type="text" name="cantidad" value="1">
+            
+            <div class="quantity">
+              <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
             </div>
+            
           </div>
 
           <div class="action_link">
@@ -59,13 +63,14 @@
         </div>
      {!! Form::close() !!}
     </div>
-    @endforeach
+    @endforeach 
+  </div>
   </div>
 </div>
 
 <div class="row">
-<p class="titulo">Categoria</p>
-@foreach ($productos as $producto)
+  <p class="titulo">Categoria</p>
+    @foreach ($productos as $producto)
 
   <div class="col l4 m8 s12 offset-m2">
     <div class="product-card">

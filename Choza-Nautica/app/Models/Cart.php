@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class Cart extends Model
 {
     protected $fillable = [
         'estado',
-        'id_usuario',
+        'user_id',
         'created_at',
     ];
     use HasFactory;
@@ -18,7 +19,7 @@ class Cart extends Model
         return $this->hasMany(order::class);
     }
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public static function findOnCreateBySessionId($CartID){
@@ -26,6 +27,16 @@ class Cart extends Model
             return Cart::find($CartID);
         }else{
             return Cart::create();
+        }
+    }
+    public static function findOnCreateByUserId($User){
+        $estado = $User->carts->where('estado', '1')->firstOrFail();
+        if($estado){
+            return $User->carts->where('estado', '1')->firstOrFail();
+        }else{
+            return Cart::create([
+                'user_id' => auth()->user()->id,
+            ]);
         }
     }
     public function quantity_of_products(){
@@ -44,6 +55,10 @@ class Cart extends Model
         $cart = self::findOnCreateBySessionId($cart_id);
         return $cart;
     }
+    public static function get_user_session_cart(){
+        $cart = self::findOnCreateByUserId(Auth::user());
+        return $cart;
+    }
     public function my_store($product, $request){
         $this->order_details()->create([
             'cart_id'=>$request,
@@ -60,5 +75,12 @@ class Cart extends Model
             'id_producto'=>$product->id,
             // 'id_combo'=>$combo->id,
         ]);
+    }
+
+    public function my_update($request){
+        foreach ($this->order_details as $key=> $detail) {
+            $result[] = array("cantidad" => $request->cantidad[$key],"precio"=>$request->precio[$key]*$request->cantidad[$key]);
+            $detail->update($result[$key]);
+        }
     }
 }

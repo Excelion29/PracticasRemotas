@@ -18,6 +18,7 @@ class Productos extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->string('nombre',50);
             $table->text('descripcion');
+            $table->text('detalles');
             $table->integer('cantidad');
             $table->decimal('precio',5,2);
             $table->string('foto'); 

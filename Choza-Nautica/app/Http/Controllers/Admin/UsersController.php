@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 Use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -43,7 +44,13 @@ class UsersController extends Controller
 
         // $datosCategorias = request()->all();
         $datosCliente = request()->except('_token','enviar');
-        User::insert($datosCliente);
+        User::insert([
+            'name' => $datosCliente['name'],
+            'apellidos' => $datosCliente['apellidos'],
+            'celular' => $datosCliente['celular'],
+            'email' => $datosCliente['email'],
+            'password' => Hash::make($datosCliente['password']),
+        ]);
         // return response()->json($datosCategorias);
         return redirect('dashboard/cliente')->with('mensaje','Cliente creado!');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadosController extends Controller
 {
@@ -43,7 +44,14 @@ class EmpleadosController extends Controller
 
         // $datosCategorias = request()->all();
         $datosCliente = request()->except('_token','enviar');
-        User::insert($datosCliente);
+        User::insert([
+            'id_rol' => 3,
+            'name' => $datosCliente['name'],
+            'apellidos' => $datosCliente['apellidos'],
+            'celular' => $datosCliente['celular'],
+            'email' => $datosCliente['email'],
+            'password' => Hash::make($datosCliente['password']),
+        ]);
         // return response()->json($datosCategorias);
         return redirect('dashboard/empleado')->with('mensaje','Empleado creado!');
     }

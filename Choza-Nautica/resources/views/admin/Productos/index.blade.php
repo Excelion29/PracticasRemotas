@@ -33,6 +33,7 @@
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>Detalles</th>
                 <th>Precio</th>
                 <th>Imagen</th>
                 <th>Cantidad</th>
@@ -49,7 +50,8 @@
             <tr>
                 <td>{{$id}}</td>
                 <td>{{$producto->nombre}}</td>
-                <td><p name="descripcion" id="descripcion" class="descripcion"></p></td>
+                <td>{{$producto->descripcion}}</td>
+                <td><p name="detalles" id="detalles" class="detalles"></p></td>
                 <td>{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->cantidad}}</td>
@@ -75,13 +77,13 @@
                 </td>
             </tr>
             <script>
-                $('#descripcion').summernote({
+                $('#detalles').summernote({
                 //sacar el toolbar(barra de tareas)
                 airMode :true,
                 lang: "es-ES",
                 });
-                $('#descripcion').summernote('disable');
-                $('#descripcion').summernote('code', {!! json_encode($producto->descripcion) !!});
+                $('#detalles').summernote('disable');
+                $('#detalles').summernote('code', {!! json_encode($producto->descripcion) !!});
             </script>
             @endforeach
         </tbody>
