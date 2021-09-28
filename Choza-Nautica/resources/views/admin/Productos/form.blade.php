@@ -53,20 +53,20 @@
 <div class="col-md-12 col-lg-8">
     <div class="form-group">
         <label for="cantidad">Cantidad</label>
-        <input type="text" class="form-control" name="cantidad" value="{{ isset($producto->cantidad)?$producto->cantidad:old('cantidad')}}" id="nombre">
+        <input type="number" class="form-control" name="cantidad" value="{{ isset($producto->cantidad)?$producto->cantidad:old('cantidad')}}" id="nombre">
     </div>
 </div>
 
 <div class="col-md-12 col-lg-8">
     <div class="form-group">
         <label for="precio">Precio</label>
-        <input type="text" class="form-control" name="precio" id="precio" value="{{ isset($producto->precio)?$producto->precio:old('precio')}}">
+        <input type="number" class="form-control" name="precio" id="precio" value="{{ isset($producto->precio)?$producto->precio:old('precio')}}">
     </div>
 </div>
 
 <div class="col-md-12 col-lg-8">
     <div class="form-group">
-        <label for="id_categoria ">Categoría</label>
+        <label for="id_categoria">Categoría</label>
         <select  class="form-control" name="id_categoria" id="id_categoria">
         @if(@isset($producto->id_categoria))
             <option value="{{$producto->id_categoria}}">Actual: {{$producto->categorianame}}</option>

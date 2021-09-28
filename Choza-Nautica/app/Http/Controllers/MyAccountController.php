@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Costo_x_deliverys;
 use Illuminate\Http\Request;
 
 class MyAccountController extends Controller
@@ -14,6 +15,7 @@ class MyAccountController extends Controller
         return view('MyAccount.index');
     }
     public function pagar(){
-        return view('shop.index');
+        $datos['Costo_x_deliverys'] = Costo_x_deliverys::get();
+        return view('shop.index',$datos);
     }
 }

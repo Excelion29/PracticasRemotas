@@ -25,12 +25,12 @@
 
 <div class="form-group">
     <label for="capacidad">Capacidad</label>
-    <input type="text" class="form-control" name="capacidad" value="{{ isset($mesa->capacidad)?$mesa->capacidad:old('capacidad')}}" id="capacidad">
+    <input type="number" class="form-control" name="capacidad" value="{{ isset($mesa->capacidad)?$mesa->capacidad:old('capacidad')}}" id="capacidad">
 </div>
 
 <div class="form-group">
     <label for="precio">Precio</label>
-    <input type="text" class="form-control" name="precio" value="{{ isset($mesa->precio)?$mesa->precio:old('precio')}}" id="precio">
+    <input type="number" class="form-control" name="precio" value="{{ isset($mesa->precio)?$mesa->precio:old('precio')}}" id="precio">
 </div>
 
 <div class="form-group">

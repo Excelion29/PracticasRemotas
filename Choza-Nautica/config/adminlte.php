@@ -340,9 +340,14 @@ return [
                     'url'  => 'dashboard/carritos',
                 ],
                 [
+                    'text' => 'Tarifas por distritos',
+                    'icon' => 'fas fa-globe-americas',
+                    'url'  => 'dashboard/Delivery',
+                ],
+                [
                     'text' => 'Ventas',
                     'icon' => 'fas fa-cash-register',
-                    'url'  => '',
+                    'url'  => '#',
                 ],
             ]
         ],

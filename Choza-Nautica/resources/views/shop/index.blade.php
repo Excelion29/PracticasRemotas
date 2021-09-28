@@ -35,9 +35,13 @@
       <img src="https://expansionfranquicia.com/wp-content/uploads/2017/10/image006-1.png" style="width: 25%;">
       <hr style="width:90%; border-color: #5e5c5c83; background:none;">
       <br>
-      <input type="text" placeholder="Nombre">
-      <input type="text" placeholder="Apellidos">
-      <input type="email" placeholder="Correo">
+      @isset(auth()->user()->id_rol)
+      <div class="form-group">
+        <label class="form-control">{{ Auth::user()->name }}</label><br>
+        <label class="form-control">{{ Auth::user()->apellidos }}</label><br>
+        <label class="form-control">{{ Auth::user()->email }}</label>
+      </div>
+      @endisset
       <table>
         <thead>
           <tr>
@@ -65,13 +69,21 @@
           </tr>
         </tbody>
       </table>
-      <input type="text" name="example" placeholder="Distrito" list="exampleList">
-        <datalist id="exampleList">
-          <option value="A">  
-          <option value="B">
-        </datalist>
+      <div class="col-md-12 col-lg-8">
+        <div class="form-group">
+            <label for="id_distrito">Distritos</label>
+            <select style="display: block;" class="form-control" name="id_distrito" id="id_distrito">
+              <option selected="true" disabled="disabled">Lista de Distritos</option>
+              @foreach ($Costo_x_deliverys as $Costo_x_delivery)  
+                <option value="{{$Costo_x_delivery->id}}">{{$Costo_x_delivery->Distrito}}</option>
+              @endforeach
+            </select>
+          </div>
+      </div>
       <input type="text" placeholder="Dirección">
-      <input type="text" placeholder="Celular">
+      <div class="form-group">
+        <label class="form-control">{{ Auth::user()->celular }}</label><br>
+      </div>
     </div>
   </div>
   <div class="left">
@@ -166,15 +178,17 @@
           <tr>            
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck4">
-                <label class="custom-control-label" for="customCheck4"> <a href="#">He leído y acepto los términos y condiciones del sitio web</a></label>
+                <input type="checkbox" class="custom-control-input" id="customCheck4" required>
+                <label class="custom-control-label" for="customCheck4"><a href="#">He leído y acepto los términos y condiciones del sitio web</a></label>
               </div>
             <td>
           </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Relaizar Pago</button>
+      <button type="button" class="btn btn-primary">Relaizar Compra</button>
     <div>
+  </div>
+</div>
   </div>
 </div>
 @endsection

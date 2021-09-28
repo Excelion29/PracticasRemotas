@@ -71,8 +71,8 @@
                 @endif
                 @endisset
                 <li>
+                    <a href="#">Carrito</a>
                     @include('layouts.mini_cart')
-                
                 </li>
 
                 <li>
