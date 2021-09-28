@@ -11,7 +11,7 @@
       margin-left: auto;
       background: wheat;
       height: auto;
-      width: 80%;
+      width: 90%;
       display: flex;
     }
   </style>
@@ -30,6 +30,7 @@
         margin-right: 15px;
       }
     </style>
+
     <div>
       <br>
       <img src="https://expansionfranquicia.com/wp-content/uploads/2017/10/image006-1.png" style="width: 25%;">
@@ -74,6 +75,7 @@
       <input type="text" placeholder="Celular">
     </div>
   </div>
+  
   <div class="left">
     <style>
       .left{
@@ -173,7 +175,7 @@
           </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Relaizar Pago</button>
+      <button type="button" class="btn btn-primary">Realizar Pago</button>
     <div>
   </div>
 </div>

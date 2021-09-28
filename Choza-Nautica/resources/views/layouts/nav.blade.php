@@ -131,10 +131,8 @@
     
     <!--Contenido-->
     @yield('content') 
+
     <footer class="footer-area footer--light">
-   
-    <!-- end /.footer-big -->
-  
     <div class="mini-footer">
       <div class="container">
         <div class="row">
