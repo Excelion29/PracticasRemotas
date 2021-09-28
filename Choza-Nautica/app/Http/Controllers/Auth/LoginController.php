@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -18,7 +19,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -36,5 +36,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm(Request $request)
+    {
+        if ($request->has('redirect_to')) {
+            session()->put('redirect_to', $request->input('redirect_to'));
+        }
+
+        return view('auth.login');
+    }
+
+    public function redirectTo()
+    {
+        if (session()->has('redirect_to'))
+            return session()->pull('redirect_to');
+
+        return $this->redirectTo;
     }
 }

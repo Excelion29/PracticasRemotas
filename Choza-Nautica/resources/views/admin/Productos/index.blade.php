@@ -52,7 +52,7 @@
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->descripcion}}</td>
                 <td><p name="detalles" id="detalles" class="detalles"></p></td>
-                <td>{{$producto->precio}}</td>
+                <td>S/.{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->cantidad}}</td>
                 <td>{{$producto->categoria}}</td>

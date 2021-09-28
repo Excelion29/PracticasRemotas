@@ -17,4 +17,7 @@ class order extends Model
     public function product(){
         return $this->belongsTo(Productos::class,'id_producto');
     }
+    public function combo(){
+        return $this->belongsTo(combos::class,'id_combo');
+    }
 }

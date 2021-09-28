@@ -34,7 +34,7 @@ class Cart extends Model
         if($estado){
             return $User->carts->where('estado', '1')->firstOrFail();
         }else{
-            return Cart::create([
+            return self::create([
                 'user_id' => auth()->user()->id,
             ]);
         }
@@ -73,6 +73,24 @@ class Cart extends Model
         $this->order_details()->create([
             'precio'=>$product->precio, 
             'id_producto'=>$product->id,
+            // 'id_combo'=>$combo->id,
+        ]);
+    }
+    
+    public function my_store_combo($combo, $request){
+        $this->order_details()->create([
+            'cart_id'=>$request,
+            'cantidad'=>$request->cantidad,
+            'precio'=>$combo->precio*$request->cantidad, 
+            'id_combo'=>$combo->id,
+            // 'id_combo'=>$combo->id,
+        ]);
+    }
+
+    public function store_a_product_combo($combo){
+        $this->order_details()->create([
+            'precio'=>$combo->precio, 
+            'id_combo'=>$combo->id,
             // 'id_combo'=>$combo->id,
         ]);
     }

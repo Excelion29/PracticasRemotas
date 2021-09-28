@@ -44,7 +44,7 @@
                         <td>{{$id}}</td>
                         <td>{{$combo->nombre}}</td>
                         <td>{{$combo->descripcion}}</td>
-                        <td>{{$combo->precio}}</td>
+                        <td>S/.{{$combo->precio}}</td>
                         <td>{{$combo->name}}</td>
                         <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}" width="80px"></td>
                         <td>{{$combo->created_at}}</td>
