@@ -70,10 +70,6 @@
                 </li>
                 @endif
                 @endisset
-                <li>
-                    <a href="#">Carrito</a>
-                    @include('layouts.mini_cart')
-                </li>
 
                 <li>
                     <a href="">Contacto</a>
@@ -86,6 +82,10 @@
                 </li>
                 <li>
                     <a href="{{ url('category') }}">Ordena Aquí</a>
+                </li>
+                <li>
+                   <a href=""> Carrito</a>
+                   @include('layouts.mini_cart')
                 </li>
 
                 <ul class="navbar-nav ml-auto">
@@ -132,10 +132,8 @@
     
     <!--Contenido-->
     @yield('content') 
+
     <footer class="footer-area footer--light">
-   
-    <!-- end /.footer-big -->
-  
     <div class="mini-footer">
       <div class="container">
         <div class="row">
