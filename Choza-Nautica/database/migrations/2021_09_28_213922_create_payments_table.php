@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCostoXDeliverysTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,21 @@ class CreateCostoXDeliverysTable extends Migration
      */
     public function up()
     {
-        Schema::create('Costo_x_deliverys', function (Blueprint $table) {
+        Schema::create('payment_platforms', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('id_administrador');
-            $table->mediumText('Distrito');
-            $table->decimal('precio',5,2);  
+            $table->string('name');
             $table->boolean('estado')->default(1);          
             $table->timestamps();
-            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('Costo_x_deliverys');
+        Schema::dropIfExists('payment_platforms');
     }
 }

@@ -146,6 +146,8 @@
           <td>S/.{{$cart->total_price()}}</td>
         </thead>
       </table>
+      <form action="{{route('pay')}}" method="post">
+        @csrf
       <table>
         <thead>
           <tr>
@@ -153,30 +155,16 @@
           </tr>
         </thead>
         <tbody>          
+          @foreach ($Payments as $Payment)
           <tr>            
             <td>
               <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck2">
-              <label class="custom-control-label" for="customCheck2">Pagar al momento de la entrega </label>
-            </div>
-            <td>
-          </tr>
-          <tr>            
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                <label class="custom-control-label" for="customCheck3">Transferencia interbancaria</label>
+                <input type="checkbox" class="custom-control-input" value="{{$Payment->id}}" name="payment_platform" id="customCheck3.{{$Payment->name}}">
+                <label class="custom-control-label" for="customCheck3.{{$Payment->name}}">{{$Payment->name}}</label>
               </div>
             <td>
           </tr>
-          <tr>            
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck5">
-                <label class="custom-control-label" for="customCheck5">Paypal</label>
-              </div>
-            <td>
-          </tr>
+          @endforeach
           <tr>            
             <td>
               <div class="custom-control custom-checkbox">
@@ -187,7 +175,8 @@
           </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Realizar Pago</button>
+      <button type="submit" class="btn btn-primary">Realizar Pago</button>
+      </form>
     <div>
   </div>
 </div>

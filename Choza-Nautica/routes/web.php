@@ -21,6 +21,7 @@ use App\Http\Controllers\MostrarMesas;
 use App\Http\Controllers\MostrarProductos;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\ObtenerOrder;
+use App\Http\Controllers\PaymentVistaController;
 use App\Models\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -41,6 +42,8 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
+
+Route::post('payments/pays',[PaymentVistaController::class,'pays'])->name('pay');
 
 // SERVICIOS DE LA PÄGINA AL USUARIO
 Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');

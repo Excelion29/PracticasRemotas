@@ -15,7 +15,7 @@
 <div class="contenedor-u">
 
   <div class="contenedor-comida">
-    <p class="titulo">CATEGORIAS</p>
+    <p class="titulo">PRODUCTOS</p>
     @foreach ($productos as $producto)
     <div class="outer">
       <a href="#id/.{{$producto->id}}">
