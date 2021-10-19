@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Order extends Migration
+class CreateComprasDetallesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class Order extends Migration
      */
     public function up()
     {
-    Schema::create('orders', function (Blueprint $table) {
-            $table->id('id');              
-            $table->unsignedBigInteger('cart_id');   
+        Schema::create('compras_detalles', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('compras_id');   
+            $table->foreign('compras_id')->references('id')->on('compras');
             $table->unsignedBigInteger('id_producto')->nullable();             
             $table->unsignedBigInteger('id_combo')->nullable();         
             $table->integer('cantidad')->default(1);
-            $table->timestamps();
-
+            $table->decimal('precio',5,2);  
+            
             $table->foreign('id_combo')->references('id')->on('Combos');
             $table->foreign('id_producto')->references('id')->on('productos');
-            $table->foreign('cart_id')->references('id')->on('Carts');
-
+            
+            $table->timestamps();
         });
     }
 
@@ -35,6 +36,6 @@ class Order extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('compras_detalles');
     }
 }

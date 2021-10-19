@@ -47,10 +47,13 @@ class User extends Authenticatable
     public function cliente(){
         return $this->hasOne(Clientes::class);
     }
-    public function compras(){
-        return $this->hasMany(Compra::class);
+    public function ventas(){
+        return $this->hasMany(Ventas::class);
     }
-    public function carts(){
-        return $this->hasMany(Cart::class);
+    // public function carts(){
+    //     return $this->hasMany(Cart::class);
+    // }
+    public function compras(){
+        return $this->hasMany(Compra::class,'user_id');
     }
 }

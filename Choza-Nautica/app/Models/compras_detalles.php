@@ -5,18 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class order extends Model
+class compras_detalles extends Model
 {
     protected $fillable = [
-        'cart_id',
+        'compras_id',
         'cantidad',
-        'id_producto', 
-        'id_combo', 
+        'precio',
+        'id_producto',
+        'id_combo',
     ];
     public function product(){
-        return $this->belongsTo(Productos::class,'id_producto',);
+        return $this->belongsTo(Productos::class,'id_producto');
     }
     public function combo(){
         return $this->belongsTo(combos::class,'id_combo');
+    }
+    public function total(){
+        return $this->cantidad * $this->precio;
     }
 }

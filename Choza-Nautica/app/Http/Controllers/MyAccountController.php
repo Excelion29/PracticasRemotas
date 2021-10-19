@@ -20,4 +20,8 @@ class MyAccountController extends Controller
         $datos['Payments'] = payment_platforms::all();
         return view('shop.index',$datos);
     }
+    public function my_orders(){
+        $orders = auth()->user()->compras;
+        return view('MyAccount.orders',compact('orders'));
+    }
 }

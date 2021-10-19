@@ -14,6 +14,7 @@ class Productos extends Model
         'nombre',
         'precio',
         'foto',
+        'created_at',
     ];
 
     public function categorias(){

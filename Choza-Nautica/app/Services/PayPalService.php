@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Cart;
+use App\Models\order;
 use Illuminate\Http\Request;
 use App\Traits\ConsumesExternalServices;
 
@@ -45,7 +46,7 @@ class PayPalService
 
     public function handlePayment(Request $request)
     {
-        $cart = Cart::get_user_session_cart();
+        $cart = Cart::get_session_cart();
         $total_price = $cart->total_price();
         $currency = 'usd';
         $order = $this->createOrder($total_price, $currency);
@@ -70,6 +71,8 @@ class PayPalService
             $payment = $payment->purchase_units[0]->payments->captures[0]->amount;
             $amount = $payment->value;
             $currency = $payment->currency_code;
+
+            order::my_store();
 
             return redirect()
                 ->route('home')

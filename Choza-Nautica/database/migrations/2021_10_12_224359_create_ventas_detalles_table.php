@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Pedidos extends Migration
+class CreateVentasDetallesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class Pedidos extends Migration
      */
     public function up()
     {
-        Schema::create('Carts', function (Blueprint $table) {
-            $table->id('id');
+        Schema::create('ventas_detalles', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class Pedidos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Carts');
+        Schema::dropIfExists('ventas_detalles');
     }
 }

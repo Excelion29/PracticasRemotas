@@ -12,6 +12,7 @@ class categorias extends Model
     protected $fillable = [
         'nombre',
         'estado',
+        'created_at',
         
     ];
 

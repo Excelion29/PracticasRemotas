@@ -334,11 +334,11 @@ return [
             'text'    => 'Puntos de venta',
             'icon'    => 'fab fa-shopify',
             'submenu' => [
-                [
-                    'text' => 'Carritos',
-                    'icon' => 'fas fa-shopping-cart',
-                    'url'  => 'dashboard/carritos',
-                ],
+                // [
+                //     'text' => 'Carritos',
+                //     'icon' => 'fas fa-shopping-cart',
+                //     'url'  => 'dashboard/carritos',
+                // ],
                 [
                     'text' => 'Tarifas por distritos',
                     'icon' => 'fas fa-globe-americas',

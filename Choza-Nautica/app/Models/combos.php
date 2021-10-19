@@ -13,5 +13,6 @@ class combos extends Model
         'estado',
         'nombre',
         'precio',
+        'created_at',
     ];
 }

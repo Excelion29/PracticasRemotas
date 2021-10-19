@@ -64,6 +64,7 @@ Route::put('carrito_update',[CarritoController::class,'update'])->name('carrito.
 
 //Cuenta
 Route::get('micuenta',[MyAccountController::class,'my_account'])->name('mi_cuenta');
+Route::get('mis_ordenes',[MyAccountController::class,'my_orders'])->name('my_orders');
 Route::get('pagar',[MyAccountController::class,'pagar'])->name('shop.index');
 
 // dashboard
@@ -82,9 +83,9 @@ Route::resource('dashboard/combos', CombosController::class);
 Route::resource('dashboard/productos', ProductosController::class);
 Route::resource('dashboard/Delivery', DeliveryController::class);
 Route::resource('dashboard/mesas', MesaController::class);
-Route::resource('dashboard/carritos', CarritosController::class);
-Route::get('dashboard/carritos_p/{id}',[CarritosController::class,'show'])->name('carritos.pedidos.productos');
-Route::get('dashboard/carritos_c/{id}',[CarritosController::class,'show_combo'])->name('carritos.pedidos.combos');
+// Route::resource('dashboard/carritos', CarritosController::class);
+// Route::get('dashboard/carritos_p/{id}',[CarritosController::class,'show'])->name('carritos.pedidos.productos');
+// Route::get('dashboard/carritos_c/{id}',[CarritosController::class,'show_combo'])->name('carritos.pedidos.combos');
 Auth::routes();
 
 // home
