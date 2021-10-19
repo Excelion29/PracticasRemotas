@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{asset('css/stilos.css')}}">
     <link rel="stylesheet" href="{{asset('css/product.css')}}">
+    
 
 
     
