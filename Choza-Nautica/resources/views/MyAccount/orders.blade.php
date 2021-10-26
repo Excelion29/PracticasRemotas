@@ -5,7 +5,7 @@
             <tr>
                 <th>Orden</th>
                 <th>Fecha</th>
-                <th>Stado</th>
+                <th>Estado del envio</th>
                 <th>Total</th>
                 <th>Acción</th>
             </tr>

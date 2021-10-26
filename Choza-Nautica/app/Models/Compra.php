@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use function Composer\Autoload\includeFile;
+
 class Compra extends Model
 {
     protected $fillable = [
@@ -37,6 +39,8 @@ class Compra extends Model
     public function total(){
         return $this->subtotal() + $this->total_impuesto();
     }
+
+
     public static function  my_store(){
         $cart = Cart::get_session_cart();
         $compra = self::create([
@@ -44,7 +48,7 @@ class Compra extends Model
             'estado_pago'=>'PAGADO',
             'created_at' => Carbon::now(),
             'user_id'=>auth()->user()->id,
-            'codigo'=>'',
+            'codigo'=> $cart->gen_uid(),
             'subtotal'=>$cart->total_price(),
             'impuesto'=>0.18,
         ]);

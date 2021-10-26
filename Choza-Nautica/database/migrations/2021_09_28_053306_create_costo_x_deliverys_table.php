@@ -18,7 +18,8 @@ class CreateCostoXDeliverysTable extends Migration
             $table->unsignedBigInteger('id_administrador');
             $table->mediumText('Distrito');
             $table->decimal('precio',5,2);  
-            $table->boolean('estado')->default(1);          
+            $table->boolean('estado')->default(1); 
+            $table->timestamp('date_created');         
             $table->timestamps();
             $table->foreign('id_administrador')->references('id')->on('Users');
         });

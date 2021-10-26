@@ -70,7 +70,7 @@
                 <td>{{$producto->cantidad}}</td>
                 <td>{{$producto->categoria}}</td>
                 <td>{{$producto->name}}</td>
-                <td>{{$producto->created_at}}</td>
+                <td>{{$producto->date_created}}</td>
                 <td>{{$producto->updated_at}}</td>
                 <td>
                     @if ($producto->estado == 1)

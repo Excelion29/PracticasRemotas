@@ -12,6 +12,7 @@
     @yield('content_ordenes')
     
 </div>
+
 @section('content')
 
 @endsection

@@ -19,7 +19,8 @@ class Categorias extends Migration
             $table->string('nombre');
             $table->text('descripcion'); 
             $table->string('foto');   
-            $table->boolean('estado')->default(1);        
+            $table->boolean('estado')->default(1);   
+            $table->timestamp('date_created');     
             $table->timestamps();
 
             

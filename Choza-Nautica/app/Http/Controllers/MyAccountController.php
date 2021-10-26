@@ -26,4 +26,6 @@ class MyAccountController extends Controller
         $orders = auth()->user()->compras;
         return view('MyAccount.orders',compact('orders'));
     }
+
 }
+

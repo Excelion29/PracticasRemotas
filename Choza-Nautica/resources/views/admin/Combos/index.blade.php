@@ -58,7 +58,7 @@
                         <td>S/.{{$combo->precio}}</td>
                         <td>{{$combo->name}}</td>
                         <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}" width="80px"></td>
-                        <td>{{$combo->created_at}}</td>
+                        <td>{{$combo->date_created}}</td>
                         <td>{{$combo->updated_at}}</td>
                         <td>
                             @if ($combo->estado == 1)

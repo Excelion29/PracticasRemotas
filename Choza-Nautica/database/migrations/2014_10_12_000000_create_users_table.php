@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',70);
             $table->boolean('estado')->default(1);
-            $table->rememberToken();
+            $table->rememberToken();            
             $table->timestamps();
             
             $table->foreign('id_rol')->references('id')->on('roles');

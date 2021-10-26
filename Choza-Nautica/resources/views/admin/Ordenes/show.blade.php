@@ -28,31 +28,31 @@
             <!-- info row -->
             <div class="row invoice-info">
               <div class="col-sm-4 invoice-col">
-                From
+                Empresa
                 <address>
                   <strong>{{$empresa->name}}</strong><br>
                   {{$empresa->descripcion}}<br>
-                  Phone: {{$empresa->telefono}}<br>
-                  Email: {{$empresa->correo}}
+                  Contacto: {{$empresa->telefono}}<br>
+                  Correo: {{$empresa->correo}}
                 </address>
               </div>
               <!-- /.col -->
               <div class="col-sm-4 invoice-col">
-                To
+                Cliente
                 <address>
                   <strong>{{$user->name}} {{$user->apellidos}}</strong><br>                  
                   {{$user->cliente->direccion}}<br>
-                  Phone: {{$user->cliente->celular}}<br>
-                  Email: {{$user->email}}
+                  Contacto: {{$user->cliente->celular}}<br>
+                  Correo: {{$user->email}}
                 </address>
               </div>
               <!-- /.col -->
               <div class="col-sm-4 invoice-col">
-                {{-- <b>Invoice #007612</b><br> --}}
+                <b>Invoice #007612</b><br>
                 <br>
-                <b>Order ID:</b>{{$compra->code}}<br>
-                <b>Payment Due:</b>{{$compra->estado_pago}}<br>
-                <b>Account:</b>{{$compra->created_at}}
+                <b>Código:</b>{{$compra->codigo}}<br>
+                <b>Estado del pago:</b>{{$compra->estado_pago}}<br>
+                <b>Fecha:</b>{{$compra->created_at}}
               </div>
               <!-- /.col -->
             </div>
