@@ -17,7 +17,9 @@ class Clientes extends Migration
         Schema::create('Clientes', function (Blueprint $table) {
             $table->id('id');
             $table->string('dni')->nullable()->unique();
-            $table->string('ruc')->nullable()->unique();
+            $table->string('ruc')->nullable()->unique();            
+            $table->string('direccion')->nullable()->unique();
+            $table->string('celular')->nullable()->unique();
             $table->unsignedBigInteger('id_usuario');      
             $table->timestamps();
 

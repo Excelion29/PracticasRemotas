@@ -22,4 +22,19 @@ class PaymentVistaController extends Controller
         session()->put('paymentPlatformId', $request->payment_platform);
         return $paymentPlatform->handlePayment($request);     
     }
+    public function approval(){
+        if (session()->has('paymentPlatformId')) {
+            $paymentPlatform = $this->paymentPlatformResolver
+            ->resolveService(session()->get('paymentPlatformId'));
+            return $paymentPlatform->handleApproval();    
+        }
+        return redirect()
+            ->route('home')
+            ->withErrors('We cannot retrieve your payment platform. Try again, please');
+    }
+    public function cancelled(){
+        return redirect()
+        ->route('shop.index')
+        ->withErrors('You cancelled the payment');
+    }
 }

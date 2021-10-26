@@ -16,11 +16,22 @@
      @else 
      @endif
 </div>
-
-        <h1>Gestión de Combos</h1>
-        <a class="btn btn-success" href="{{url('dashboard/combos/create')}}">Registrar nuevos combo</a>
-        <br>
-        <br>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <a class="btn btn-success" href="{{url('dashboard/combos/create')}}">Registrar nuevos combo</a>
+    </div><!-- /.container-fluid -->
+  </div>
         <div class="card">
             <div class="card-body">
                 <table id="example1" class="table table-striped table-bordered" style="width:100%">
@@ -43,7 +54,7 @@
                     <tr>
                         <td>{{$id}}</td>
                         <td>{{$combo->nombre}}</td>
-                        <td>{{$combo->descripcion}}</td>
+                        <td>{{substr($combo->descripcion,0,80)}}......</td>
                         <td>S/.{{$combo->precio}}</td>
                         <td>{{$combo->name}}</td>
                         <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}" width="80px"></td>

@@ -42,7 +42,6 @@
         <label class="form-control">{{ Auth::user()->apellidos }}</label><br>
         <label class="form-control">{{ Auth::user()->email }}</label>
       </div>
-      @endisset
       <table>
         <thead>
           <tr>
@@ -73,17 +72,32 @@
       <div class="col-md-12 col-lg-8">
         <div class="form-group">
             <label for="id_distrito">Distritos</label>
-            <select style="display: block;" class="form-control" name="id_distrito" id="id_distrito">
-              <option selected="true" disabled="disabled">Lista de Distritos</option>
+            <select style="display: block;" id="distrito" class="form-control" onChange="mostrar_precio()" name="id_distrito" id="id_distrito">
+              <option selected="true"  disabled="disabled">Lista de Distritos</option>
+              <script type="text/javascript"> 
+                function mostrar_precio()
+                {
+                  var seleccion=document.getElementById('distrito');
+                  document.getElementById('precio').value=seleccion.options[seleccion.selectedIndex].value;
+                }
+              </script>
               @foreach ($Costo_x_deliverys as $Costo_x_delivery)  
                 <option value="{{$Costo_x_delivery->id}}">{{$Costo_x_delivery->Distrito}}</option>
               @endforeach
             </select>
           </div>
       </div>
-      <input type="text" placeholder="Dirección">
+      @if(isset(Auth::user()->cliente->direccion))                
+      <input type="text" placeholder="Dirección" value="{{Auth::user()->cliente->direccion}}">
+      @else
+      <input type="text" placeholder="Dirección" value="1">
+      @endif
       <div class="form-group">
-        <label class="form-control">{{ Auth::user()->celular }}</label><br>
+      @if (isset(Auth::user()->cliente->celular))
+      <input type="text" placeholder="celular" value="{{Auth::user()->cliente->celular}}">
+      @else
+      <input type="text" placeholder="celular" value="1">
+      @endif
       </div>
     </div>
   </div>
@@ -139,7 +153,7 @@
         </thead>
         <thead>
           <td>Costo por envio:</td>
-          <td>S/.---------</td>
+          <td><input type="text" id="precio"></td>
         </thead>
         <thead>
           <td>Total:</td>
@@ -179,6 +193,7 @@
       </form>
     <div>
   </div>
+  @endisset
 </div>
   </div>
 </div>

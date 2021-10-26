@@ -1,9 +1,11 @@
 @extends('Admin.index')
-@extends('layouts.js')
+
 @section('template_title')
     Productos
 @endsection
 @section('content')
+
+
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -19,6 +21,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  
 <div class="row">
     <div class="col-lg-3 col-6">
       <!-- small box -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compra;
 use App\Models\Costo_x_deliverys;
 use App\Models\payment_platforms;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class MyAccountController extends Controller
     public function pagar(){
         $datos['Costo_x_deliverys'] = Costo_x_deliverys::all();
         $datos['Payments'] = payment_platforms::all();
+            
         return view('shop.index',$datos);
     }
     public function my_orders(){

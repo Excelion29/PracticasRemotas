@@ -9,7 +9,6 @@
 @endsection
 @section('content')
 
-@yield('content')
 
 @endsection
 @section('js')  
@@ -20,6 +19,21 @@
     <script>
         $('#example1').DataTable({
             responsive: true
+        });
+    </script>
+    
+    <script src="{{asset('js/jqueryui-editable.js')}}"></script>
+    <script src="{{asset('js/jqueryui-editable.min.js')}}"></script>
+    <script>
+        $.fn.editable.defaults.mode = 'inline';
+        $.fn.editable.defaults.ajaxOptions = {type: "PUT"};
+        $('.editable').editable({
+        source: [
+        {value: 'VÁLIDO', text: 'VÁLIDO'},
+        {value: 'PENDIENTE', text: 'PENDIENTE'},
+        {value: 'ENTREGADO', text: 'ENTREGADO'},
+        {value: 'CANCELADO', text: 'CANCELADO'}
+        ],
         });
     </script>
 @endsection

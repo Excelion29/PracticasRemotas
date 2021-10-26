@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Cart;
+use App\Models\Compra;
 use App\Models\order;
 use Illuminate\Http\Request;
 use App\Traits\ConsumesExternalServices;
@@ -72,15 +73,15 @@ class PayPalService
             $amount = $payment->value;
             $currency = $payment->currency_code;
 
-            order::my_store();
+            Compra::my_store();
 
             return redirect()
-                ->route('home')
+                ->route('my_orders')
                 ->withSuccess(['payment' => "Thanks, {$name}. We received your {$amount}{$currency} payment."]);
         }
 
         return redirect()
-            ->route('home')
+            ->route('shop.index')
             ->withErrors('We cannot capture your payment. Try again, please');
     }
 
@@ -105,8 +106,8 @@ class PayPalService
                     'brand_name' => config('app.name'),
                     'shipping_preference' => 'NO_SHIPPING',
                     'user_action' => 'PAY_NOW',
-                    'return_url' => route('mi_cuenta'),
-                    'cancel_url' => route('mi_cuenta'),
+                    'return_url' => route('approval'),
+                    'cancel_url' => route('cancelled'),
                 ]
             ],
             [],

@@ -20,7 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'apellidos',
-        'celular',
         'email',
         'password',
     ];
@@ -45,7 +44,7 @@ class User extends Authenticatable
     ];
 
     public function cliente(){
-        return $this->hasOne(Clientes::class);
+        return $this->hasOne(Clientes::class,'id_usuario');
     }
     public function ventas(){
         return $this->hasMany(Ventas::class);

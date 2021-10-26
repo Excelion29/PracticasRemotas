@@ -11,19 +11,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($orders as  $id=>$orden)
+            @forelse($orders as  $id=>$orden)
             <tr>
                 <td scope="row">{{$id}}</td>
                 <td>{{$orden->created_at}}</td>
                 <td>{{$orden->estado}}</td>
                 <td>{{$orden->total()}}</td>
-                <td></td>
-               
-        'user_id',
-        'subtotal',
-        'impuesto',
+                <td><a name="" id="" class="btn btn-primary" href="#" role="button">Ver</a></td>
             </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="5">No existente</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 

@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "datatables.net": "^1.11.2",
-        "datatables.net-dt": "^1.11.2"
+        "datatables.net-dt": "^1.11.2",
+        "moment": "^2.29.1"
     }
 }
