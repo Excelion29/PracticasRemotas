@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePasswordRequest;
 Use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -67,5 +68,13 @@ class UsersController extends Controller
         return redirect('dashboard/cliente')->with('mensaje','Cliente desabilitado!');
     }
 
+    public function update_perfil(Request $request, User $user){
+        $user->update_perfil($request);
+        return back();
+    }
     
+    public function update_password(ChangePasswordRequest $request, User $user){
+        $user->update(['password' => Hash::make($request['password'])]);
+        return back();
+    }
 }

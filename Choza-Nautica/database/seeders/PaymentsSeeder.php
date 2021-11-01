@@ -16,12 +16,15 @@ class PaymentsSeeder extends Seeder
     {
         payment_platforms::create([
             'name'=>'Pagar al momento de la entrega',
+            'img'=>'img/pago-contraentrega.png',
         ]);
         payment_platforms::create([
             'name'=>'Paypal',
+            'img'=>'img/paypal2.png',
         ]);
         payment_platforms::create([
-            'name'=>'MercadoPago',
+            'name'=>'mercadopago',
+            'img'=>'img/mercadopago.png',
         ]);
     }
 }

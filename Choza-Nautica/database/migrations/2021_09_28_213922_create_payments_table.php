@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration
         Schema::create('payment_platforms', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
+            $table->string('img');
             $table->boolean('estado')->default(1);          
             $table->timestamps();
         });

@@ -31,6 +31,7 @@
     
 </head>
 <body>
+    
 
     <!-- Loader -->
     <div class="loader" id="loader">
@@ -129,10 +130,8 @@
         <div class="shadow">     
         </div> 
     </div>
-    
     <!--Contenido-->
-    @yield('content') 
-
+    @yield('content')     
     <footer class="footer-area footer--light">
     <div class="mini-footer">
       <div class="container">

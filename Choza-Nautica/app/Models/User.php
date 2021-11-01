@@ -55,4 +55,14 @@ class User extends Authenticatable
     public function compras(){
         return $this->hasMany(Compra::class,'user_id');
     }
+    
+    public function update_perfil($request){
+        $this->update($request->all());
+        $this->cliente()->update([
+            'direccion'=>$request->direccion,
+            'celular'=>$request->celular,
+            'dni'=>$request->dni,
+            'ruc'=>$request->ruc,
+        ]);
+    }
 }

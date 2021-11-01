@@ -11,6 +11,8 @@ class Clientes extends Model
         'id_usuario',
         'direccion',
         'celular',
+        'dni',
+        'ruc',
     ];
     use HasFactory;
 }

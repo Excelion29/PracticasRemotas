@@ -40,7 +40,7 @@
                         <th>#</th>
                         <th>Combo</th>
                         <th>Descripción</th>
-                         <th>Precio</th>
+                        <th>Precio</th>
                         <th>Administrador</th>
                         <th>Imagen</th>
                         <th>Creación</th>

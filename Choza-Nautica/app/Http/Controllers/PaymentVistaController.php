@@ -15,10 +15,10 @@ class PaymentVistaController extends Controller
     }
     public function pays(Request $request){
         $request->validate([
-            'payment_platform'=>['required']
+            'paymentmethod'=>['required']
         ]);   
         $paymentPlatform = $this->paymentPlatformResolver
-        ->resolveService($request->payment_platform);
+        ->resolveService($request->paymentmethod);
         session()->put('paymentPlatformId', $request->payment_platform);
         return $paymentPlatform->handlePayment($request);     
     }

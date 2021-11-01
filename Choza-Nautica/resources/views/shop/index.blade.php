@@ -42,7 +42,7 @@
         <label class="form-control">{{ Auth::user()->apellidos }}</label><br>
         <label class="form-control">{{ Auth::user()->email }}</label>
       </div>
-      <table>
+      {{-- <table>
         <thead>
           <tr>
             <th>Tipo de compra</td>
@@ -68,7 +68,7 @@
             <td>
           </tr>
         </tbody>
-      </table>
+      </table> --}}
       <div class="col-md-12 col-lg-8">
         <div class="form-group">
             <label for="id_distrito">Distritos</label>
@@ -160,40 +160,50 @@
           <td>S/.{{$cart->total_price()}}</td>
         </thead>
       </table>
-      <form action="{{route('pay')}}" method="post">
+      <form action="{{route('pay')}}" id="paymentForm" method="post">
         @csrf
-      <table>
-        <thead>
-          <tr>
-            <th>Tipo de pago</td>
-          </tr>
-        </thead>
-        <tbody>          
-          @foreach ($Payments as $Payment)
-          <tr>            
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" value="{{$Payment->id}}" name="payment_platform" id="customCheck3.{{$Payment->name}}">
-                <label class="custom-control-label" for="customCheck3.{{$Payment->name}}">{{$Payment->name}}</label>
-              </div>
-            <td>
-          </tr>
-          @endforeach
-          <tr>            
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck4" required>
-                <label class="custom-control-label" for="customCheck4"><a href="#">He leído y acepto los términos y condiciones del sitio web</a></label>
-              </div>
-            <td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit" class="btn btn-primary">Realizar Pago</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de pago</td>
+            </tr>
+          </thead>
+          <tbody>          
+            @foreach ($Payments as $key=>$Payment)
+            <tr>            
+              <td>
+                <div>
+                  <div class="custom-control custom-radio @if ($loop->first)  show @endif" />
+                    <input type="radio" class="custom-control-input" value="{{$Payment->id}}" name="paymentmethod" id="{{$key}}" 
+                    @if ($loop->first)
+                        checked                    
+                    @endif                
+                    required/>                
+                    <label class="custom-control-label" for="{{$key}}">{{$Payment->name}}<br><img src="{{$Payment->img}}" width="45px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></label>
+                  </div>
+                  <div class="payment-method-details" data-method="{{$Payment->id}}">
+                    @includeif('components.'.strtolower($Payment->name).'-collapse')
+                  </div>
+                </div>
+              <td>
+            </tr>
+            @endforeach
+            <tr>            
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck4" required>
+                  <label class="custom-control-label" for="customCheck4"><a href="#">He leído y acepto los términos y condiciones del sitio web</a></label>
+                </div>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Realizar Pago</button>
       </form>
     <div>
   </div>
   @endisset
+  
 </div>
   </div>
 </div>

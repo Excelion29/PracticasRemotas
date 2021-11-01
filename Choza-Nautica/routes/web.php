@@ -68,7 +68,15 @@ Route::put('carrito_update',[CarritoController::class,'update'])->name('carrito.
 //Cuenta
 Route::get('micuenta',[MyAccountController::class,'my_account'])->name('mi_cuenta');
 Route::get('mis_ordenes',[MyAccountController::class,'my_orders'])->name('my_orders');
+Route::get('mis_reservaciones',[MyAccountController::class,'my_reserves'])->name('my_reserves');
+Route::get('mis_deseos',[MyAccountController::class,'mis_deseos'])->name('mis_deseos');
 Route::get('pagar',[MyAccountController::class,'pagar'])->name('shop.index');
+Route::get('my_perfil',[MyAccountController::class,'my_perfil'])->name('my_perfil');            
+Route::get('change_password',[MyAccountController::class,'change_password'])->name('change_password');
+
+Route::put('update_password/{user}/update',[UsersController::class,'update_password'])->name('update_password');
+Route::put('update_perfil/{user}/update',[UsersController::class,'update_perfil'])->name('update_perfil');
+
 
 // dashboard
 Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
