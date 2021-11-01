@@ -8,6 +8,7 @@ use App\Resolvers\PaymentPlatformResolver;
 class PaymentVistaController extends Controller
 { 
     protected $paymentPlatformResolver;
+
     public function __construct(PaymentPlatformResolver $paymentPlatformResolver)
     {
         $this->middleware('client_auth');  
@@ -19,7 +20,7 @@ class PaymentVistaController extends Controller
         ]);   
         $paymentPlatform = $this->paymentPlatformResolver
         ->resolveService($request->paymentmethod);
-        session()->put('paymentPlatformId', $request->payment_platform);
+        session()->put('paymentPlatformId', $request->paymentmethod);
         return $paymentPlatform->handlePayment($request);     
     }
     public function approval(){

@@ -52,7 +52,7 @@ class MercadoPagoService
             'card_network' => 'required',
             'card_token' => 'required',
             'email' => 'required',
-        ]);    
+        ]);
 
         $cart = Cart::get_session_cart();
         $total_price = $cart->total_price();
@@ -65,7 +65,6 @@ class MercadoPagoService
             $request->card_token,
             $request->email,
         );
-
 
         if ($payment->status === "approved") {
             $name = $payment->payer->first_name;
