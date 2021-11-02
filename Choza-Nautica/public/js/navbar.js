@@ -3,9 +3,9 @@ $(function()
 {
     $(window).on("scroll", function() {
         if($(window).scrollTop() > 400) {
-            $(".navbar").addClass("active");
+            $(".navbar").addClass("activo");
         } else {
-           $(".navbar").removeClass("active");
+           $(".navbar").removeClass("activo");
         }
     });
 });
@@ -19,4 +19,5 @@ $(function(){
         }
     });
 });
+
 

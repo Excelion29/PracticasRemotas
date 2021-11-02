@@ -15,9 +15,9 @@
 
     <section class="add-padding add-flex">
       <div class="center-text">
-        <h1 class="alex-brush"><span class="custom-font">Variedad</span><br />Amplia variedad</h1>
+        <h1 class="alex-brush"><span class="custom-font">Nuestra</span><br />Comida</h1>
         <h2>*</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit aspernatur beatae laboriosam dicta tempora ab, dolorem mollitia perspiciatis, deleniti quidem dolor repellat animi. Quidem eligendi iste distinctio fugit maxime modi. Lorem ipsum dolor sit amet.</p>
+        <p>Combinamos la comida tradicional con un toque de modernidad en nuestra extensa carta y menús, consiguiendo unos platos ricos y saludables, acordándonos de las personas celiacas para las que tenemos plancha y freidora exclusivas para su comida</p>
         <a href="#">ver mas</a>
       </div>
       <div  class="stuffed-cherries" data-aos="fade-left" data-aos-delay="300">
@@ -38,7 +38,7 @@
       <div class="center-text">
         <h1><span class="custom-font alex-brush">Descubre</span><br />Deliciosos platos</h1>
         <h2>*</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae distinctio possimus tempore voluptatem, quo repellendus quas culpa quasi, hic optio sapiente molestias necessitatibus, aliquam excepturi consequatur a voluptates quam beatae!</p>
+        <p>Nuestro equipo colaborativo trabaja arduamente por generar nexos, e intentar hacer visibles elementos que, en la vida cotidiana, no pueden ser vistos por todos. La expedición que emprendimos nuestro inicio no tiene destino ni final, sino que se centra en el constante movimiento, en la observación y el respeto de la temporalidad y la estacionalidad que la tierra nos dicta.</p>
         <a href="#">view the full menu</a>
       </div>
     </section>
@@ -49,9 +49,10 @@
 
     <section class="add-flex reservation-section">
       <div class="center-text add-padding">
-        <h1><span class="custom-font alex-brush">--</span><br />--</h1>
-        <h2>*</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim animi odit in dignissimos neque ratione, laboriosam rerum! Deleniti accusamus non, aliquam tempora, mollitia laborum ad, fugiat at explicabo esse aut. Lorem ipsum dolor sit amet, adipisicing elit.</p>
+        <h1><span class="custom-font alex-brush">
+</span><br />EXPERIENCIA GASTRONÓMICA</h1>
+        <h2></h2>
+        <p>Restaurante de alta cocina, situado en el lugar idóneo para visitar después de un bonito tour por la ciudad de Lima, ya que se encuentra justo en el centro histórico, a dos cuadras de la Plaza de Armas y de la Catedral de Lima, muy cerca a los museos y a los bellos balcones de la Casa Torre Tagle.</p>
         <a href="#">-----</a>
       </div>
       <div>

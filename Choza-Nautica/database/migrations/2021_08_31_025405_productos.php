@@ -26,6 +26,8 @@ class Productos extends Migration
             $table->unsignedBigInteger('id_administrador');  
             $table->timestamp('date_created');  
             $table->timestamps();
+            $table->string('foto2'); 
+            $table->string('foto3'); 
             $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->foreign('id_administrador')->references('id')->on('Users');
         });

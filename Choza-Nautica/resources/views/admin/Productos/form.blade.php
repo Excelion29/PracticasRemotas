@@ -87,9 +87,22 @@
         @if(isset($producto->foto))
         <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt="" >
         <input type="file" class="form-control" name="foto" value='{{$producto->foto}}' id="foto">
+
+        <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto2}}"  width="100" alt="" >
+        <input type="file" class="form-control" name="foto2" value='{{$producto->foto2}}' id="foto2">
+        
+        <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto3}}"  width="100" alt="" >
+        <input type="file" class="form-control" name="foto3" value='{{$producto->foto3}}' id="foto3">
+        
         @else  
-        <label for="foto">Imagen</label>
+        <label for="foto">Imagen Principal</label>
         <input type="file" class="form-control" name="foto" value='' id="foto">
+
+        <label for="foto2">Imagen 02</label>
+        <input type="file" class="form-control" name="foto2" value='' id="foto2">
+
+        <label for="foto3">Imagen 03</label>
+        <input type="file" class="form-control" name="foto3" value='' id="foto3">
         @endif
     </div>
 </div>

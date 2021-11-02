@@ -12,7 +12,8 @@ class Productos extends Model
         'estado',
         'nombre',
         'precio',
-        'foto',
+        'foto2',
+        'foto3',
         'created_at',
     ];
 

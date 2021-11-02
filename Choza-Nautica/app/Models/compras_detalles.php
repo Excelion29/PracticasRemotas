@@ -21,6 +21,6 @@ class compras_detalles extends Model
         return $this->belongsTo(combos::class,'id_combo');
     }
     public function total(){
-            return $this->precio;
+        return $this->precio;
     }
 }

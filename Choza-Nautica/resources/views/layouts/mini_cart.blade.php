@@ -1,11 +1,5 @@
 
-    <div class="modal" id="carrito"> 
-    <div class="mini-cart-btn">
-        <i class="fa fa-shopping-cart"></i>
-        @if ($cart->quantity_of_products() != 0)
-        <span class="cart-notificacion">{{$cart->quantity_of_products()}}</span>
-        @endif
-    </div>
+    <div class="modals2" id="carrito"> 
     <ul class="cart-list">
         {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
 
@@ -51,10 +45,11 @@
         @endif
         </li>
         {!! Form::close() !!}
+        
+        @if ($cart->quantity_of_products() != 0)
         <li class="mini-cart-price">
             Subtotal:<span class="subtotal-price">S/.{{$cart->total_price()}}</span>
         </li>
-        @if ($cart->quantity_of_products() != 0)
         <li class="checkout-btn">
             <a href="{{route('shop.index')}}">Comprar</a>
         </li>

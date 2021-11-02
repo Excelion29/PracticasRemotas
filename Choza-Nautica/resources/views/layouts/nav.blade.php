@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{asset('css/stilos.css')}}">
     <link rel="stylesheet" href="{{asset('css/product.css')}}">
+    
 
 
     
@@ -85,7 +86,16 @@
                     <a href="{{ url('category') }}">Ordena Aquí</a>
                 </li>
                 <li>
-                   <a href=""> Carrito</a>
+                   <a><span>Carrito
+                    <div class="mini-cart-btn">
+                    <i class="fa fa-shopping-cart"></i>
+                    @if ($cart->quantity_of_products() != 0)
+                    <span class="cart-notificacion">{{$cart->quantity_of_products()}}</span>
+                    @else                    
+                    <span class="cart-notificacion">0</span>
+                    @endif
+
+                </div></span></a>
                    @include('layouts.mini_cart')
                 </li>
 

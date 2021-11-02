@@ -1,166 +1,63 @@
-@extends('layouts.nav')
+
 
 @section('title', 'Orden' )
 
-@section('content')
 
-<div class="contenedor-p">
-  <style>
-    .contenedor-p{
-      margin-right: auto;
-      margin-left: auto;
-      background: wheat;
-      height: auto;
-      width: 90%;
-      display: flex;
-    }
-  </style>
-  <br>
-  <br>
-  <br>
-  <div class="right">
-    <style>
-      .right{
-        margin-top: 80px;
-        background: white;
-        width: 48%;
-        height: 100%;
-        border-radius: 45px;
-        margin-left: 15px;
-        margin-right: 15px;
-      }
-    </style>
-
-    <div>
-      <br>
-      <img src="https://expansionfranquicia.com/wp-content/uploads/2017/10/image006-1.png" style="width: 25%;">
-      <hr style="width:90%; border-color: #5e5c5c83; background:none;">
-      <br>
-      @isset(auth()->user()->id_rol)
-      <div class="form-group">
-        <label class="form-control">{{ Auth::user()->name }}</label><br>
-        <label class="form-control">{{ Auth::user()->apellidos }}</label><br>
-        <label class="form-control">{{ Auth::user()->email }}</label>
-      </div>
-      {{-- <table>
-        <thead>
-          <tr>
-            <th>Tipo de compra</td>
-          </tr>
-        </thead>
-        <tbody>          
-          <tr>            
-            <td>
-              <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customChecka">
-              <label class="custom-control-label" for="customChecka">Boleta</label>
-              <input type="text" placeholder="DNI">
-            </div>
-            <td>
-          </tr>
-          <tr>            
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheckf">
-                <label class="custom-control-label" for="customCheckf">Factura</label>
-                <input type="text" placeholder="RUC">
-              </div>
-            <td>
-          </tr>
-        </tbody>
-      </table> --}}
-      <div class="col-md-12 col-lg-8">
-        <div class="form-group">
-            <label for="id_distrito">Distritos</label>
-            <select style="display: block;" id="distrito" class="form-control" onChange="mostrar_precio()" name="id_distrito" id="id_distrito">
-              <option selected="true"  disabled="disabled">Lista de Distritos</option>
-              <script type="text/javascript"> 
-                function mostrar_precio()
-                {
-                  var seleccion=document.getElementById('distrito');
-                  document.getElementById('precio').value=seleccion.options[seleccion.selectedIndex].value;
-                }
-              </script>
-              @foreach ($Costo_x_deliverys as $Costo_x_delivery)  
-                <option value="{{$Costo_x_delivery->id}}">{{$Costo_x_delivery->Distrito}}</option>
-              @endforeach
-            </select>
-          </div>
-      </div>
-      @if(isset(Auth::user()->cliente->direccion))                
-      <input type="text" placeholder="Dirección" value="{{Auth::user()->cliente->direccion}}">
-      @else
-      <input type="text" placeholder="Dirección" value="1">
-      @endif
-      <div class="form-group">
-      @if (isset(Auth::user()->cliente->celular))
-      <input type="text" placeholder="celular" value="{{Auth::user()->cliente->celular}}">
-      @else
-      <input type="text" placeholder="celular" value="1">
-      @endif
-      </div>
-    </div>
-  </div>
-  
-  <div class="left">
-    <style>
-      .left{
-        margin-top: 80px;
-        background: white;
-        width: 48%;
-        height: 100%;
-        border-radius: 45px;        
-      }
-    </style>
-    <div>
-      <br>
-      <span>Detalle de la compra</span>
-      <hr style="width:90%; border-color: #5e5c5c83; background:none;">
-      <br>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Pedidos</th>
-            <th>Precio unitario</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          @if ($cart->quantity_of_products() != 0)
-          @foreach ($cart->order_details as $order_detail)
-            @if($order_detail->id_producto!='')
-              <tr>
-                <td>{{$order_detail->product->nombre}}</td>
-                <td>S/.{{$order_detail->product->precio}}</td>
-                <td>{{$order_detail->cantidad}}</td>
-                <td>S/.{{$order_detail->precio}}</td>
-              </tr>
-            @elseif($order_detail->id_combo!='')
-              <tr>
-                <td>{{$order_detail->combo->nombre}}</td>
-                <td>S/.{{$order_detail->combo->precio}}</td>
-                <td>{{$order_detail->cantidad}}</td>
-                <td>S/.{{$order_detail->precio}}</td>
-              </tr>
-              @endif
-        @endforeach
-        @endif
-        </tbody>
-        <thead>
-          <td>Subtotal:</td>
-          <td>S/.{{$cart->total_price()}}</td>
-        </thead>
-        <thead>
-          <td>Costo por envio:</td>
-          <td><input type="text" id="precio"></td>
-        </thead>
-        <thead>
-          <td>Total:</td>
-          <td>S/.{{$cart->total_price()}}</td>
-        </thead>
-      </table>
-      <form action="{{route('pay')}}" id="paymentForm" method="post">
+<link rel="stylesheet" href="{{asset('css/compra.css')}}">
+<div class="cont-p">
+        <div class="cont-s1">
+            <div class="cont-s1-1">
+                <div class="cont-compra">
+                    <p>Carrito > Envíos > Compra</p>
+                    <br>
+                    <h4>Informacion del contacto</h4>
+                    <br>
+                    @isset(auth()->user()->id_rol)
+                    <input type="text" placeholder="Nombre" class="dates disabled" value="{{ Auth::user()->name }}" >
+                    <input type="text" placeholder="Apellidos" class="dates" value="{{ Auth::user()->apellidos }}">
+                    <input type="email" placeholder="Correo" class="dates" value="{{ Auth::user()->email }}">
+                    @endisset
+                    <br>
+                    <br>
+                    <h4>Tipo de compra</h4>
+                    <br>
+                    <div class="cont-typec">
+                        <div class="cont-typec_row">
+                            <div class="radius-input">
+                                <input type="checkbox" class="check">
+                            </div>
+                            <label class="radio-label" for="">
+                                <p><i class="fas fa-file-alt"></i>  Boleta</p>   
+                            </label>
+                        </div>
+                        <div class="cont-typec_row1">
+                            <div class="radius-input">
+                                <div class="radius-input">
+                                    <input type="checkbox" class="check">
+                                    
+                                </div>
+                                <label class="radio-label" for="">
+                                    <p> <i class="fas fa-file-invoice"></i> Factura</p>   
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="email" placeholder="RUC O DNI" class="dates">
+                    <br>
+                    <br>
+                    <h4>Información de envio</h4>
+                    <br>
+                    <input type="text" placeholder="Dirección" class="dates2">
+                    <input type="text" placeholder="Distrito" class="dates2">
+                    <input type="email" placeholder="Celular" class="dates2">
+                    <br>
+                    <input type="checkbox" class="check-box"> <p class="texrte">Guardar mi información y consultar más rápidamente la próxima vez</p>
+                    <br> 
+                    <br>
+                    <br>
+                    <br>
+                    <form action="{{route('pay')}}" id="paymentForm" method="post">
         @csrf
         <table>
           <thead>
@@ -198,13 +95,79 @@
             </tr>
           </tbody>
         </table>
-        <button type="submit" class="btn btn-primary">Realizar Pago</button>
+        <button type="submit" class="btn-evios">Realizar Pago</button>
       </form>
-    <div>
-  </div>
-  @endisset
-  
-</div>
-  </div>
-</div>
-@endsection
+                </div>
+            </div>
+        </div>
+        <div class="cont-s2">
+            
+            <div class="cont-s2-1">
+           
+
+                    <div class="product-info"> 
+                        @if ($cart->quantity_of_products() != 0)
+                        @foreach ($cart->order_details as $order_detail)
+                        @if($order_detail->id_producto!='')
+                        <div class="product-info-conatiner">
+                            <div class="imgprod">
+                                <div class="imgprod_w">
+                                    <img src="{{asset('storage').'/'.$order_detail->product->foto}}" alt="" class="img_f">
+                                </div>
+                                <span class="product_quantity" aria-hidden="true">{{$order_detail->cantidad}}</span>
+                            </div>
+                            <div class="inf_prod">
+                                <div class="inf_prod_p"><p>{{$order_detail->product->nombre}}</p></div>
+                                <div class="inf_prod_ps"><p>{{$order_detail->precio}} PEN</p></div>     
+                            </div>
+                            
+                    </div>
+                            @elseif($order_detail->id_combo!='')
+                            <div class="product-info-conatiner">
+                                <div class="imgprod">
+                                    <div class="imgprod_w">
+                                        <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt="" class="img_f">
+                                    </div>
+                                    <span class="product_quantity" aria-hidden="true">{{$order_detail->cantidad}}</span>
+                                </div>
+                                <div class="inf_prod">
+                                    <div class="inf_prod_p"><p>{{$order_detail->combo->nombre}}</p></div>
+                                    <div class="inf_prod_ps"><p>{{$order_detail->precio}} PEN</p></div>     
+                                </div>
+                            </div>
+
+                            @endif
+                        @endforeach
+                        @endif 
+
+                </div>
+                <br>
+                
+               
+
+                <div class="product-cost"> 
+                    <div class="product-cost-gen">
+                        <div class="product-cost-container1">
+                        <p> Subtotal </p> <p class="p">{{$cart->total_price()}} </p>
+                        </div>
+                        <div class="product-cost-container2">
+                            
+                            <p>Costo por envío</p> <p class="p">20.00 PEN</p>
+                        </div>
+                    
+                    </div> 
+                </div>
+                <div class="product-total-container">
+                    <p>TOTAL </p> <p class="p">{{$cart->total_price()}} </p>
+                    
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                 
+            </div>
+           
+          </div>
+         
+    </div>
