@@ -14,11 +14,23 @@
     </button>
     @endif
 </div>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <a class="btn btn-success" href="{{url('dashboard/mesas/create')}}">Registrar nueva mesa</a>
+    </div><!-- /.container-fluid -->
+  </div>
 
-<h1>Gestión de Mesas</h1>
-<a class="btn btn-success" href="{{url('dashboard/mesas/create')}}">Registrar nueva mesa</a>
-<br>
-<br>
 <div class="card">
     <div class="card-body">
         <table id="example1"  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
@@ -45,7 +57,7 @@
                 <td>S/.{{$mesa->precio}}</td>
                 <td>{{$mesa->name}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$mesa->foto}}"  width="100" alt=""></td>
-                <th>{{$mesa->created_at}}</th>
+                <th>{{$mesa->date_created}}</th>
                 <th>{{$mesa->updated_at}}</th>
                 <td>
                     @if ($mesa->estado == 1)

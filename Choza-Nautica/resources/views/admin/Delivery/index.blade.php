@@ -41,7 +41,7 @@
                 <td>{{$Costo_x_delivery->Distrito}}</td>
                 <td>S/.{{$Costo_x_delivery->precio}}</td>
                 <td>{{$Costo_x_delivery->name}}</td>
-                <td>{{$Costo_x_delivery->created_at}}</td>
+                <td>{{$Costo_x_delivery->date_created}}</td>
                 <td>{{$Costo_x_delivery->updated_at}}</td>
                 <td>
                     @if ($Costo_x_delivery->estado == 1)

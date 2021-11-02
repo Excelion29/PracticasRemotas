@@ -9,6 +9,7 @@ class payment_platforms extends Model
 {
     protected $fillable = [
         'name',
+        'img',
         'estado',
     ];
 

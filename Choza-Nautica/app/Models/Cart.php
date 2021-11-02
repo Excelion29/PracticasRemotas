@@ -106,4 +106,7 @@ class Cart extends Model
             $detail->update($result[$key]);
         }
     }
+    public function gen_uid($l=10){
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
+    }
 }

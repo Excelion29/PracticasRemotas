@@ -21,6 +21,7 @@ class Combos extends Migration
             $table->decimal('precio',5,2); 
             $table->string('foto');           
             $table->boolean('estado')->default(1);
+            $table->timestamp('date_created');  
             $table->timestamps();
             
             $table->foreign('id_administrador')->references('id')->on('Users');

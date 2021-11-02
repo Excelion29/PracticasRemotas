@@ -29,25 +29,19 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-            <input for="celular" type="text" placeholder="Celular" name="celular" value="{{ old('celular') }}" required autocomplete="celular" autofocus/>
-                                 @error('celular')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
             <input id="email" type="text" placeholder="Correo" name="email" value="{{ old('email') }}" required autocomplete="email"/>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-            <input id="password" type="text" placeholder="Contraseña" name="password" required autocomplete="new-password"/>
+            <input id="password" type="password" placeholder="Contraseña" name="password" required autocomplete="new-password"/>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-            <input id="password-confirm" type="text" placeholder="Confirma contraseña" name="password_confirmation" required autocomplete="new-password"/>
+            <input id="password-confirm" type="password" placeholder="Confirma contraseña" name="password_confirmation" required autocomplete="new-password"/>
                                
           </div>
           <div class="form-group"></div>

@@ -23,7 +23,8 @@ class Productos extends Migration
             $table->decimal('precio',5,2);
             $table->string('foto'); 
             $table->boolean('estado')->default(1);
-            $table->unsignedBigInteger('id_administrador');     
+            $table->unsignedBigInteger('id_administrador');  
+            $table->timestamp('date_created');  
             $table->timestamps();
             $table->string('foto2'); 
             $table->string('foto3'); 

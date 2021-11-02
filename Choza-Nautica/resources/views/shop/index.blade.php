@@ -57,20 +57,46 @@
                     <br>
                     <br>
                     <br>
-                    <form action="{{route('pay')}}" method="post">
-                        @csrf
-                        @foreach ($Payments as $Payment)
-                        <tr>            
-                            <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" value="{{$Payment->id}}" name="payment_platform" id="customCheck3.{{$Payment->name}}">
-                                <label class="custom-control-label" for="customCheck3.{{$Payment->name}}">{{$Payment->name}}</label>
-                            </div>
-                            <td>
-                        </tr>
-                        @endforeach
-                        <button type="submit" class="btn-envios">Continuar con la compra</button>
-                    </form>
+                    <form action="{{route('pay')}}" id="paymentForm" method="post">
+        @csrf
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de pago</td>
+            </tr>
+          </thead>
+          <tbody>          
+            @foreach ($Payments as $key=>$Payment)
+            <tr>            
+              <td>
+                <div>
+                  <div class="custom-control custom-radio @if ($loop->first)  show @endif" />
+                    <input type="radio" class="custom-control-input" value="{{$Payment->id}}" name="paymentmethod" id="{{$key}}" 
+                    @if ($loop->first)
+                        checked                    
+                    @endif                
+                    required/>                
+                    <label class="custom-control-label" for="{{$key}}">{{$Payment->name}}<br><img src="{{$Payment->img}}" width="45px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></label>
+                  </div>
+                  <div class="payment-method-details" data-method="{{$Payment->id}}">
+                    @includeif('components.'.strtolower($Payment->name).'-collapse')
+                  </div>
+                </div>
+              <td>
+            </tr>
+            @endforeach
+            <tr>            
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck4" required>
+                  <label class="custom-control-label" for="customCheck4"><a href="#">He leído y acepto los términos y condiciones del sitio web</a></label>
+                </div>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn-evios">Realizar Pago</button>
+      </form>
                 </div>
             </div>
         </div>
@@ -86,19 +112,34 @@
                         <div class="product-info-conatiner">
                             <div class="imgprod">
                                 <div class="imgprod_w">
-                                    <img src="" alt="" class="img_f">
+                                    <img src="{{asset('storage').'/'.$order_detail->product->foto}}" alt="" class="img_f">
                                 </div>
                                 <span class="product_quantity" aria-hidden="true">{{$order_detail->cantidad}}</span>
                             </div>
                             <div class="inf_prod">
                                 <div class="inf_prod_p"><p>{{$order_detail->product->nombre}}</p></div>
-                                <div class="inf_prod_ps"><p>{{$order_detail->product->precio}} PEN</p></div>     
+                                <div class="inf_prod_ps"><p>{{$order_detail->precio}} PEN</p></div>     
                             </div>
                             
                     </div>
+                            @elseif($order_detail->id_combo!='')
+                            <div class="product-info-conatiner">
+                                <div class="imgprod">
+                                    <div class="imgprod_w">
+                                        <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt="" class="img_f">
+                                    </div>
+                                    <span class="product_quantity" aria-hidden="true">{{$order_detail->cantidad}}</span>
+                                </div>
+                                <div class="inf_prod">
+                                    <div class="inf_prod_p"><p>{{$order_detail->combo->nombre}}</p></div>
+                                    <div class="inf_prod_ps"><p>{{$order_detail->precio}} PEN</p></div>     
+                                </div>
+                            </div>
+
                             @endif
                         @endforeach
-                        @endif  
+                        @endif 
+
                 </div>
                 <br>
                 
@@ -107,7 +148,7 @@
                 <div class="product-cost"> 
                     <div class="product-cost-gen">
                         <div class="product-cost-container1">
-                        <p> Subtotal </p> <p class="p">{{$cart->total_price()}}.00 PEN</p>
+                        <p> Subtotal </p> <p class="p">{{$cart->total_price()}} </p>
                         </div>
                         <div class="product-cost-container2">
                             
@@ -117,7 +158,7 @@
                     </div> 
                 </div>
                 <div class="product-total-container">
-                    <p>TOTAL </p> <p class="p">00.00 PEN</p>
+                    <p>TOTAL </p> <p class="p">{{$cart->total_price()}} </p>
                     
                 </div>
                 <br>

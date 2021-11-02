@@ -13,10 +13,23 @@
     </button>
     @endif
 </div>
-<h1>Gestión de Productos</h1>
-<a class="btn btn-success" href="{{url('dashboard/productos/create')}}">Registrar nuevo producto</a>
-<br>
-<br>
+
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <a class="btn btn-success" href="{{url('dashboard/productos/create')}}">Registrar nuevo producto</a>
+    </div><!-- /.container-fluid -->
+  </div>
 
 {{-- diseño para no mostrar tooblar air --}}
 <style>
@@ -50,14 +63,14 @@
             <tr>
                 <td>{{$id}}</td>
                 <td>{{$producto->nombre}}</td>
-                <td>{{$producto->descripcion}}</td>
+                <td>{{substr($producto->descripcion,0,80)}}......</td>
                 <td><p name="detalles" id="detalles" class="detalles"></p></td>
                 <td>S/.{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->cantidad}}</td>
                 <td>{{$producto->categoria}}</td>
                 <td>{{$producto->name}}</td>
-                <td>{{$producto->created_at}}</td>
+                <td>{{$producto->date_created}}</td>
                 <td>{{$producto->updated_at}}</td>
                 <td>
                     @if ($producto->estado == 1)

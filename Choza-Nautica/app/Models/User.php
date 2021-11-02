@@ -20,7 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'apellidos',
-        'celular',
         'email',
         'password',
     ];
@@ -45,7 +44,7 @@ class User extends Authenticatable
     ];
 
     public function cliente(){
-        return $this->hasOne(Clientes::class);
+        return $this->hasOne(Clientes::class,'id_usuario');
     }
     public function ventas(){
         return $this->hasMany(Ventas::class);
@@ -55,5 +54,15 @@ class User extends Authenticatable
     // }
     public function compras(){
         return $this->hasMany(Compra::class,'user_id');
+    }
+    
+    public function update_perfil($request){
+        $this->update($request->all());
+        $this->cliente()->update([
+            'direccion'=>$request->direccion,
+            'celular'=>$request->celular,
+            'dni'=>$request->dni,
+            'ruc'=>$request->ruc,
+        ]);
     }
 }

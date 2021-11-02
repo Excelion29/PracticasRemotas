@@ -345,9 +345,9 @@ return [
                     'url'  => 'dashboard/Delivery',
                 ],
                 [
-                    'text' => 'Ventas',
+                    'text' => 'Ordenes',
                     'icon' => 'fas fa-cash-register',
-                    'url'  => '#',
+                    'url'  => 'dashboard/Ordenes',
                 ],
             ]
         ],
