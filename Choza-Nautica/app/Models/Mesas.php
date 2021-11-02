@@ -9,6 +9,7 @@ class Mesas extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'estado',
+        'estado',        
+        'created_at',
     ];
 }

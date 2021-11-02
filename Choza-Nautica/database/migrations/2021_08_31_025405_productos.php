@@ -25,6 +25,8 @@ class Productos extends Migration
             $table->boolean('estado')->default(1);
             $table->unsignedBigInteger('id_administrador');     
             $table->timestamps();
+            $table->string('foto2'); 
+            $table->string('foto3'); 
             $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->foreign('id_administrador')->references('id')->on('Users');
         });

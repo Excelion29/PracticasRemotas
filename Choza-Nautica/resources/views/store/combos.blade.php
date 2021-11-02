@@ -5,7 +5,7 @@
 <div class="contenedor-u">
 
   <div class="contenedor-comida">
-    <p class="titulo">CATEGORIAS</p>
+    <p class="titulo">COMBOS</p>
     @foreach ($combos as $combo)
     <div class="outer">
       <a href="#id/.{{$combo->id}}">

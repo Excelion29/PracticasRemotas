@@ -46,6 +46,8 @@ class ProductosController extends Controller
             'descripcion'=>'required|string|max:1500',
             'id_categoria'=>'required|string|max:1500',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
+            'foto2'=>'required|max:10000|mimes:jpeg,png,jpg',
+            'foto3'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
 
         $mensaje=[
@@ -60,6 +62,13 @@ class ProductosController extends Controller
         if($request->hasFile('foto')){
             $datosProductos['foto']=$request->file('foto')->store('uploads','public');
         }
+        if($request->hasFile('foto2')){
+            $datosProductos['foto2']=$request->file('foto2')->store('uploads','public');
+        }
+        if($request->hasFile('foto3')){
+            $datosProductos['foto3']=$request->file('foto3')->store('uploads','public');
+        }
+       
 
         Productos::insert($datosProductos);
         // return response()->json($datosCategorias);
@@ -105,6 +114,21 @@ class ProductosController extends Controller
             Storage::delete('public/'.$producto->foto);
 
             $datosproductos['foto']=$request->file('foto')->store('uploads','public');
+        }
+
+        if($request->hasFile('foto2')){
+            $producto = Productos::findOrFail($id);
+
+            Storage::delete('public/'.$producto->foto2);
+
+            $datosproductos['foto2']=$request->file('foto2')->store('uploads','public');
+        }
+        if($request->hasFile('foto3')){
+            $producto = Productos::findOrFail($id);
+
+            Storage::delete('public/'.$producto->foto3);
+
+            $datosproductos['foto3']=$request->file('foto3')->store('uploads','public');
         }
 
         Productos::where('id','=',$id)->update($datosproductos);

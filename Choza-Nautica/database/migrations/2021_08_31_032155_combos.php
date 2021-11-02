@@ -23,6 +23,7 @@ class Combos extends Migration
             $table->boolean('estado')->default(1);
             $table->timestamps();
             
+            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 

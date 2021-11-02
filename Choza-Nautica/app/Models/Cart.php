@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class Cart extends Model
 {
-    protected $fillable = [
-        'estado',
-        'user_id',
-        'created_at',
-    ];
+    // protected $fillable = [
+    //     'estado',
+    //     'user_id',
+    //     'created_at',
+    // ];
     use HasFactory;
     public function order_details(){
         return $this->hasMany(order::class);
     }
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
-    }
+    // public function user(){
+    //     return $this->belongsTo(User::class,'user_id');
+    // }
 
     public static function findOnCreateBySessionId($CartID){
         if($CartID){
@@ -45,7 +45,12 @@ class Cart extends Model
     public function total_price(){
         $total = 0;
         foreach ($this->order_details as $key => $order_detail) {
-            $total += $order_detail->precio * $order_detail->cantidad;
+            if($order_detail->product){
+            $total += $order_detail->product->precio * $order_detail->cantidad;
+            }
+            elseif($order_detail->combo){
+                $total += $order_detail->combo->precio * $order_detail->cantidad;
+            }
         }
         return $total;
     }
@@ -55,10 +60,10 @@ class Cart extends Model
         $cart = self::findOnCreateBySessionId($cart_id);
         return $cart;
     }
-    public static function get_user_session_cart(){
-        $cart = self::findOnCreateByUserId(Auth::user());
-        return $cart;
-    }
+    // public static function get_user_session_cart(){
+    //     $cart = self::findOnCreateByUserId(Auth::user());
+    //     return $cart;
+    // }
     public function my_store($product, $request){
         $this->order_details()->create([
             'cart_id'=>$request,

@@ -33,7 +33,7 @@
     <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$categoria->foto}}"  width="100" alt="" >
     <input type="file" class="form-control" name="foto" value='{{$categoria->foto}}' id="foto">
     @else  
-    <label for="foto">Imagen</label>
+    <label for="foto">Imagen </label>
     <input type="file" class="form-control" name="foto" value='' id="foto">
     @endif
 </div>

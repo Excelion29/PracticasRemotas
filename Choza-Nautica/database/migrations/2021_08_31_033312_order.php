@@ -19,13 +19,11 @@ class Order extends Migration
             $table->unsignedBigInteger('id_producto')->nullable();             
             $table->unsignedBigInteger('id_combo')->nullable();         
             $table->integer('cantidad')->default(1);
-            $table->decimal('precio',5,2);      
             $table->timestamps();
 
             $table->foreign('id_combo')->references('id')->on('Combos');
             $table->foreign('id_producto')->references('id')->on('productos');
             $table->foreign('cart_id')->references('id')->on('Carts');
-
 
         });
     }

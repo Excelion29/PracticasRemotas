@@ -74,17 +74,17 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $cart = Cart::get_session_cart();
-        $cart->update([
-            'user_id'=>$user->id,
-        ]);
+        // $cart = Cart::get_session_cart();
+        // $cart->update([
+        //     'user_id'=>$user->id,
+        // ]);
         return $user;
     }
     public function redirectTo()
-{
-    if (session()->has('redirect_to'))
-        return session()->pull('redirect_to');
+    {
+        if (session()->has('redirect_to'))
+            return session()->pull('redirect_to');
 
-    return $this->redirectTo;
-}
+        return $this->redirectTo;
+    }
 }

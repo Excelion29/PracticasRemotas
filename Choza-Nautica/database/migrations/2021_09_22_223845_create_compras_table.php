@@ -15,11 +15,12 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');   
-            $table->foreign('id_usuario')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
-            $table->decimal('tax');
-            $table->decimal('total');
-            $table->enum('estado',['Valido','Candelado'])->default('Valido');
+            $table->unsignedBigInteger('user_id');   
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('estado',['VÁLIDO','PENDIENTE','ENTREGADO','CANCELADO'])->default('PENDIENTE');
+            $table->enum('estado_pago',['PENDIENTE','PAGADO','REEMBOLSADO'])->default('PAGADO');
+            $table->decimal('subtotal');
+            $table->decimal('impuesto');
             $table->timestamps();
             
         });

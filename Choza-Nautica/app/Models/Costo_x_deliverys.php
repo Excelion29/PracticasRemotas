@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class detalle_compra extends Model
+class Costo_x_deliverys extends Model
 {
     use HasFactory;
-
-    
+    protected $fillable = [
+        'Distrito',
+        'estado',
+        'Precio'
+    ];
 }

@@ -30,7 +30,7 @@
 
 <div class="form-group">
     <label for="precio">Precio</label>
-    <input type="text" class="form-control" name="precio" value="{{ isset($combos->precio)?$combos->precio:old('precio')}}" id="precio">
+    <input type="number" class="form-control" name="precio" value="{{ isset($combos->precio)?$combos->precio:old('precio')}}" id="precio">
 </div>
 
 <div class="form-group">

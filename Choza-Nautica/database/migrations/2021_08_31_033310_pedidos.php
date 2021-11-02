@@ -15,9 +15,6 @@ class Pedidos extends Migration
     {
         Schema::create('Carts', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('user_id')->nullable();     
-            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');   
-            $table->boolean('estado')->default(1);          
             $table->timestamps();
         });
     }
