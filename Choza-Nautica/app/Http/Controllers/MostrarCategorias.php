@@ -13,4 +13,8 @@ class MostrarCategorias extends Controller
         ->paginate(5);
         return view('store.index',$datos);
     }
+    public function categorias_json(){
+        $categorias = categorias::where('estado','1')->pluck('nombre');
+        return $categorias;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Cart;
+use App\Models\Compra;
 use Illuminate\Http\Request;
 use App\Traits\ConsumesExternalServices;
 use App\Services\CurrencyConversionService;
@@ -56,10 +57,10 @@ class MercadoPagoService
 
         $cart = Cart::get_session_cart();
         $total_price = $cart->total_price();
-        $currency = 'usd';
+        $currency = 'pen';
 
         $payment = $this->createPayment(
-            $total_price,
+            $request->value,
             $currency,
             $request->card_network,
             $request->card_token,
@@ -73,7 +74,7 @@ class MercadoPagoService
 
             $originalAmount = $request->value;
             $originalCurrency = strtoupper($request->currency);
-
+            Compra::my_store();
             return redirect()
                 ->route('my_orders')
                 ->withSuccess(['payment' => "Thanks, {$name}. We received your {$originalAmount}{$originalCurrency} payment ({$amount}{$currency})."]);

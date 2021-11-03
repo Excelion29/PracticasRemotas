@@ -54,6 +54,7 @@ Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
 Route::get('combos',[MostraCombos::class,'index'])->name('combos.index');
 Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.show');
 
+Route::get('categorias_json',[MostrarCategorias::class,'categorias_json'])->name('categorias.json');
 
 // Carrito de compras
 Route::resource('order',ObtenerOrder::class)->only(['update'])->names('order');

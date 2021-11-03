@@ -31,7 +31,7 @@ class EmpleadosController extends Controller
         $campos=[
             'name'=>'required|string|max:100',
             'apellidos'=>'required|string|max:1500',
-            'email'=>'required|string|max:1500',
+            'email'=>'required|email:rfc,dns',
             'password'=>'required|string|max:1500',
             'id_rol'=>'required|string|max:1500',
         ];

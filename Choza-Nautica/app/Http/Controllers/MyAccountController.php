@@ -23,8 +23,7 @@ class MyAccountController extends Controller
     }
     public function pagar(){
         $datos['Costo_x_deliverys'] = Costo_x_deliverys::all();
-        $datos['Payments'] = payment_platforms::all();
-            
+        $datos['Payments'] = payment_platforms::all();   
         return view('shop.index',$datos);
     }
     public function my_orders(){
