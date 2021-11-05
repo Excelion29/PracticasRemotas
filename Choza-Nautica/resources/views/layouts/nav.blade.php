@@ -146,7 +146,7 @@
           <div class="col-md-12">
             <div class="copyright-text">
               <p>© 2021
-                <a href="#">La Choza Nautica</a>. Todos los derechos reservados.
+                <a href="#">{{$empresa_provider->name}}</a>. Todos los derechos reservados.
               </p>
             </div>
           </div>

@@ -11,16 +11,15 @@
         <p>Categorias para ti</p>
       </div>
     </div>    
-
-
 <div style="margin-left:45px;width:100%;">
   <div style="width:200px;">
-    <form action="">
-      <input type="text" id="search" class="typeahead"  placeholder="Buscar Categorias">
+    <form action="{{route('search_categorias')}}" id="form_search_category" method="GET">
+      <input type="text" name="search_category" id="search_category" placeholder="Buscar Categorias">
       <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
+
 <div class="contenedor-u">
   <div class="contenedor-comida">
     <p class="titulo">CATEGORIAS</p>
@@ -54,7 +53,7 @@
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         prefetch:"{{route('categorias.json')}}"
       });
-      $('#search').typeahead({
+      $('#search_category').typeahead({
         hint: true,
         highlight: true,
         minLength: 1
@@ -62,6 +61,8 @@
       {
         name:'categorias',
         source:categorias
+      }).on('typehead:selected',function(event,selection){
+            $('#form_search_category').submit();
       });
   </script>
 

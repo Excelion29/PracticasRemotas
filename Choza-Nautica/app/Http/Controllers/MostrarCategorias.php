@@ -17,4 +17,12 @@ class MostrarCategorias extends Controller
         $categorias = categorias::where('estado','1')->pluck('nombre');
         return $categorias;
     }
+    public function search_categorias(Request $request){
+        $datos['search'] = categorias::where('estado','1')->where("nombre","LIKE","%$request->search_category%")->get();
+        $datos['categorias']= categorias::select('categorias.*')
+        ->where('estado','1')
+        ->where("nombre","LIKE","%$request->search_category%")
+        ->paginate(5);
+        return view('store.index',$datos);
+    }
 }

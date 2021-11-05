@@ -112,13 +112,13 @@
                           </div>
                           <div class="product-cost-container2">
                               
-                              <p>Costo por envío</p> <p class="p">20.00 PEN</p>
+                              <p>Costo por envío</p> <p class="p"></p>
                           </div>
                       
                       </div> 
                   </div>
                   <div class="product-total-container">
-                      <p>TOTAL </p> <p class="p">{{$cart->total_price()+20}} </p>
+                      <p>TOTAL </p> <p class="p">{{$cart->total_price()}} </p>
                       
                   </div>
                   <br>

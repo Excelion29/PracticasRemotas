@@ -9,10 +9,18 @@
         <h1 class="alex-brush"></h1>
         <h2>Bienvenidos</h2>
         <span id="asterisk">*</span>
-        <p>A la Choza Nautica</p>
+        <p>A {{$empresa_provider->name}}</p>
       </div>
     </div>
 
+    <section class="">
+      <div class="center-text">
+        <form action="{{route('search_products')}}" id="form_search_products" method="GET">
+          <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos">
+          <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </section>
     <section class="add-padding add-flex">
       <div class="center-text">
         <h1 class="alex-brush"><span class="custom-font">Nuestra</span><br />Comida</h1>
@@ -61,7 +69,26 @@
       </div>
     </section>
     
-    
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
+      <script>
+          var productos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch:"{{route('productos.json')}}"
+          });
+          $('#search_product').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+          },
+          {
+            name:'productos',
+            source:productos
+          }).on('typehead:selected',function(event,selection){
+            $('#form_search_products').submit();
+          });
+      </script>
     @endsection
 
 

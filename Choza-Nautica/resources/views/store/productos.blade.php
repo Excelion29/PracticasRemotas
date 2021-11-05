@@ -8,14 +8,36 @@
         <h1 class="alex-brush"></h1>
         <h2>Las mejores </h2>
         <span id="asterisk">*</span>
-        <p>Categorias para ti</p>
+        <p>Productos para ti</p>
       </div>
     </div> 
 
 
-
+    <div style="margin-left:45px;width:100%;">
+        <div style="width:200px;">
+            <form action="{{route('search_products')}}" id="form_search_products" method="GET">
+                <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+              </form>
+        </div>
+      </div>
 <div class="row">
   
+    
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Categorias</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach ($categorias_provider as $categoria_provider)
+                <tr>
+                    <td scope="row"><a href="{{url('/products/'.$categoria_provider->id)}}">{{$categoria_provider->nombre}}</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+    </table>
     @foreach ($productos as $producto)
 
     <div class="col l4 m8 s12 offset-m2">
@@ -43,7 +65,7 @@
                     </div>
                     <div class="row">
                             <div style="width: 95%; margin: auto;">
-                                <div class="chip"><a href="#">{{$producto->categoria}}</a></div>
+                                <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
                                 <div class="chip cta"><a href="#">Mas detalles</a></div>
                             </div>
                             
@@ -126,5 +148,25 @@
 
    
   <script src="{{asset('js/modal.js')}}"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
+    <script>
+        var productos = new Bloodhound({
+          datumTokenizer: Bloodhound.tokenizers.whitespace,
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          prefetch:"{{route('productos.json')}}"
+        });
+        $('#search_product').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name:'productos',
+          source:productos
+        }).on('typehead:selected',function(event,selection){
+          $('#form_search_products').submit();
+        });
+    </script>
 </div>
 @endsection
