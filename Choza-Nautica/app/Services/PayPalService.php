@@ -49,7 +49,8 @@ class PayPalService
     {
         $cart = Cart::get_session_cart();
         $total_price = $cart->total_price();
-        $currency = 'usd';
+        $currency = 'USD';
+        
         $order = $this->createOrder($total_price, $currency);
 
         $orderLinks = collect($order->links);
@@ -98,7 +99,7 @@ class PayPalService
                     0 => [
                         'amount' => [
                             'currency_code' => strtoupper($currency),
-                            'value' => round($value * $factor = $this->resolveFactor($currency)) / $factor,
+                            'value' => round((($value * $factor = $this->resolveFactor($currency)) / $factor)*25/100),
                         ]
                     ]
                 ],
@@ -131,12 +132,12 @@ class PayPalService
 
     public function resolveFactor($currency)
     {
-        $zeroDecimalCurrencies = ['JPY'];
+        $zeroDecimalCurrencies = ['USD'];
 
         if (in_array(strtoupper($currency), $zeroDecimalCurrencies)) {
             return 1;
         }
 
-        return 100;
+        return 100.00;
     }
 }

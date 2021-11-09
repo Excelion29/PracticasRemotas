@@ -15,9 +15,10 @@ class Productos extends Model
         'foto2',
         'foto3',
         'created_at',
+        'id_categoria',
     ];
 
     public function categorias(){
-        return $this->belongsTo(categorias::class);
+        return $this->belongsTo(categorias::class,'id_categoria');
     }
 }

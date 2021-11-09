@@ -30,8 +30,8 @@
               <div class="col-sm-4 invoice-col">
                 Empresa
                 <address>
-                  <strong>{{$empresa->name}}</strong><br>
-                  {{$empresa->descripcion}}<br>
+                  <strong>{{$empresa->name_formal}}</strong><br>
+                  {{$empresa->direccion}}<br>
                   Contacto: {{$empresa->telefono}}<br>
                   Correo: {{$empresa->correo}}
                 </address>

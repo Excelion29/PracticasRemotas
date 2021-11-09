@@ -31,6 +31,7 @@
         source: [
         {value: 'VÁLIDO', text: 'VÁLIDO'},
         {value: 'PENDIENTE', text: 'PENDIENTE'},
+        {value: 'EN CAMINO', text: 'EN CAMINO'},
         {value: 'ENTREGADO', text: 'ENTREGADO'},
         {value: 'CANCELADO', text: 'CANCELADO'}
         ],

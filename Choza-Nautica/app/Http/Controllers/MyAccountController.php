@@ -23,8 +23,7 @@ class MyAccountController extends Controller
     }
     public function pagar(){
         $datos['Costo_x_deliverys'] = Costo_x_deliverys::all();
-        $datos['Payments'] = payment_platforms::all();
-            
+        $datos['Payments'] = payment_platforms::all();   
         return view('shop.index',$datos);
     }
     public function my_orders(){
@@ -41,6 +40,11 @@ class MyAccountController extends Controller
     public function change_password(){   
         $perfil = auth()->user();  
         return view('MyAccount.change_pasword',compact('perfil'));
+    }
+    public function show(Compra $orden){
+        $user = $orden->user;
+        $detalles = $orden->compras_detalles;
+        return view('MyAccount.order_detaills',compact('orden','user','detalles'));
     }
 }
 

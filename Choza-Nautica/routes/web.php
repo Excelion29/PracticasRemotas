@@ -53,7 +53,10 @@ Route::get('category',[MostrarCategorias::class,'index'])->name('category.index'
 Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
 Route::get('combos',[MostraCombos::class,'index'])->name('combos.index');
 Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.show');
-
+Route::get('products_json',[MostrarProductos::class,'products_json'])->name('productos.json');
+Route::get('search_products',[MostrarProductos::class,'search_products'])->name('search_products');
+Route::get('categorias_json',[MostrarCategorias::class,'categorias_json'])->name('categorias.json');
+Route::get('search_categorias',[MostrarCategorias::class,'search_categorias'])->name('search_categorias');
 
 // Carrito de compras
 Route::resource('order',ObtenerOrder::class)->only(['update'])->names('order');
@@ -73,6 +76,7 @@ Route::get('mis_deseos',[MyAccountController::class,'mis_deseos'])->name('mis_de
 Route::get('pagar',[MyAccountController::class,'pagar'])->name('shop.index');
 Route::get('my_perfil',[MyAccountController::class,'my_perfil'])->name('my_perfil');            
 Route::get('change_password',[MyAccountController::class,'change_password'])->name('change_password');
+Route::get('MisDetallesOrdenes/{orden}', [MyAccountController::class,'show'])->name('Mis_detalles_orders.show');
 
 Route::put('update_password/{user}/update',[UsersController::class,'update_password'])->name('update_password');
 Route::put('update_perfil/{user}/update',[UsersController::class,'update_perfil'])->name('update_perfil');

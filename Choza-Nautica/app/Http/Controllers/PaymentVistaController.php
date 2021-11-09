@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Resolvers\PaymentPlatformResolver;
 
@@ -16,11 +17,20 @@ class PaymentVistaController extends Controller
     }
     public function pays(Request $request){
         $request->validate([
-            'paymentmethod'=>['required']
-        ]);   
+            'paymentmethod'=>'required|exists:payment_platforms,id', 
+            'email'=>'nullable|email:rfc,dns',   
+        ]);  
+
         $paymentPlatform = $this->paymentPlatformResolver
         ->resolveService($request->paymentmethod);
         session()->put('paymentPlatformId', $request->paymentmethod);
+
+        $cart = Cart::get_session_cart();
+        $total_price = $cart->total_price();
+        $request->merge([
+            'value' => $total_price,
+        ]);
+
         return $paymentPlatform->handlePayment($request);     
     }
     public function approval(){

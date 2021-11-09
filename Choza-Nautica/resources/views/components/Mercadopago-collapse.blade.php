@@ -43,7 +43,7 @@
 
     <div class="form-group form-row">
         <div class="col">
-            <small class="form-text text-mute"  role="alert" >Your payment will be converted to {{ strtoupper(config('services.mercadopago.base_currency')) }}</small>
+            <small class="form-text text-mute"  role="alert" >Su pago se convertirá a {{ strtoupper(config('services.mercadopago.base_currency')) }}</small>
         </div>
     </div>
 

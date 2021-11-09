@@ -15,11 +15,14 @@ class Empresa extends Migration
     {
         Schema::create('empresa_detalles', function (Blueprint $table) {
             $table->id();         
-            $table->string('name')->default('La Choza Nautica');
-            $table->text('descripcion')->default('Jr. Brigadier Pumacahua 2374, Cercado de Lima 15073');
-            $table->string('telefono')->default('(01) 5212153');
-            $table->string('horarios')->default('6:00 am - 7:00 pm');
-            $table->string('correo')->default('chozanautica.ica@gmail.com');
+            $table->string('name');
+            $table->string('name_formal');
+            $table->text('descripcion');
+            $table->text('direccion');
+            $table->string('telefono');
+            $table->string('horarios');
+            $table->string('ruc');
+            $table->string('correo');
             $table->timestamps();
         });
     }

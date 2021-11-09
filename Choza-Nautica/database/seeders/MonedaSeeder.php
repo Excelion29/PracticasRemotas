@@ -14,14 +14,11 @@ class MonedaSeeder extends Seeder
      */
     public function run()
     {
-        $monedas =[
-            'usd',
-            'pe',
-        ];
-        foreach ($monedas as $key => $moneda) {
-            moneda::created([
-                'iso' => $moneda
-            ]);
-        }
+        moneda::create([
+            'iso'=>'usd',
+        ]);
+        moneda::create([
+            'iso'=>'pen',
+        ]);
     }
 }
