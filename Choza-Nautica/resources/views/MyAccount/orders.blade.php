@@ -17,7 +17,7 @@
                 <td>{{$orden->created_at}}</td>
                 <td>{{$orden->estado}}</td>
                 <td>{{$orden->total()}}</td>
-                <td><a name="" id="" class="btn btn-primary" href="#" role="button">Ver</a></td>
+                <td><a name="" id="" class="btn btn-primary" href="{{route('Mis_detalles_orders.show',$orden->id)}}" role="button">Ver</a></td>
             </tr>
             @empty
                 <tr>

@@ -17,8 +17,9 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');   
             $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('estado',['VÁLIDO','PENDIENTE','ENTREGADO','CANCELADO'])->default('PENDIENTE');
+            $table->enum('estado',['VÁLIDO','PENDIENTE','EN CAMINO','ENTREGADO','CANCELADO'])->default('PENDIENTE');
             $table->enum('estado_pago',['PENDIENTE','PAGADO','REEMBOLSADO'])->default('PAGADO');   
+            $table->text('direccion');
             $table->string('codigo');
             $table->decimal('subtotal');
             $table->decimal('impuesto');
