@@ -86,17 +86,26 @@
                     <a href="{{ url('category') }}">Ordena Aquí</a>
                 </li>
                 <li>
-                   <a><span>Carrito
-                    <div class="mini-cart-btn">
-                    <i class="fa fa-shopping-cart"></i>
-                    @if ($cart->quantity_of_products() != 0)
-                    <span class="cart-notificacion">{{$cart->quantity_of_products()}}</span>
-                    @else                    
-                    <span class="cart-notificacion">0</span>
-                    @endif
+                    <div class="cta-mod">
+                        <a href="#">
+                            <span>Carrito
+                                <div class="mini-cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    @if ($cart->quantity_of_products() != 0)
+                                    <span> 
+                                    class="cart-notificacion">{{$cart->quantity_of_products()}}
+                                    </span>
+                                    @else                    
+                                    <span class="cart-notificacion">0</span>
+                                    @endif
+                                </div>
+                            </span>
+                        </a>
+                    </div>
+                    
 
-                </div></span></a>
-                   @include('layouts.mini_cart')
+
+                    @include('layouts.mini_cart')
                 </li>
 
                 <ul class="navbar-nav ml-auto">
@@ -137,11 +146,66 @@
             </ul>
            
         </div>  
-        <div class="shadow">     
-        </div> 
+                        
     </div>
+    <div class="modal-container-cart">
+                        
+                        <div class="container-carrito">
+                           
+                            <p class="closeC">X</p>
+                            
+                                <div class="content-carrito ">
+                                <div class="title-cont">
+                                <p class="title">Carrito de Compra </p> 
+                                           </div>
+                                <div class="content-pedidosge">
+                                    @if ($cart->quantity_of_products() != 0)
+                                    @foreach ($cart->order_details as $order_detail)
+                                    @if($order_detail->id_producto!='')
+                                        
+                                    
+                                        <div class="content-pedidos">
+                                            <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
+                                            
+                                            <div class="tit_content">{{$order_detail->product->nombre}}</div>
+                                            
+                                            <div class="cant_content">
+                                                <input name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                            </div>
+                                            <div class="pre_content">{{$order_detail->product->precio}} </div>
+                                        </div>
+                                   
+                                        @elseif($order_detail->id_combo!='')
+                                        <div class="title-cont">
+                                            <p class="title">
+                                                Carrito de Compra 
+                                            </p>
+                                        </div>
+
+                                        <div class="content-pedidos">
+                                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->product->foto}}" alt=""></div>
+                                            
+                                            <div class="tit_content">{{$order_detail->product->nombre}}</div>
+                                            <div class="cant_content">Cantidad </div>
+                                            <div class="pre_content">Precio Producto </div>
+                                        </div>
+                                    @endif
+                                    @endforeach
+                                    @endif
+                                    </div> 
+                                        <div class="content-footer">
+                                        <div> </div>
+                                        </div>
+                                        
+                                   
+                                </div>
+                        </div>
+
+                        
+    </div> 
+                   
     <!--Contenido-->
-    @yield('content')     
+    @yield('content')   
     <footer class="footer-area footer--light">
     <div class="mini-footer">
       <div class="container">
@@ -164,6 +228,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.js"></script>
     <script src="{{asset('js/navbar.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/modalcarrito.js')}}"></script>
 </body>
 </html>
 

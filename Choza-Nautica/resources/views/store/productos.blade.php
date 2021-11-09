@@ -80,7 +80,7 @@
 
                         <div class="prevNext">
                         <div><a href="#s3"></a><a href="#s2"></a></div>
-                        <div><a href="#s1"></a><a href="#s3"></a></div>
+                        <div><a class="arrow-left" href="#s1"><i class="fas fa-arrow-circle-left"></i></a><a href="#s3"><i class="fas fa-arrow-right"></i></a></div>
                         <div><a href="#s2"></a><a href="#s4"></a></div>
                         <div><a href="#s3"></a><a href="#s1"></a></div>
                         </div>
