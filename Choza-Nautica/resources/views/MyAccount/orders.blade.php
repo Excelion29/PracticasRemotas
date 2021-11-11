@@ -26,5 +26,10 @@
             @endforelse
         </tbody>
     </table>
+    <style>
+        .map_area_wrapper{
+            display: none;
+            }
+        </style>
 
 @endsection

@@ -8,6 +8,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href=https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</style>
 <div class="container">
     <article class="card">
         <header class="card-header"> {{$empresa_provider->name_formal}} / {{$empresa_provider->telefono}} </header>

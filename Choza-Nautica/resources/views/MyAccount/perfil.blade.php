@@ -54,5 +54,10 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </fieldset>
 {!! Form::close() !!}
-<a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a> 
+<a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a>
+<style>
+    .map_area_wrapper{
+        display: none;
+        }
+    </style>
 @endsection

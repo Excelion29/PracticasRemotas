@@ -1,5 +1,6 @@
 @extends('MyAccount.perfil')
 @section('change_password')
+
 {!! Form::model($perfil, ['route'=>['update_password',$perfil],'method'=>'PUT']) !!}
     <fieldset>
         <legend>Cambio de contraseña</legend>
@@ -18,4 +19,9 @@
     </fieldset>
     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
 {!! Form::close() !!}
+<style>
+    .map_area_wrapper{
+        display: none;
+        }
+    </style>
 @endsection
