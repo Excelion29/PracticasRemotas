@@ -23,6 +23,9 @@ class Empresa extends Seeder
             'horarios'=>'6:00 am - 7:00 pm',
             'ruc'=>'20256802351',
             'correo'=>'chozanautica.ica@gmail.com',
+            'latitud'=>'-12.085330380181183',
+            'longitud'=>'-77.04315352293973',
+            'google_maps_link'=>'https://goo.gl/maps/KpFeoYVR96CwTawJ9',
         ]);
     }
 }

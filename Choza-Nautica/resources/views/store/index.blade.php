@@ -42,6 +42,7 @@
         </a>
     </div>
     @endforeach
+    {!! $categorias->links() !!}
   </div>
 </div>
 

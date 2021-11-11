@@ -146,7 +146,7 @@
           <div class="col-md-12">
             <div class="copyright-text">
               <p>© 2021
-                <a href="#">{{$empresa_provider->name}}</a>. Todos los derechos reservados.
+                <a href="{{$empresa_provider->google_maps_link}}">{{$empresa_provider->name}}</a>. Todos los derechos reservados.
               </p>
             </div>
           </div>

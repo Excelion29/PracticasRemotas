@@ -21,9 +21,7 @@
               </form>
         </div>
       </div>
-<div class="row">
-  
-    
+<div class="row"> 
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
             <tr>
@@ -37,7 +35,7 @@
                 </tr>
                 @endforeach
             </tbody>
-    </table>
+    </table>    
     @foreach ($productos as $producto)
 
     <div class="col l4 m8 s12 offset-m2">
@@ -144,8 +142,9 @@
                             
         </div>
   @endforeach
-              
-
+  
+@include('store.productos_destacados')
+{!! $productos->links() !!}
    
   <script src="{{asset('js/modal.js')}}"></script>
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

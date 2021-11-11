@@ -21,4 +21,7 @@ class Productos extends Model
     public function categorias(){
         return $this->belongsTo(categorias::class,'id_categoria');
     }
+    public function productos_destacados(){
+        return 1;
+    }
 }
