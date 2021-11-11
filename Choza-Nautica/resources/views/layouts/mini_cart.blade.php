@@ -1,4 +1,5 @@
-    <div class="modal" id="carrito"> 
+
+    <div class="modals2" id="carrito" style="display:none"> 
     <ul class="cart-list">
         {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
 
