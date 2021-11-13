@@ -20,6 +20,7 @@
   </div>
 </div>
 
+@include('store.productos_destacados')
 <div class="contenedor-u">
   <div class="contenedor-comida">
     <p class="titulo">CATEGORIAS</p>

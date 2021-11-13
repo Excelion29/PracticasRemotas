@@ -3,6 +3,12 @@
 
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.css">
+<link rel="stylesheet" href="{{asset('bootstrap_star_rating/css/star-rating.css')}}">
+<link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{asset('bootstrap_star_rating/js/star-rating.js')}}"></script>
+<script src="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.js')}}"></script>
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
@@ -20,24 +26,25 @@
                 <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
               </form>
         </div>
-      </div>
-<div class="row"> 
-    <table class="table table-striped table-inverse table-responsive">
-        <thead class="thead-inverse">
-            <tr>
-                <th>Categorias</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach ($categorias_provider as $categoria_provider)
-                <tr>
-                    <td scope="row"><a href="{{url('/products/'.$categoria_provider->id)}}">{{$categoria_provider->nombre}}</a></td>
-                </tr>
-                @endforeach
-            </tbody>
-    </table>    
+    </div>
+    <style>
+        .row{
+            margin-left: 0px;
+        }
+        .product-card .card .price {
+            font-size: 1.45rem;
+        }
+        .navbar{
+            position: fixed;
+        }
+        .rating-md .caption {
+            font-size: 32%;
+        }
+        </style>
+@include('store.categorias_list')
+@include('store.productos_destacados')
+<div class="row">
     @foreach ($productos as $producto)
-
     <div class="col l4 m8 s12 offset-m2">
         <div class="product-card">
             <div class="card ">
@@ -62,92 +69,96 @@
                         
                     </div>
                     <div class="row">
-                            <div style="width: 95%; margin: auto;">
-                                <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
-                                <div class="chip cta"><a href="#">Mas detalles</a></div>
-                            </div>
-                            
+                        <div style="width: 95%; margin: auto;">
+                            <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
+                            <div class="chip cta"><a href="#">Mas detalles</a></div> 
+                            @isset(auth()->user()->id_rol)
+                                <div class="chip cta"><a href="{{url('/products_calificar/'.$producto->id)}}">Calificaciones</a></div>
+                            @endisset                 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <div class="modal-container">
-                    <div class="modals1 modal-close">
-                        <p class="close">X</p>
-                        <div class="modal-img">
+    </div>
+    <div class="modal-container">
+                <div class="modals1 modal-close">
+                    <p class="close">X</p>
+                    <div class="modal-img">
+                    
+                    <div class="CSSgal">
+                        <!-- Don't wrap targets in parent -->
+                        <s id="s1"></s> 
+                        <s id="s2"></s>
+                        <s id="s3"></s>
                         
-                        <div class="CSSgal">
-                            <!-- Don't wrap targets in parent -->
-                            <s id="s1"></s> 
-                            <s id="s2"></s>
-                            <s id="s3"></s>
-                            
 
-                            <div class="slider">
-                            <div style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover" >
-                            
-                                    
-                                </div>
-                                <div style="background: url({{asset('storage').'/'.$producto->foto2}})no-repeat center center/cover" >
-                                    <h2>Foto 2</h2>
-                                </div>
-                            <div style="background: url({{asset('storage').'/'.$producto->foto3}})no-repeat center center/cover" >
-                                    <h2>Foto 3</h2>
-                                </div>
+                        <div class="slider">
+                        <div style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover" >
                         
+                                
                             </div>
+                            <div style="background: url({{asset('storage').'/'.$producto->foto2}})no-repeat center center/cover" >
+                                <h2>Foto 2</h2>
+                            </div>
+                        <div style="background: url({{asset('storage').'/'.$producto->foto3}})no-repeat center center/cover" >
+                                <h2>Foto 3</h2>
+                            </div>
+                    
+                        </div>
 
-                            <div class="prevNext">
-                            <div><a href="#s3"></a><a href="#s2"></a></div>
-                            <div><a href="#s1"></a><a href="#s3"></a></div>
-                            <div><a href="#s2"></a><a href="#s4"></a></div>
-                            <div><a href="#s3"></a><a href="#s1"></a></div>
-                            </div>
+                        <div class="prevNext">
+                        <div><a href="#s3"></a><a href="#s2"></a></div>
+                        <div><a href="#s1"></a><a href="#s3"></a></div>
+                        <div><a href="#s2"></a><a href="#s4"></a></div>
+                        <div><a href="#s3"></a><a href="#s1"></a></div>
+                        </div>
 
-                            <div class="bullets">
-                            <a href="#s1"></a>
-                            <a href="#s2"></a>
-                            <a href="#s3"></a>
-                            
-                            </div>
-
-                            </div>
+                        <div class="bullets">
+                        <a href="#s1"></a>
+                        <a href="#s2"></a>
+                        <a href="#s3"></a>
                         
                         </div>
-                        <div class="modal-text">
-                            <div class="modal-text-container">
-                                <div class="Titulo">
-                                    <h2>{{$producto->nombre}}</h2>
-                                </div>
-                                <div class="Precio">
-                                    <h4>{{$producto->precio}}</h4>
-                                </div>
-                                <div class="descripcion">
-                                    <p>{{($producto->descripcion)}}</p>
-                                </div>                              
-                                <div style="margin-top: -150px;" class="cantidad">
-                                    {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
-                                        <input type="hidden" name="id_combo" value="{{$producto->id}}">    
-                                        <div class="quantity">
-                                            <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
-                                        </div>       
-                                        <button class="ag-carrito"> <span>Agregar al carrito </span></button>
-                                    {!! Form::close() !!}  
-                                    <button class="ca-ahora"> <span> Comprar ahora </span></button>
-                                </div> 
+
                         </div>
+                    
                     </div>
-                </div>      
-                            
-        </div>
+                    <div class="modal-text">
+                        <div class="modal-text-container">
+                            <div class="Titulo">
+                                <h2>{{$producto->nombre}} 
+                                </h2>
+                                @include('store.ratings',['producto'=>$producto])
+                            </div>1
+                            <div class="Precio">
+                                <h4>{{$producto->precio}}</h4>
+                            </div>
+                            <div class="descripcion">
+                                <p>{{($producto->descripcion)}}</p>
+                            </div>                              
+                            <div style="margin-top: -90px;" class="cantidad">
+                                {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
+                                    <input type="hidden" name="id_combo" value="{{$producto->id}}">    
+                                    <div class="quantity">
+                                        <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
+                                    </div>       
+                                    <button class="ag-carrito"> <span>Agregar al carrito </span></button>
+                                {!! Form::close() !!}  
+                                <button class="ca-ahora"> <span> Comprar ahora </span></button>
+                            </div> 
+                    </div>
+                </div>
+            </div>      
+                        
+    </div>
+    
   @endforeach
   
-@include('store.productos_destacados')
 {!! $productos->links() !!}
    
   <script src="{{asset('js/modal.js')}}"></script>
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
     <script>
         var productos = new Bloodhound({

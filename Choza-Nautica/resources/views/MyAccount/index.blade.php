@@ -6,9 +6,9 @@
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
-        <h2>Las mejores </h2>
+        <h2>Descubre </h2>
         <span id="asterisk">*</span>
-        <p>Categorias para ti</p>
+        <p>Sobre Nosotros</p>
       </div>
     </div>   
 <div class="contnedor-p" style="display:flex; position:relative;">

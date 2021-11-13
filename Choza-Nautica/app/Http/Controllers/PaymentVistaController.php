@@ -13,7 +13,6 @@ class PaymentVistaController extends Controller
     public function __construct(PaymentPlatformResolver $paymentPlatformResolver)
     {
         $this->middleware('client_auth');   
-        $this->middleware('cart');
         $this->paymentPlatformResolver = $paymentPlatformResolver;
     }
     public function pays(Request $request){

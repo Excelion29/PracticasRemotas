@@ -179,8 +179,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         JeroenNoten\LaravelAdminLte\AdminLteServiceProvider::class,
-
         Collective\Html\HtmlServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
       ],
     /*
     |--------------------------------------------------------------------------

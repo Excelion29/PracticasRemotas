@@ -26,7 +26,7 @@
             <div class="track">
                 <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Aprovado</span> </div>
                 <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Pendiente</span> </div>
-                <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">En Camino</span> </div>
+                <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">En Camino</span> </div>
                 <div class="step"> <span class="icon"> <i class="fa fa-archive"></i> </span> <span class="text">Entregado</span> </div>
             </div>
             <hr>

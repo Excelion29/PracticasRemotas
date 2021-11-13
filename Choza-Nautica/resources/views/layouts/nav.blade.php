@@ -90,7 +90,7 @@
                                     <i class="fa fa-shopping-cart"></i>
                                     @if ($cart->quantity_of_products() != 0)
                                     <span> 
-                                    class="cart-notificacion">{{$cart->quantity_of_products()}}
+                                        {{$cart->quantity_of_products()}}
                                     </span>
                                     @else                    
                                     <span class="cart-notificacion">0</span>
@@ -145,7 +145,7 @@
         </div>  
                         
     </div>
-    <div class="modal-container-cart">
+    {{-- <div class="modal-container-cart">
                         
                         <div class="container-carrito">
                            
@@ -199,7 +199,7 @@
                         </div>
 
                         
-    </div> 
+    </div>  --}}
                    
     <!--Contenido-->
     @yield('content')   

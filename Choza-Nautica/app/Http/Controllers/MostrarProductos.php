@@ -29,4 +29,17 @@ class MostrarProductos extends Controller
         ->paginate(5);
         return view('store.productos',$datos);
     }
+    public function products_calificar($id){
+        $datos['productos']= Productos::join('categorias','categorias.id','=','productos.id_categoria')
+        ->select('productos.*','categorias.nombre as categoria')
+        ->where('productos.estado','1')
+        ->where('productos.id','=',$id)->firstOrFail();
+        return view('store.calificar_product',$datos);
+    }
+    public function rating_product(Request $request, Productos $product)
+    {
+        $product->rate($request->rate,$request->comentario);
+        return back();
+        // dd($product->ratings);
+    }
 }

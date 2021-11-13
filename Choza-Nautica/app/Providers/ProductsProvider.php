@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Productos;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class ProductsProvider extends ServiceProvider
@@ -25,8 +26,17 @@ class ProductsProvider extends ServiceProvider
     public function boot()
     {
         view()->composer("*",function($view){
-            $Productos = Productos::where('estado',1)->orderBy('id')->paginate(5);
-            $view->with('productos_destacados',$Productos);
+            $productos_nuevos = Productos::where('estado',1)->orderByDesc('id')->take(6)->get();
+            $sale_Productos = Productos::where('estado',1)->withCount(['compras_detalles as sale_count' =>function($query){
+                $query->select(DB::raw('sum((id_producto))'));
+            }])->orderByDesc('sale_count')->take(8)->get();
+            $sale_Combos = Productos::where('estado',1)->withCount(['compras_detalles as sale_count' =>function($query){
+                $query->select(DB::raw('sum((id_combo))'));
+            }])->orderByDesc('sale_count')->take(8)->get();
+            $ratings_Productos = Productos::where('estado',1)->withCount(['ratings as average_rating'=>function($query){
+                $query->select(DB::raw('coalesce(avg(rating),0)'));
+            }])->orderByDesc('average_rating')->take(8)->get();
+            $view->with(compact('productos_nuevos','sale_Productos','ratings_Productos','sale_Productos'));
         });
     }
 }

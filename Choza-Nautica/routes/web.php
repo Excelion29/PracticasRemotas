@@ -53,6 +53,8 @@ Route::get('category',[MostrarCategorias::class,'index'])->name('category.index'
 Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
 Route::get('combos',[MostraCombos::class,'index'])->name('combos.index');
 Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.show');
+Route::post('rating_product/{product}',[MostrarProductos::class,'rating_product'])->name('rating_product');
+Route::get('products_calificar/{id}',[MostrarProductos::class,'products_calificar'])->name('products_calificar.show');
 Route::get('products_json',[MostrarProductos::class,'products_json'])->name('productos.json');
 Route::get('search_products',[MostrarProductos::class,'search_products'])->name('search_products');
 Route::get('categorias_json',[MostrarCategorias::class,'categorias_json'])->name('categorias.json');
