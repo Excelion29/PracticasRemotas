@@ -64,7 +64,16 @@
                 <td>{{$id}}</td>
                 <td>{{$producto->nombre}}</td>
                 <td>{{substr($producto->descripcion,0,80)}}......</td>
-                <td><p name="detalles" id="detalles" class="detalles"></p></td>
+                <td><p name="detalles" id="detalles_{{$id}}_DESC" class="detalles"></p></td>
+                <script>
+                    $('#detalles_{{$id}}_DESC').summernote({
+                    //sacar el toolbar(barra de tareas)
+                    airMode :true,
+                    lang: "es-ES",
+                    });
+                    $('#detalles_{{$id}}_DESC').summernote('disable');
+                    $('#detalles_{{$id}}_DESC').summernote('code', {!! json_encode($producto->descripcion) !!});
+                </script>
                 <td>S/.{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->cantidad}}</td>
@@ -89,15 +98,6 @@
                     </form>
                 </td>
             </tr>
-            <script>
-                $('#detalles').summernote({
-                //sacar el toolbar(barra de tareas)
-                airMode :true,
-                lang: "es-ES",
-                });
-                $('#detalles').summernote('disable');
-                $('#detalles').summernote('code', {!! json_encode($producto->descripcion) !!});
-            </script>
             @endforeach
         </tbody>
     </table>

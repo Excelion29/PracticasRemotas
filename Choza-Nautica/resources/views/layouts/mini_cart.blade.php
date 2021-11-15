@@ -1,5 +1,5 @@
 
-    <div class="modals2" id="carrito" style="display:none;"> 
+    <div class="modals2" id="carrito" style=""> 
     <ul class="cart-list">
         {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
 
@@ -46,7 +46,7 @@
         </li>
         {!! Form::close() !!}
         
-        @if ($cart->quantity_of_products() != 0)
+        @if ($cart->validate_products())
         <li class="mini-cart-price">
             Subtotal:<span class="subtotal-price">S/.{{$cart->total_price()}}</span>
         </li>

@@ -21,6 +21,13 @@ class Cart extends Model
     // public function user(){
     //     return $this->belongsTo(User::class,'user_id');
     // }
+    public function validate_products(){
+        if($this->order_details()->count()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public static function findOnCreateBySessionId($CartID){
         if($CartID){

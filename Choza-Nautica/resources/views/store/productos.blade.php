@@ -44,139 +44,132 @@
 @include('store.categorias_list')
 @include('store.productos_destacados')
 <div class="row">
-    @foreach ($productos as $producto)
-    <div class="col l4 m8 s12 offset-m2">
-        <div class="product-card">
-            <div class="card ">
-                <div class="card-image">
-                    <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">S/.{{$producto->precio}}</a>
-                    <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 400px;">
-                    <span class="card-title"><span>{{$producto->nombre}}</span></span>
-                </div>
-                <ul class="card-action-buttons">
-                    <li><a id="buy" href="{{route('store_a_product',$producto)}}" class="btn-floating waves-effect waves-light blue"><i class="material-icons buy">add_shopping_cart</i></a>
-                
-                    </li>
-                </ul>
-                <div class="card-content">
-                    <div class="row">
-                        <div class="col s12">
-                            <p>
-                                <strong>Descripcion:</strong> <br />
-                                {{substr($producto->descripcion,0,80)}}...
-                            </p>
-                        </div>
-                        
+    @foreach ($productos as $key=>$producto)
+        <div class="col l4 m8 s12 offset-m2">
+            <div class="product-card">
+                <div class="card ">
+                    <div class="card-image">
+                        <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">S/.{{$producto->precio}}</a>
+                        <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 400px;">
+                        <span class="card-title"><span>{{$producto->nombre}}</span></span>
                     </div>
-                    <div class="row">
-                        <div style="width: 95%; margin: auto;">
-                            <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
-                            <div class="chip cta"><a href="#">Mas detalles</a></div> 
-                            @isset(auth()->user()->id_rol)
-                                <div class="chip cta"><a href="{{url('/products_calificar/'.$producto->id)}}">Calificaciones</a></div>
-                            @endisset                 
+                    <ul class="card-action-buttons">
+                        <li><a id="buy" href="{{route('store_a_product',$producto)}}" class="btn-floating waves-effect waves-light blue"><i class="material-icons buy">add_shopping_cart</i></a>
+                    
+                        </li>
+                    </ul>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <strong>Descripcion:</strong> <br />
+                                    {{substr($producto->descripcion,0,80)}}...
+                                </p>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div style="width: 95%; margin: auto;">
+                                <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
+                                <div class="chip cta"><a href="#">Mas detalles</a></div> 
+                                @isset(auth()->user()->id_rol)
+                                    <div class="chip cta"><a href="{{url('/products_calificar/'.$producto->id)}}">Calificaciones</a></div>
+                                @endisset                 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal-container">
-                <div class="modals1 modal-close">
-                    <p class="close">X</p>
-                    <div class="modal-img">
-                    
+
+        <div class="modal-container">
+            <div class="modals1 modal-close">
+                <p class="close">X</p>
+                <div class="modal-img">
+                
                     <div class="CSSgal">
                         <!-- Don't wrap targets in parent -->
                         <s id="s1"></s> 
                         <s id="s2"></s>
                         <s id="s3"></s>
-                        
-
+                    
+        
                         <div class="slider">
-                        <div style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover" >
-                        
-                                
+                            <div style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover" >
                             </div>
                             <div style="background: url({{asset('storage').'/'.$producto->foto2}})no-repeat center center/cover" >
                                 <h2>Foto 2</h2>
                             </div>
-                        <div style="background: url({{asset('storage').'/'.$producto->foto3}})no-repeat center center/cover" >
+                            <div style="background: url({{asset('storage').'/'.$producto->foto3}})no-repeat center center/cover" >
                                 <h2>Foto 3</h2>
                             </div>
                     
                         </div>
-
+        
                         <div class="prevNext">
-                        <div><a href="#s3"></a><a href="#s2"></a></div>
-                        <div><a href="#s1"></a><a href="#s3"></a></div>
-                        <div><a href="#s2"></a><a href="#s4"></a></div>
-                        <div><a href="#s3"></a><a href="#s1"></a></div>
+                            <div><a href="#s3"></a><a href="#s2"></a></div>
+                            <div><a href="#s1"></a><a href="#s3"></a></div>
+                            <div><a href="#s2"></a><a href="#s4"></a></div>
+                            <div><a href="#s3"></a><a href="#s1"></a></div>
                         </div>
-
+        
                         <div class="bullets">
-                        <a href="#s1"></a>
-                        <a href="#s2"></a>
-                        <a href="#s3"></a>
-                        
+                            <a href="#s1"></a>
+                            <a href="#s2"></a>
+                            <a href="#s3"></a>
                         </div>
-
-                        </div>
-                    
+        
                     </div>
-                    <div class="modal-text">
-                        <div class="modal-text-container">
-                            <div class="Titulo">
-                                <h2>{{$producto->nombre}} 
-                                </h2>
-                                @include('store.ratings',['producto'=>$producto])
-                            </div>1
-                            <div class="Precio">
-                                <h4>{{$producto->precio}}</h4>
-                            </div>
-                            <div class="descripcion">
-                                <p>{{($producto->descripcion)}}</p>
-                            </div>                              
-                            <div style="margin-top: -90px;" class="cantidad">
-                                {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
-                                    <input type="hidden" name="id_combo" value="{{$producto->id}}">    
-                                    <div class="quantity">
-                                        <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
-                                    </div>       
-                                    <button class="ag-carrito"> <span>Agregar al carrito </span></button>
-                                {!! Form::close() !!}  
-                                <button class="ca-ahora"> <span> Comprar ahora </span></button>
-                            </div> 
+                
+                </div>
+                <div class="modal-text">
+                    <div class="modal-text-container">
+                        <div class="Titulo">
+                            <h2>{{$producto->nombre}} 
+                            </h2>
+                            @include('store.ratings',['producto'=>$producto])
+                        </div>1
+                        <div class="Precio">
+                            <h4>{{$producto->precio}}</h4>
+                        </div>
+                        <div class="descripcion">
+                            <p>{{($producto->descripcion)}}</p>
+                        </div>                              
+                        <div style="margin-top: -90px;" class="cantidad">
+                            {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
+                                <input type="hidden" name="id_combo" value="{{$producto->id}}">    
+                                <div class="quantity">
+                                    <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
+                                </div>       
+                                <button class="ag-carrito"> <span>Agregar al carrito </span></button>
+                            {!! Form::close() !!}  
+                            <button class="ca-ahora"> <span> Comprar ahora </span></button>
+                        </div> 
                     </div>
                 </div>
-            </div>      
-                        
-    </div>
-    
-  @endforeach
-  
-{!! $productos->links() !!}
-   
-  <script src="{{asset('js/modal.js')}}"></script>
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
-    <script>
-        var productos = new Bloodhound({
-          datumTokenizer: Bloodhound.tokenizers.whitespace,
-          queryTokenizer: Bloodhound.tokenizers.whitespace,
-          prefetch:"{{route('productos.json')}}"
-        });
-        $('#search_product').typeahead({
-          hint: true,
+            </div>             
+        </div>
+    @endforeach    
+</div>
+<script src="{{asset('js/modal.js')}}"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
+<script>
+    var productos = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch:"{{route('productos.json')}}"
+    });
+    $('#search_product').typeahead({
+        hint: true,
           highlight: true,
           minLength: 1
         },
         {
-          name:'productos',
-          source:productos
+            name:'productos',
+            source:productos
         }).on('typehead:selected',function(event,selection){
-          $('#form_search_products').submit();
+            $('#form_search_products').submit();
         });
-    </script>
-</div>
+</script>
+{!! $productos->links() !!}
 @endsection
