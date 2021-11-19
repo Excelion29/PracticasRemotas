@@ -181,6 +181,7 @@ return [
         JeroenNoten\LaravelAdminLte\AdminLteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
       ],
     /*
     |--------------------------------------------------------------------------

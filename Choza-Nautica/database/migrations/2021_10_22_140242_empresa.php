@@ -23,8 +23,8 @@ class Empresa extends Migration
             $table->string('horarios');
             $table->string('ruc');
             $table->string('correo');
-            $table->decimal('latitud');
-            $table->decimal('longitud');
+            $table->string('latitud');
+            $table->string('longitud');
             $table->string('google_maps_link');
             $table->timestamps();
         });

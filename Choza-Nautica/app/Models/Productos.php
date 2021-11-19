@@ -14,12 +14,17 @@ class Productos extends Model
         'estado',
         'nombre',
         'precio',
+        'cantidad',
         'foto2',
         'foto3',
         'created_at',
         'id_categoria',
     ];
 
+    public function add_stock(){
+    }
+    public function diminish_stock(){
+    }
     public function categorias(){
         return $this->belongsTo(categorias::class,'id_categoria');
     }
