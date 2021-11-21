@@ -15,7 +15,16 @@ class CreatePromocionesTable extends Migration
     {
         Schema::create('promociones', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->decimal('descuento')->nullable();
+            $table->float('descuento_fijo')->nullable();  
+            $table->string('tipo');  
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_final');
+            $table->unsignedBigInteger('id_administrador'); 
+            $table->timestamp('date_created');  
             $table->timestamps();
+            $table->foreign('id_administrador')->references('id')->on('Users');
         });
     }
 

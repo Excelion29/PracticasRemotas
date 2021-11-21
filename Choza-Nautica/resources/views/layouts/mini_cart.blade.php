@@ -1,5 +1,5 @@
 
-    <div class="modals2" id="carrito" style="display:none;"> 
+    <div class="modals2" id="carrito" style="display:bloack; position:fixed;"> 
     <ul class="cart-list">
         {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
 
@@ -13,7 +13,11 @@
             </div>
 
             <div class="cart-info">
-                <h4>Precio unitario: S/.<input name="precio[]" type="text" value="{{$order_detail->product->precio}}">
+                @if($order_detail->product->has_promociones())
+                    <h4>Precio unitario: S/.<input name="precio[]" type="text" value="{{$order_detail->product->getDiscountAttribute()}}">
+                @else 
+                    <h4>Precio unitario: S/.<input name="precio[]" type="text" value="{{$order_detail->product->precio}}">
+                @endif
                 <h4 class="quantity">Cantidad:
                     <input name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
                 </h4>
@@ -30,7 +34,7 @@
                 <h4 class="quantity">Cantidad:
                     <input name="cantidad[]" type="number" min="1" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
                 </h4>
-                <h4>Precio total:<span>S/.{{$order_detail->precio}}</span></h4>
+                <h4>Precio total:<span>S/.{{$order_detail->total()}}</span></h4>
             </div>
             @endif
 

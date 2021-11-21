@@ -16,7 +16,7 @@ class EmpleadosController extends Controller
     public function index(){
 
         $datos['users']= User::join('roles','roles.id','=','users.id_rol')
-        ->select('users.*','roles.nombre')
+        ->select('users.*','roles.nombre')->orderByDesc('id')
         ->where('users.id_rol','=','3')        
         ->where('users.estado','=','1')
         ->paginate(5);

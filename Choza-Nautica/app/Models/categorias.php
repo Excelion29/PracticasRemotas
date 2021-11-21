@@ -15,7 +15,6 @@ class categorias extends Model
         'created_at',
         
     ];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

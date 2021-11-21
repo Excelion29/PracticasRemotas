@@ -1,9 +1,9 @@
 @extends('Admin.index')
-@extends('layouts.js')
 @section('template_title')
-    Productos
+Productos
 @endsection
 @section('content')
+@extends('layouts.js')
 <div class="alert alert-succes alert-dismissible" role="alert">
     @if(Session::get('mensaje')){{
         Session::get('mensaje')

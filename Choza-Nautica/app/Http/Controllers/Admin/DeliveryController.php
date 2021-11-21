@@ -15,7 +15,7 @@ class DeliveryController extends Controller
     public function index()
     {
         $datos['Costo_x_deliverys']=Costo_x_deliverys::join('users','users.id','=','Costo_x_deliverys.id_administrador')
-        ->select('Costo_x_deliverys.*','users.name')
+        ->select('Costo_x_deliverys.*','users.name')->orderByDesc('id')
         ->paginate(5);
         return view('admin.Delivery.index',$datos);
     }

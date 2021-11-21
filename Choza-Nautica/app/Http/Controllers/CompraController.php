@@ -13,7 +13,7 @@ class CompraController extends Controller
         $this->middleware('admin');
     }
     public function index(){
-        $compras=Compra::select('compras.*')
+        $compras=Compra::select()->orderByDesc('id')
         ->paginate(5);
 
         return view('admin.Ordenes.index',compact('compras'));

@@ -258,7 +258,7 @@ return [
             'url'  => 'dashboard/empresa',
             'icon' => 'far fa-building',
         ],
-        ['header' => 'Administración de mercado'],
+        ['header' => 'Administración de productos'],
         [
             'text'    => 'Tienda',
             'icon'    => 'fas fa-store',
@@ -274,7 +274,7 @@ return [
                     'icon' => 'fas fa-clipboard-list',
                 ],
                 [
-                    'text' => 'Productos',
+                    'text' => 'Platos',
                     'url'  => 'dashboard/productos',
                     'icon' => 'fas fa-clipboard-list',
                 ],
@@ -342,6 +342,11 @@ return [
                     'text' => 'Tarifas por distritos',
                     'icon' => 'fas fa-globe-americas',
                     'url'  => 'dashboard/Delivery',
+                ],
+                [
+                    'text' => 'Promociones',
+                    'icon' => 'fas fa-globe-americas',
+                    'url'  => 'dashboard/promociones',
                 ],
                 [
                     'text' => 'Ordenes',

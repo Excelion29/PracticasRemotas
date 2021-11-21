@@ -66,11 +66,11 @@
         $.fn.editable.defaults.ajaxOptions = {type: "PUT"};
         $('.editable').editable({
         source: [
-        {value: 'VÁLIDO', text: 'VÁLIDO'},
-        {value: 'PENDIENTE', text: 'PENDIENTE'},
-        {value: 'EN CAMINO', text: 'EN CAMINO'},
-        {value: 'ENTREGADO', text: 'ENTREGADO'},
-        {value: 'CANCELADO', text: 'CANCELADO'}
+          {value: 'PENDIENTE', text: 'PENDIENTE'},
+          {value: 'VÁLIDO', text: 'VÁLIDO'},
+          {value: 'EN CAMINO', text: 'EN CAMINO'},
+          {value: 'ENTREGADO', text: 'ENTREGADO'},
+          {value: 'CANCELADO', text: 'CANCELADO'}
         ],
         });
     </script>

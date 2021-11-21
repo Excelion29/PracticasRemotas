@@ -16,7 +16,7 @@ class MesaController extends Controller
     public function index(){
 
         $datos['mesas']=Mesas::join('users','users.id','=','mesas.id_administrador')
-        ->select('mesas.*','users.name')
+        ->select('mesas.*','users.name')->orderByDesc('id')
         ->paginate(5);
 
         return view('admin.Mesas.index',$datos);

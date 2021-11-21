@@ -111,3 +111,4 @@ class Compra extends Model
         $compra->compras_detalles()->createMany($results);
     }
 }
+

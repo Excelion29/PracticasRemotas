@@ -16,8 +16,11 @@
                                 </script>
                             </div>
                         </div>
+                        @if($rating_Producto->has_promociones())
+                        <span class="text-muted">S/. {{$rating_Producto->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$rating_Producto->precio}}</span></span>
+                        @else 
                         <span class="text-muted">S/. {{$rating_Producto->precio}}</span>
-                    
+                        @endif
                     </figcaption>
                 </figure>
             </li>
@@ -33,7 +36,11 @@
                     <div class="aside"><img src="{{asset('storage').'/'.$sale_Producto->foto}}" width="50px"  class="img-sm border"></div>
                     <figcaption class="info align-self-center">
                         <p class=""> <a href="{{url('/products_calificar/'.$sale_Producto->id)}}"> {{$sale_Producto->nombre}}</a></p> 
-                         <span class="text-muted">S/. {{$sale_Producto->precio}}</span>
+                        @if($sale_Producto->has_promociones())
+                        <span class="text-muted">S/. {{$sale_Producto->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$sale_Producto->precio}}</span></span>
+                        @else 
+                        <span class="text-muted">S/. {{$sale_Producto->precio}}</span>
+                        @endif
                     </figcaption>
                 </figure>
             </li>
@@ -49,7 +56,11 @@
                     <div class="aside"><img src="{{asset('storage').'/'.$producto_nuevo->foto}}" width="50px"  class="img-sm border"></div>
                     <figcaption class="info align-self-center">
                         <p class=""> <a href="{{url('/products_calificar/'.$producto_nuevo->id)}}"> {{$producto_nuevo->nombre}}</a></p> 
+                        @if($producto_nuevo->has_promociones())
+                        <span class="text-muted">S/. {{$producto_nuevo->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$producto_nuevo->precio}}</span></span>
+                        @else 
                         <span class="text-muted">S/. {{$producto_nuevo->precio}}</span>
+                        @endif
                     </figcaption>
                 </figure>
             </li>

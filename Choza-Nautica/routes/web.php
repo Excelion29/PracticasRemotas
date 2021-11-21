@@ -25,6 +25,7 @@ use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ObtenerOrder;
 use App\Http\Controllers\PaymentVistaController;
+use App\Http\Controllers\PromocionesController;
 use App\Models\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -80,7 +81,7 @@ Route::get('mis_deseos',[MyAccountController::class,'mis_deseos'])->name('mis_de
 Route::get('pagar',[MyAccountController::class,'pagar'])->name('shop.index');
 Route::get('my_perfil',[MyAccountController::class,'my_perfil'])->name('my_perfil');           
 Route::get('change_password',[MyAccountController::class,'change_password'])->name('change_password');
-
+Route::get('mis_ordenes_detalles/{compra}', [MyAccountController::class,'show'])->name('Mis_detalles_orders.show');
 Route::put('update_password/{user}/update',[UsersController::class,'update_password'])->name('update_password');
 Route::put('update_perfil/{user}/update',[UsersController::class,'update_perfil'])->name('update_perfil');
 
@@ -101,6 +102,7 @@ Route::resource('dashboard/combos', CombosController::class);
 Route::resource('dashboard/productos', ProductosController::class);
 Route::resource('dashboard/Delivery', DeliveryController::class);
 Route::resource('dashboard/mesas', MesaController::class);
+Route::resource('dashboard/promociones', PromocionesController::class)->names('promociones');
 Route::resource('dashboard/empresa',EmpresaController::class)->names('empresa.index');
 
 Route::get('dashboard/Ordenes', [CompraController::class,'index'])->name('admin_orders.index');

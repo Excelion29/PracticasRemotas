@@ -48,19 +48,27 @@
         <div class="col l4 m8 s12 offset-m2">
             <div class="product-card">
                 <div class="card ">
-                    <div class="card-image">
-                        <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">S/.{{$producto->precio}}</a>
+                    <div class="card-image">                        
+                        @if($producto->has_promociones())
+                        <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">{{$producto->getTotalDiscountAttribute()}}%</a>
+                        @else
+                        @endisset
                         <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 400px;">
                         <span class="card-title"><span>{{$producto->nombre}}</span></span>
                     </div>
                     <ul class="card-action-buttons">
                         <li><a id="buy" href="{{route('store_a_product',$producto)}}" class="btn-floating waves-effect waves-light blue"><i class="material-icons buy">add_shopping_cart</i></a>
-                    
+
                         </li>
                     </ul>
                     <div class="card-content">
                         <div class="row">
                             <div class="col s12">
+                                @if($producto->has_promociones())
+                                <h4><span>S/.{{$producto->getDiscountAttribute()}}</span>  <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>
+                                @else
+                                <h4><span>S/.{{$producto->precio}}</span></h4>
+                                @endisset
                                 <p>
                                     <strong>Descripcion:</strong> <br />
                                     {{substr($producto->descripcion,0,80)}}...
@@ -128,15 +136,19 @@
                             </h2>
                             @include('store.ratings',['producto'=>$producto])
                         </div>1
-                        <div class="Precio">
-                            <h4>{{$producto->precio}}</h4>
+                        <div class="Precio">     
+                            @if($producto->has_promociones())                           
+                                <h4><span>S/.{{$producto->getDiscountAttribute()}}</span> <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>   
+                            @else 
+                                <h4><span>S/.{{$producto->precio}}</span></h4> 
+                            @endif
                         </div>
                         <div class="descripcion">
                             <p>{{($producto->descripcion)}}</p>
                         </div>                              
                         <div style="margin-top: -90px;" class="cantidad">
                             {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
-                                <input type="hidden" name="id_combo" value="{{$producto->id}}">    
+                                <input type="hidden" name="id_producto" value="{{$producto->id}}">    
                                 <div class="quantity">
                                     <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
                                 </div>       

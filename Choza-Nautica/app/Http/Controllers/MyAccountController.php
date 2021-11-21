@@ -41,10 +41,10 @@ class MyAccountController extends Controller
         $perfil = auth()->user();  
         return view('MyAccount.change_pasword',compact('perfil'));
     }
-    public function show(Compra $orden){
-        $user = $orden->user;
-        $detalles = $orden->compras_detalles;
-        return view('MyAccount.order_detaills',compact('orden','user','detalles'));
+    public function show(Compra $compra){
+        $user = $compra->user;
+        $detalles = $compra->compras_detalles;
+        return view('MyAccount.order_detaills',compact('compra','user','detalles'));
     }
 }
 

@@ -43,7 +43,10 @@
         <div class="product-card">
             <div class="card ">
                 <div class="card-image">
-                    <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">S/.{{$productos->precio}}</a>
+                    @if($productos->has_promociones())
+                    <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">{{$productos->getTotalDiscountAttribute()}}%</a>
+                    @else 
+                    @endif
                     <img src="{{asset('storage').'/'.$productos->foto2}}" alt="product-img" style="height: 400px;">
                     <span class="card-title"><span>{{$productos->nombre}}</span>
                     <div class="ratings">
@@ -62,8 +65,13 @@
                 </ul>
                 <div class="card-content">
                     <div class="row">
-                        <div class="col s12">
+                        <div class="col s12">                            
                             <p>
+                                @if($productos->has_promociones())
+                                <h4><span>S/.{{$productos->getDiscountAttribute()}}</span>  <span style="text-decoration: line-through;">S/.{{$productos->precio}}</span></h4>
+                                @else
+                                <h4><span>S/.{{$productos->precio}}</span></h4>
+                                @endisset
                                 <strong>Descripcion:</strong> <br />
                                 {{substr($productos->descripcion,0,80)}}...
                             </p>
