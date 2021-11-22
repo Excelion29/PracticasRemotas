@@ -71,7 +71,6 @@
                 <td>{{$promocion->updated_at}}</td>
                 <td>
                     <a class="btn btn-warning" href="{{route('promociones.edit',$promocion)}}"><i class="fas fa-edit"></i></a>
-
                     <form class="d-inline"  action="{{ url('dashboard/promociones/'.$promocion->id)  }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}

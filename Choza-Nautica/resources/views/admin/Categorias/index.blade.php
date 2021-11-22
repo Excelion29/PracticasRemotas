@@ -55,7 +55,7 @@
                 <td>{{$id}}</td>
                 <td>{{$categoria->nombre}}</td>
                 <td>{{substr($categoria->descripcion,0,80)}}......</td>
-                <td>{{$categoria->name}}</td>
+                <td>{{$categoria->name}} {{$categoria->apellidos}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$categoria->foto}}"  width="100" alt=""></td>
                 <td>{{$categoria->date_created}}</td>
                 <td>{{$categoria->updated_at}}</td>

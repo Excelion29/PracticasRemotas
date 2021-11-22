@@ -5,7 +5,6 @@
 @endsection
 @section('content')
 
-
 <div class="alert alert-succes alert-dismissible" role="alert">
     @if(Session::get('mensaje')){{
      Session::get('mensaje')
@@ -16,6 +15,7 @@
      @else 
      @endif
 </div>
+
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -50,26 +50,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($combos as  $id=>$combo)
+                    @foreach ($combos as $id=>$combo)
                     <tr>
                         <td>{{$id}}</td>
                         <td>{{$combo->nombre}}</td>
                         <td>{{substr($combo->descripcion,0,80)}}......</td>
                         <td>S/.{{$combo->precio}}</td>
-                        <td>{{$combo->name}}</td>
+                        <td>{{$combo->name}} {{$combo->apellidos}}</td>
                         <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}" width="80px"></td>
                         <td>{{$combo->date_created}}</td>
                         <td>{{$combo->updated_at}}</td>
                         <td>
                             @if ($combo->estado == 1)
-                                <a class="btn btn-success" href="{{route('change.status.combos',$combo)}}">Activa</a>
+                                <a class="btn btn-success" href="{{route('change_status.combos',$combo)}}">Activa</a>
                                 @else
-                                <a class="btn btn-danger" href="{{route('change.status.combos',$combo)}}">Inactiva</a>
+                                <a class="btn btn-danger" href="{{route('change_status.combos',$combo)}}">Inactiva</a>
                             @endif 
                         </td>
                         <td>
-                            <a class="btn btn-warning" href="{{url('dashboard/combos/'.$combo->id.'/edit')}}"><i class="fas fa-edit"></i></a>
-                            <form class="d-inline"  action="{{ url('dashboard/combos/'.$combo->id)  }}" method="POST">
+                            <a class="btn btn-warning" href="{{route('combos_prod.edit',$combo)}}"><i class="fas fa-edit"></i></a>
+                            <form class="d-inline"  action="{{ url('dashboard/combos/'.$combo->id)}}" method="POST">
                                 @csrf 
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro de borrarlo?')"><i class="far fa-trash-alt"></i></button>

@@ -13,16 +13,16 @@ class ProductosXCombo extends Migration
      */
     public function up()
     {
-        Schema::create('Productos_x_combo', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_producto');
-            $table->unsignedBigInteger('id_combo'); 
+        Schema::create('combos_productos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('productos_id')->nullable();
+            $table->unsignedBigInteger('combos_id');
              
-            $table->timestamp('date_created');           
+            
+            $table->foreign('productos_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('combos_id')->references('id')->on('Combos')->onDelete('cascade')->onUpdate('cascade');
+         
             $table->timestamps();
-
-            $table->foreign('id_producto')->references('id')->on('productos');
-            $table->foreign('id_combo')->references('id')->on('Combos');
         });
     }
 
@@ -33,6 +33,6 @@ class ProductosXCombo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Productos_x_combo');
+        Schema::dropIfExists('combos_productos');
     }
 }
