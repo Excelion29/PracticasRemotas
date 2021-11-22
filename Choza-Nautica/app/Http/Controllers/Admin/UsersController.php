@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 Use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -45,13 +46,13 @@ class UsersController extends Controller
 
         // $datosCategorias = request()->all();
         $datosCliente = request()->except('_token','enviar');
-        User::insert([
+        User::create([
             'name' => $datosCliente['name'],
             'apellidos' => $datosCliente['apellidos'],
-            'celular' => $datosCliente['celular'],
             'email' => $datosCliente['email'],
             'password' => Hash::make($datosCliente['password']),
-        ]);
+            'created_at' => Carbon::now()
+        ])->cliente()->create();
         // return response()->json($datosCategorias);
         return redirect('dashboard/cliente')->with('mensaje','Cliente creado!');
     }

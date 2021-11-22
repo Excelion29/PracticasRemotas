@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 Use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,6 @@ class AdministradoresController extends Controller
              'name'=>'required|string|max:100',
              'apellidos'=>'required|string|max:1500',
              'email'=>'required|string|max:1500',
-             'celular'=>'required|string|max:1500',
              'password'=>'required|string|max:1500',
              'id_rol'=>'required|string|max:1500',
          ];
@@ -47,14 +47,14 @@ class AdministradoresController extends Controller
 
         // $datosCategorias = request()->all();
         $datosCliente = request()->except('_token','enviar');
-        User::insert([
+        User::create([
             'id_rol' => 1,
             'name' => $datosCliente['name'],
             'apellidos' => $datosCliente['apellidos'],
-            'celular' => $datosCliente['celular'],
             'email' => $datosCliente['email'],
             'password' => Hash::make($datosCliente['password']),
-        ]);
+            'created_at' => Carbon::now()
+        ])->cliente()->create();
         // return response()->json($datosCategorias);
         
         return redirect('dashboard/administrador')->with('mensaje','Administrador creado!');

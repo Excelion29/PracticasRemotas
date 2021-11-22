@@ -21,7 +21,6 @@
                     <th>Rol</th>                    
                     <th>Nombre</th>
                     <th>Apellidos</th>
-                    <th>Nro. Celular</th>
                     <th>Email</th>
                     <th>Creado</th>
                     <th>Actualizado</th>
@@ -34,7 +33,6 @@
                         <td style="background:{{$modo}}; color:white;">{{$user->nombre}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->apellidos}}</td>
-                        <td>{{$user->celular}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->updated_at}}</td>
@@ -81,11 +79,6 @@
                         <div class="form-group">
                             <label for="apellidos">Apellidos</label>
                             <input type="text" class="form-control" name="apellidos" value="{{ isset($users->apellidos)?$users->apellidos:old('apellidos')}}" id="apellidos" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="celular">Nro Celular</label>
-                            <input type="text" class="form-control" name="celular" value="{{ isset($users->celular)?$users->celular:old('celular')}}" id="celular" required>
                         </div>
 
                         <div class="form-group">

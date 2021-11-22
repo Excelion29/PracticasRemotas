@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,14 +45,14 @@ class EmpleadosController extends Controller
 
         // $datosCategorias = request()->all();
         $datosCliente = request()->except('_token','enviar');
-        User::insert([
+        User::create([
             'id_rol' => 3,
             'name' => $datosCliente['name'],
             'apellidos' => $datosCliente['apellidos'],
-            'celular' => $datosCliente['celular'],
             'email' => $datosCliente['email'],
             'password' => Hash::make($datosCliente['password']),
-        ]);
+            'created_at' => Carbon::now()
+        ])->cliente()->create();
         // return response()->json($datosCategorias);
         return redirect('dashboard/empleado')->with('mensaje','Empleado creado!');
     }
