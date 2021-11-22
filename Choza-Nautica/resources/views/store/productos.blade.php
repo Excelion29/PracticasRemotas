@@ -2,38 +2,37 @@
 @section('title', 'Orden' )
 
 @section('content')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
-        <h2>Las mejores </h2>
+        <h2>Los mejores </h2>
         <span id="asterisk">*</span>
         <p>Productos para ti</p>
       </div>
     </div> 
 
 
-    <div style="margin-left:45px;width:100%;">
-        <div style="width:200px;">
-            <form action="{{route('search_products')}}" id="form_search_products" method="GET">
-                <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos">
-                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-              </form>
-        </div>
-      </div>
+    <div class="wrap" >
+      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
+      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+      <input type="submit" class="search-imput">
+      </form>
+    </div>
+
 <div class="row">
   
     
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
             <tr>
-                <th>Categorias</th>
+             <p class="titulo">CATEGORIAS</p>
             </tr>
             </thead>
             <tbody>
                 @foreach ($categorias_provider as $categoria_provider)
                 <tr>
-                    <td scope="row"><a href="{{url('/products/'.$categoria_provider->id)}}">{{$categoria_provider->nombre}}</a></td>
+                   <p class="titulo">{{$categoria_provider->nombre}}</p>
                 </tr>
                 @endforeach
             </tbody>

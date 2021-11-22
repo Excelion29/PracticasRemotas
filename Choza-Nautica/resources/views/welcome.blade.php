@@ -4,6 +4,7 @@
   
   @section('content')
       <!-- Contenido -->
+      
       <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://images6.alphacoders.com/366/366291.jpg)peat  no-recenter center;">
       <div class="center">
         <h1 class="alex-brush"></h1>
@@ -13,14 +14,17 @@
       </div>
     </div>
 
-    <section class="">
-      <div class="center-text">
-        <form action="{{route('search_products')}}" id="form_search_products" method="GET">
-          <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos">
-          <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-    </section>
+
+    
+    
+    <div class="wrap">
+      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
+      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+      <input type="submit" class="search-imput">
+      </form>
+    </div>
+
+    
     <section class="add-padding add-flex">
       <div class="center-text">
         <h1 class="alex-brush"><span class="custom-font">Nuestra</span><br />Comida</h1>

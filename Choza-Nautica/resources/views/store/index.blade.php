@@ -3,6 +3,7 @@
 @section('title', 'Orden' )
 
 @section('content')
+
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
@@ -10,15 +11,15 @@
         <span id="asterisk">*</span>
         <p>Categorias para ti</p>
       </div>
-    </div>    
-<div style="margin-left:45px;width:100%;">
-  <div style="width:200px;">
-    <form action="{{route('search_categorias')}}" id="form_search_category" method="GET">
-      <input type="text" name="search_category" id="search_category" placeholder="Buscar Categorias">
-      <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
+    </div>  
+    
+    
+    <div class="wrap">
+      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
+      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+      <input type="submit" class="search-imput">
+      </form>
+    </div>
 
 <div class="contenedor-u">
   <div class="contenedor-comida">

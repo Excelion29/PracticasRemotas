@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="{{asset('css/product.css')}}">
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
@@ -89,8 +90,8 @@
                                 <div class="mini-cart-btn">
                                     <i class="fa fa-shopping-cart"></i>
                                     @if ($cart->quantity_of_products() != 0)
-                                    <span> 
-                                    class="cart-notificacion">{{$cart->quantity_of_products()}}
+                                    <span class="cart-notificacion">{{$cart->quantity_of_products()}} 
+                                    
                                     </span>
                                     @else                    
                                     <span class="cart-notificacion">0</span>
@@ -105,7 +106,7 @@
                     @include('layouts.mini_cart')
                 </li>
 
-                <ul class="navbar-nav ml-auto">
+                <li class="">
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
@@ -122,24 +123,31 @@
                             @endif
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-user">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('mi_cuenta')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
+                           
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                            <svg class="svg-triangle" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.54 107"><defs></defs><title>triangulos</title><polygon class="triangle" points="1.17 106.5 102.77 0.72 204.36 106.5 1.17 106.5"/><path class="triangle-2"  d="M503.47,249.44,603.89,354H403.05L503.47,249.44m0-1.44L400.7,355H606.24L503.47,248Z" transform="translate(-400.7 -248)"/></svg>
+                            <ul class="cont-nav-user">
+                            <li><a href="{{ route('mi_cuenta') }}">Ayuda</a></li>
+                            <li><a href="{{ route('my_perfil') }}">Detalles de la cuenta</a></li>
+                            <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li>
+                            <li><a href="{{ route('my_orders') }}">Pedidos</a></li>
+                            <li><a href="{{ route('my_reserves') }}">Reservaciones</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                </li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+                            </ul>
+                                
                             </div>
                         </li>
                     @endguest
-                </ul>
+                </li>
             </ul>
            
         </div>  
@@ -149,13 +157,14 @@
                         
                         <div class="container-carrito">
                            
-                            <p class="closeC">X</p>
+                            <p class="closeC"><i class="fas fa-times"></i></p>
                             
                                 <div class="content-carrito ">
                                 <div class="title-cont">
-                                <p class="title">Carrito de Compra </p> 
-                                           </div>
+                                <p class="title">Carrito de compra </p> 
+                                </div>
                                 <div class="content-pedidosge">
+                                    {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
                                     @if ($cart->quantity_of_products() != 0)
                                     @foreach ($cart->order_details as $order_detail)
                                     @if($order_detail->id_producto!='')
@@ -165,11 +174,18 @@
                                             <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
                                             
                                             <div class="tit_content">{{$order_detail->product->nombre}}</div>
-                                            
-                                            <div class="cant_content">
-                                                <input name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
-                                            </div>
-                                            <div class="pre_content">{{$order_detail->product->precio}} </div>
+                                                <div class="cyp">
+                                                    <div class="cant_content">
+                                                        <button class="menos">
+                                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20"><path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path></svg>
+                                                        <span class="icon__fallback-text" aria-hidden="true">−</span>
+                                                        </button>
+                                                        <input class="inputnum" name="cantidad[]" type="number" min="0" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                                        <button class="mas"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20"><path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path></svg>
+                                                        <span class="icon__fallback-text" aria-hidden="true">+</span></button>
+                                                    </div>
+                                                    <div class="pre_content">{{$order_detail->product->precio}} </div>
+                                                </div>
                                         </div>
                                    
                                         @elseif($order_detail->id_combo!='')
@@ -188,11 +204,22 @@
                                         </div>
                                     @endif
                                     @endforeach
-                                    @endif
-                                    </div> 
-                                        <div class="content-footer">
-                                        <div> </div>
+                                    <div class="btn-actualizar">
+                                    <button type="submit" ><i class="fas fa-redo-alt"></i></button>
+                                        
+                                    </div>
+                                    {!! Form::close() !!}
+                                    </div>
+                                    <div class="content-footer">
+                                            
+                                            <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/.{{$cart->total_price()}}.00</p></div>
+                                            <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
+                                            <div class="btnfip"><button class="realizar"> <a href="{{route('shop.index')}}">Finalizar pedido</a> </button></div>
+                                        
                                         </div>
+                                    @endif
+                                    </div>
+                                        
                                         
                                    
                                 </div>

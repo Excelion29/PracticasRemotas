@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 
     <div class="modals2" id="carrito" style="display:none"> 
-=======
-    <div class="modal" id="carrito"> 
->>>>>>> a094395a8f7368f555c4824a60998681c276d24a
     <ul class="cart-list">
         {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
 

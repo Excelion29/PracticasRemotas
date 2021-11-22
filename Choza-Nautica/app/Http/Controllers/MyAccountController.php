@@ -41,6 +41,10 @@ class MyAccountController extends Controller
         $perfil = auth()->user();  
         return view('MyAccount.change_pasword',compact('perfil'));
     }
+    public function change_profile(){
+        $perfil = auth()->user();
+        return view('MyAccount.change_profile',compact('perfil'));
+    }
     public function show(Compra $orden){
         $user = $orden->user;
         $detalles = $orden->compras_detalles;
