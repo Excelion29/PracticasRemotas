@@ -78,7 +78,7 @@ Productos
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
                 <td>{{$producto->cantidad}}</td>
                 <td>{{$producto->categoria}}</td>
-                <td>{{$producto->name}}</td>
+                <td>{{$producto->name}} {{$producto->apellidos}}</td>
                 <td>{{$producto->date_created}}</td>
                 <td>{{$producto->updated_at}}</td>
                 <td>

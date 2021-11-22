@@ -28,6 +28,9 @@ class Productos extends Model
     public function promociones(){
        return $this->belongsToMany(Promociones::class);
     }
+    public function combos(){
+        return $this->belongsToMany(combos::class);
+    }
     public function getTotalDiscountAttribute(){
         $total_porcentage = 0;
         $monto_total =0;

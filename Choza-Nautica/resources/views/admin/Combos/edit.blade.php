@@ -1,10 +1,8 @@
 @extends('Admin.index')
 @section('content')
 <div class="container">
-<form action="{{url('dashboard/combos/'.$combos->id)}}" method="POST" enctype="multipart/form-data">
-    @csrf    
-    {{method_field('PATCH')}}
-    @include('admin/Combos.form',['modo'=>'Editar'])
-</form>
+    {!! Form::model($combo,['route'=>['combos_prod.update',$combo],'method'=>'PUT']) !!}
+        @include('admin/Combos.form',['modo'=>'Editar'])
+    {!! Form::close() !!}
 </div>
 @endsection

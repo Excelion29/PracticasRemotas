@@ -17,8 +17,7 @@ class CreateProductPromocionesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('productos_id')->nullable();
             $table->foreign('productos_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('Combos_id')->nullable();
-            $table->foreign('Combos_id')->references('id')->on('Combos');
+
             $table->unsignedBigInteger('promociones_id'); 
             $table->foreign('promociones_id')->references('id')->on('promociones')->onDelete('cascade')->onUpdate('cascade');
             

@@ -34,7 +34,7 @@
                 <h4 class="quantity">Cantidad:
                     <input name="cantidad[]" type="number" min="1" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
                 </h4>
-                <h4>Precio total:<span>S/.{{$order_detail->total()}}</span></h4>
+                <h4>Precio total:<span>S/.{{$order_detail->precio}}</span></h4>
             </div>
             @endif
 

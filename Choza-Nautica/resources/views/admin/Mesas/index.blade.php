@@ -55,7 +55,7 @@
                 <td>{{$mesa->nombre}}</td>
                 <td>{{$mesa->capacidad}}</td>
                 <td>S/.{{$mesa->precio}}</td>
-                <td>{{$mesa->name}}</td>
+                <td>{{$mesa->name}} {{$mesa->apellidos}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$mesa->foto}}"  width="100" alt=""></td>
                 <th>{{$mesa->date_created}}</th>
                 <th>{{$mesa->updated_at}}</th>
