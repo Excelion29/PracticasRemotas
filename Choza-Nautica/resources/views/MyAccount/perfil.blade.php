@@ -1,64 +1,86 @@
 @extends('MyAccount.index')
 @section('content_ordenes')
-<fieldset>
-    <legend>Perfil de usuario</legend>
-    <div class="form-group">
-        <small id="helpId" class="text-muted">{{old('name',$perfil->name)}}</small>
+<link rel="stylesheet" href="{{asset('css/user.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+  <div class="row -spacing-a">
+    <div class="col-md-12">
+      <h1>Mi Perfil</h1>
     </div>
-    <div class="form-group">
-    <small id="helpId" class="text-muted">{{old('apellidos',$perfil->apellidos)}}</small></div>
-    <div class="form-group">
-        <small id="helpId" class="text-muted">{{old('email',$perfil->email)}}</small></div>
-    <div class="form-group">
-        <small id="helpId" class="text-muted">{{old('dni',$perfil->cliente->dni)}}</small></div>
-    <div class="form-group">
-        <small id="helpId" class="text-muted">{{old('ruc',$perfil->cliente->ruc)}}</small> </div>      
-    <div class="form-group">
-        <small id="helpId" class="text-muted">{{old('direccion',$perfil->cliente->direccion)}}</small></div>   
-    <div class="form-group">
-        <small id="helpId" class="text-muted">{{old('celular',$perfil->cliente->celular)}}</small>
-    </div>     
-    <button type="submit" class="btn btn-primary">Cambiar datos</button>
-</fieldset>
-{!! Form::model($perfil, ['route'=>['update_perfil',$perfil],'method'=>'PUT']) !!}
-    <fieldset>
-        <legend>Configuración de perfil</legend>
-        <div class="form-group">
-            <small id="helpId" class="text-muted">Nombre</small>
-            <input type="text" class="form-control" name="name" id="name" value="{{old('name',$perfil->name)}}" aria-describedby="helpId" placeholder="Nombre">
+  </div>
+  <div class="row -spacing-a">
+    <div class="col-md-4">
+      <div class="profile-image">
+        <img src="https://www.hola.com/imagenes/estar-bien/20190426140762/perro-huevo-pompom-gt/0-669-982/portada-pompom-t.jpg?filter=w600" class="fullwidth"/>
+        <div class="edit-profile-image">
+        <span class="edit-profile-image__information">
+          <span class="fa fa-camera"></span>
+          <span class="edit-profile-image__label">
+          Cambiar Foto
+          </span>
+        </span>
+      </div>
+      </div>
+      
+    </div>
+    <div class="col-md-8">
+      <h5>Información</h5>
+      <div class="row -spacing-b">
+        <div class="col-md-3">
+          <p class="-typo-copy">Nombre de Usuario</p>
+          <p class="-typo-copy">Nombres</p>
+          <p class="-typo-copy">Apellidos</p>
+          <p class="-typo-copy">Correo</p>
         </div>
-        <div class="form-group">
-        <small id="helpId" class="text-muted">Apellidos</small>
-        <input type="text" name="apellidos" id="apellidos" class="form-control" value="{{old('apellidos',$perfil->apellidos)}}" placeholder="Apellidos" aria-describedby="helpId">
+        <div class="col-md-3">
+          <p class="-typo-copy -typo-copy--blue">YSmith</p>
+          <p class="-typo-copy -typo-copy--blue">{{old('name',$perfil->name)}}</p>
+          <p class="-typo-copy -typo-copy--blue">{{old('apellidos',$perfil->apellidos)}}</p>
+          <p class="-typo-copy -typo-copy--blue">-</p>
+          <p class="-typo-copy -typo-copy--blue">{{old('email',$perfil->email)}}</p>
         </div>
-        <div class="form-group">
-            <small id="helpId" class="text-muted">Direccion de correo electrónico</small>
-            <input type="text" name="email" id="email" class="form-control" value="{{old('email',$perfil->email)}}" placeholder="Direccion de correo electrónico" aria-describedby="helpId">
+        <div class="col-md-3">
+          <p class="-typo-copy">Dirección</p>
+          <p class="-typo-copy">Número</p>
+          <p class="-typo-copy">DNI</p>
+          <p class="-typo-copy">RUC</p>
+          <p class="-typo-copy">Passwort</p>
+
+          
+          <button class="btn btn--green">
+            <span class="btn__icon fa fa-pencil"></span>
+            
+            <span class="btn__label"> <a href="{{ route('change_profile') }}">EDITAR PERFIL</a> </span>
+          </button>
+          <br>
+          <br>
+          <button class="btn btn--green">
+            <span class="btn__icon fa fa-pencil"></span>
+            <span class="btn__label"> <a href="{{ route('change_password') }}">Cambiar contraseña</a> </span>
+
+          </button>
+          
         </div>
-        <div class="form-group">
-            <small id="helpId" class="text-muted">DNI</small>
-            <input type="text" name="dni" id="dni" class="form-control" value="{{old('dni',$perfil->cliente->dni)}}" placeholder="DNI" aria-describedby="helpId">
+        <div class="col-md-3">
+        <p class="-typo-copy -typo-copy--blue">{{old('direccion',$perfil->cliente->direccion)}}</p>
+          <p class="-typo-copy -typo-copy--blue">{{old('celular',$perfil->cliente->celular)}}</p>
+          <p class="-typo-copy -typo-copy--blue">{{old('dni',$perfil->cliente->dni)}}</p>
+          <p class="-typo-copy -typo-copy--blue">{{old('ruc',$perfil->cliente->ruc)}}</p>
+          <p class="-typo-copy -typo-copy--blue">******</p>
         </div>
-        <div class="form-group">
-            <small id="helpId" class="text-muted">RUC</small>
-            <input type="text" name="ruc" id="ruc" class="form-control" value="{{old('ruc',$perfil->cliente->ruc)}}" placeholder="RUC" aria-describedby="helpId">
-        </div>      
-        <div class="form-group">
-            <small id="helpId" class="text-muted">Dirección</small>
-            <input type="text" name="direccion" id="direccion" class="form-control" value="{{old('direccion',$perfil->cliente->direccion)}}" placeholder="Dirección" aria-describedby="helpId">
-        </div>   
-        <div class="form-group">
-            <small id="helpId" class="text-muted">Celular</small>
-            <input type="text" name="celular" id="celular" class="form-control" value="{{old('celular',$perfil->cliente->celular)}}" placeholder="Celular" aria-describedby="helpId">
-        </div>     
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </fieldset>
-{!! Form::close() !!}
-<a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a>
+      </div>
+    </div>  
+  </div>
+</div>
+
 <style>
     .map_area_wrapper{
         display: none;
         }
     </style>
+
 @endsection
+
 

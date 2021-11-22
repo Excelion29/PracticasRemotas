@@ -1,4 +1,5 @@
 <div style="float: right;width: 15%;">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <fieldset>
         <legend>Platos destacados</legend>
         @foreach ($ratings_Productos as $rating_Producto)

@@ -1,5 +1,7 @@
-<h1>{{$modo}} delivery por distrito</h1>
 
+<div class="modal-header">
+    <h1>{{$modo}} delivery por distrito</h1>
+</div>
 @if(count($errors)>0)
 
 <div class="alert alert-danger" role="alert">
@@ -27,6 +29,9 @@
     <input type="number" class="form-control" name="precio" value="{{ isset($delivery->precio)?$delivery->precio:old('precio')}}" id="precio">
 </div>
 
-<input class="btn btn-success" type="submit" name="enviar" value="{{$modo}}"  id="enviar">
-<a class="btn btn-primary" href="{{url('dashboard/Delivery')}}">Cancelar</a>
-<br>
+
+<div class="modal-footer">
+    <input class="btn btn-success" type="submit" name="enviar" value="{{$modo}}"  id="enviar">
+    <a class="btn btn-primary" href="{{url('dashboard/Delivery')}}">Cancelar</a>
+    <br>
+</div>

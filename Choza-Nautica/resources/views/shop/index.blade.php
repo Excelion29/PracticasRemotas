@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.page')
 
 @section('title', 'Orden' )
 @section('content')
@@ -13,13 +13,18 @@
                       <h4>Informacion del contacto</h4>
                       <br>
                       @isset(auth()->user()->id_rol)
-                      <input type="text" disabled placeholder="Nombre" class="dates disabled" value="{{ Auth::user()->name }}" >
-                      <input type="text" disabled placeholder="Apellidos" class="dates" value="{{ Auth::user()->apellidos }}">
-                      <input type="email" disabled placeholder="Correo" class="dates" value="{{ Auth::user()->email }}">
+                      <input type="text"  placeholder="Nombre" class="dates disabled" value="{{ Auth::user()->name }}" >
+                      <input type="text"  placeholder="Apellidos" class="dates" value="{{ Auth::user()->apellidos }}">
+                      <input type="email" placeholder="Celular" value="{{Auth::user()->cliente->celular}}" class="dates">
+                      <input type="text"  placeholder="Correo" value="{{ Auth::user()->email }}" class="dates2">
+                      
                       @endisset
                       <br>
                       <br>
-                      {{-- <h4>Tipo de compra</h4>
+                      <a href="{{ route('my_perfil') }}">Cambiar Información de usuario</a>
+                      <br>
+                      <br>
+                      {{--<h4>Tipo de compra</h4>
                       <br>
                       <div class="cont-typec">
                           <div class="cont-typec_row">
@@ -46,15 +51,16 @@
                       <input type="email" placeholder="RUC O DNI" class="dates"> --}}
                       <h4>Información de envio</h4>
                       <br>
-                      <select name="" style="display: block;" id="" required>                      
-                        @foreach ($Costo_x_deliverys as $Costo_x_delivery)  
+                      <select name="Lugar de envio" style="display: block;" id="" required class="select_envio" >
+                      <option selected disabled>Distritos:</option>                      
+                        @foreach ($Costo_x_deliverys as $Costo_x_delivery)
                           <option value="{{$Costo_x_delivery->id}}">{{$Costo_x_delivery->Distrito}}</option>
                         @endforeach
                       </select>  
-                      <input disabled type="text"  placeholder="Dirección" value="{{Auth::user()->cliente->direccion}}" class="dates2">
-                      <input disabled type="email" placeholder="Celular" value="{{Auth::user()->cliente->celular}}" class="dates2">
+                      <input type="text"  placeholder="Dirección" value="{{Auth::user()->cliente->direccion}}" class="dates2">
+                      <input type="email" placeholder="Celular" value="{{Auth::user()->cliente->celular}}" class="dates2">
                       <br>
-                      <a href="{{ route('my_perfil') }}">Cambiar el lugar de envío</a>
+                      
                       <br> 
                       <br>
         
@@ -68,6 +74,7 @@
             
 
                       <div class="product-info"> 
+                        
                           @if ($cart->quantity_of_products() != 0)
                           @foreach ($cart->order_details as $order_detail)
                           @if($order_detail->id_producto!='')
@@ -126,7 +133,7 @@
                   <br>
                   <br>
                   <br>
-                  <form action="{{route('pay')}}" id="paymentForm" method="post">
+                  <form action="{{route('pay')}}" id="paymentForm" method="post" class="payment">
                     @csrf
                     <table>
                       <thead>

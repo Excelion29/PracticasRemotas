@@ -14,7 +14,7 @@
     <div class="left">
       <div class="content">
         <h2>Registrate</h2>
-        <form method="post" action="{{ route('register') }}" >
+        <form method="post" class="formreglog" action="{{ route('register') }}" >
             @csrf
           <div class="form-group">
             <input id="name" type="text" placeholder="Nombres" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus />
@@ -44,9 +44,9 @@
             <input id="password-confirm" type="password" placeholder="Confirma contraseña" name="password_confirmation" required autocomplete="new-password"/>
                                
           </div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
+            <div class="form-group"></div>
+            <div class="form-group"></div>
+            <div class="form-group"></div>
           <button id="goLeft" class="off">Login</button>
           <button  type="submit">Registro</button>
         </form>
@@ -56,7 +56,7 @@
     <div class="right">
       <div class="content">
         <h2>Ingresar</h2>
-        <form method="post"  action="{{ route('login') }}">
+        <form method="post" class="formreglog" action="{{ route('login') }}">
         @csrf
           <div class="form-group">
             <input input id="email" type="email"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus  placeholder="Correo" />

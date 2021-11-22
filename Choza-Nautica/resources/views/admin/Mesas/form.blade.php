@@ -1,5 +1,6 @@
-<h1>{{$modo}} mesas</h1>
-
+<div class="modal-header">
+    <h1>{{$modo}} mesas</h1>
+</div>
 @if(count($errors)>0)
 
 <div class="alert alert-danger" role="alert">
@@ -11,8 +12,8 @@
 
 </ul>
 
-@endif
 </div>
+@endif
 <div class="form-group">
     <label for="id_administrador">Admin</label>
     <input type="text" class="form-control" name="id_administrador" value="{{auth()->id()}}" id="id_administrador">
@@ -44,6 +45,8 @@
 </div>
 
 
+<div class="modal-footer">
     <input class="btn btn-success" type="submit" name="enviar" value="{{$modo}}"  id="enviar">
     <a class="btn btn-primary" href="{{url('dashboard/mesas')}}">Cancelar</a>
     <br>
+</div>

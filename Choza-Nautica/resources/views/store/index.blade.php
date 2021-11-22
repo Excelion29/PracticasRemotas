@@ -3,12 +3,14 @@
 @section('title', 'Orden' )
 
 @section('content')
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.css">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/css/star-rating.css')}}">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.css')}}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('bootstrap_star_rating/js/star-rating.js')}}"></script>
 <script src="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.js')}}"></script>
+
 <style>
   .row{
       margin-left: 0px;
@@ -30,15 +32,15 @@
         <span id="asterisk">*</span>
         <p>Categorias para ti</p>
       </div>
-    </div>    
-<div style="margin-left:45px;width:100%;">
-  <div style="width:200px;">
-    <form action="{{route('search_categorias')}}" id="form_search_category" method="GET">
-      <input type="text" name="search_category" id="search_category" placeholder="Buscar Categorias">
-      <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
+    </div>  
+    
+    
+    <div class="wrap">
+      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
+      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+      <input type="submit" class="search-imput">
+      </form>
+    </div>
 
 @include('store.productos_destacados')
 <div class="contenedor-u">

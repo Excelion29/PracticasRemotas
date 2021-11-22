@@ -2,7 +2,7 @@
 @section('title', 'Orden' )
 
 @section('content')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.css">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/css/star-rating.css')}}">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.css')}}">
@@ -12,7 +12,7 @@
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
-        <h2>Las mejores </h2>
+        <h2>Los mejores </h2>
         <span id="asterisk">*</span>
         <p>Productos para ti</p>
       </div>
