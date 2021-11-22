@@ -23,12 +23,12 @@ class combos extends Model
     public function productos(){
         return $this->belongsToMany(Productos::class);
     }
-    public static function store_combos($datosCombos){
-        $combos_prod = self::create($datosCombos);
-        $combos_prod->productos()->attach($datosCombos['productos']);
+    public static function store_combos($datosCombos,$request){
+        $combos_prod = self::create($datosCombos,$request);
+        $combos_prod->productos()->attach($request->productos);
     }
-    public function combos_update($datosCombos){
-        $this->update($datosCombos);
-        $this->productos()->sync($datosCombos['productos']);
+    public function combos_update($datosCombo,$request){
+        $this->update($datosCombo);
+        $this->productos()->sync($request->productos);
     }
 }

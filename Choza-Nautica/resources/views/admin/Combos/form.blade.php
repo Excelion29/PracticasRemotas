@@ -34,7 +34,7 @@
         <textarea type="text" class="form-control" name="descripcion" id="descripcion">{{ isset($combo->descripcion)?$combo->descripcion:old('descripcion')}}</textarea>
     </div>
     <div class="form-group col-md-6">
-        @if($combo->foto!="")
+        @if(isset($combo->foto))
             <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$combo->foto}}"  width="100" alt="" >
             <input type="file" class="form-control" name="foto" value='{{$combo->foto}}' id="foto">
         @else  

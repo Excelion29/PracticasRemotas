@@ -74,19 +74,12 @@ class Compra extends Model
         $compra->compras_detalles()->createMany($results);
         self::make_compra_notification($compra);
     }
-    static function make_compra_notification($compra){
-        event(new CompraEvent($compra));
-        // User::join('roles','roles.id','=','users.id_rol')
-        // ->whereIn('users.id_rol',[1,3])
-        // ->each(function(User $user) use ($compra){
-        //     $user->notify(new ComprasNotification($compra));
-        // });
-    }
+    
     public static function  my_store_contraentrega(){
         $cart = Cart::get_session_cart();
         $compra = self::create([
             'estado'=>'PENDIENTE',                
-            'direccion'=>auth()->user()->cliente->direccion,
+            'direccion'=>'',
             'estado_pago'=>'PENDIENTE',
             'created_at' => Carbon::now(),
             'user_id'=>auth()->user()->id,
@@ -109,6 +102,15 @@ class Compra extends Model
             }
         }
         $compra->compras_detalles()->createMany($results);
+        self::make_compra_notification($compra);
+    }
+    static function make_compra_notification($compra){
+        event(new CompraEvent($compra));
+        // User::join('roles','roles.id','=','users.id_rol')
+        // ->whereIn('users.id_rol',[1,3])
+        // ->each(function(User $user) use ($compra){
+        //     $user->notify(new ComprasNotification($compra));
+        // });
     }
 }
 

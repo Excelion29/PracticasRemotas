@@ -167,9 +167,7 @@
                                     {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
                                     @if ($cart->quantity_of_products() != 0)
                                     @foreach ($cart->order_details as $order_detail)
-                                    @if($order_detail->id_producto!='')
-                                        
-                                    
+                                    @if($order_detail->id_producto!='')                                    
                                         <div class="content-pedidos">
                                             <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
                                             
@@ -198,18 +196,35 @@
                                         </div>
                                    
                                         @elseif($order_detail->id_combo!='')
-                                        <div class="title-cont">
-                                            <p class="title">
-                                                Carrito de Compra 
-                                            </p>
+                                        <div class="content-pedidos">
+                                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
+                                            
+                                            <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                                            <div class="cant_content">Cantidad </div>
+                                            <div class="pre_content">Precio Producto </div>
                                         </div>
 
                                         <div class="content-pedidos">
-                                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->product->foto}}" alt=""></div>
+                                            <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->combo->foto}})no-repeat center center/cover">  </div>
                                             
-                                            <div class="tit_content">{{$order_detail->product->nombre}}</div>
-                                            <div class="cant_content">Cantidad </div>
-                                            <div class="pre_content">Precio Producto </div>
+                                            <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                                                <div class="cyp">
+                                                    <div class="cant_content">
+                                                        <button class="menos">
+                                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20"><path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path></svg>
+                                                        <span class="icon__fallback-text" aria-hidden="true">−</span>
+                                                        </button>
+                                                        <input class="inputnum" name="cantidad[]" type="number" min="0" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                                        <button class="mas"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20"><path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path></svg>
+                                                        <span class="icon__fallback-text" aria-hidden="true">+</span></button>
+                                                    </div>
+                                                    <div class="pre_content">S/. {{$order_detail->combo->precio}}</div>
+                                                    <br>
+                                                    <div class="pre_content">S/.{{$order_detail->precio}}</div>
+                                                    <div class="del-icon">
+                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times">sa</i></a>
+                                                    </div>
+                                                </div>
                                         </div>
                                     @endif
                                     @endforeach

@@ -19,7 +19,7 @@ class Combos extends Migration
             $table->string('nombre',150);
             $table->longText('descripcion');
             $table->decimal('precio',5,2); 
-            $table->string('foto');           
+            $table->string('foto')->nullable();           
             $table->boolean('estado')->default(1);
             $table->timestamp('date_created');  
             $table->timestamps();

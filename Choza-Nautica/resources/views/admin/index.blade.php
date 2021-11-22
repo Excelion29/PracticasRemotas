@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.cs">
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 <link rel="stylesheet" href="{{asset('css/switch.css')}}">
+
+{{-- Notificación carritos y shops --}}
     <ul class="navbar-nav ml-auto" style="z-index:190000;left: 1400px;
     top: 8px;position:absolute;display:flex;float:right;">
       <li class="nav-item dropdown">
@@ -44,6 +46,8 @@
         </div>
       </li>
     </ul>
+    
+{{--End Notificación carritos y shops --}}
 @endsection
 @section('content')
 

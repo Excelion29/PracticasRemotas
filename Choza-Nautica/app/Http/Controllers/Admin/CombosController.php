@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\combos;
 use App\Models\Productos;
 use Illuminate\Http\Request;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Storage;
 
 class CombosController extends Controller
@@ -46,8 +45,6 @@ class CombosController extends Controller
             'descripcion'=>'required|string|max:1500',
             'precio'=>'required',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
-            'productos'=>'required',
-            'foto'=>'required|max:10000|mimes:jpeg,png,jpg'
         ];
 
         $mensaje=[
@@ -62,7 +59,7 @@ class CombosController extends Controller
             $datosCombos['foto']=$request->file('foto')->store('uploads','public');
         }
         
-        $combo->store_combos($datosCombos);
+        $combo->store_combos($datosCombos,$request);
         // return response()->json($datosCategorias);
         return redirect('dashboard/combos')->with('mensaje','Combo creado!');
     }
@@ -82,26 +79,23 @@ class CombosController extends Controller
             'nombre'=>'required|string|max:100',
             'descripcion'=>'required|string|max:1500',
             'precio'=>'required',
-            'productos'=>'required',
-        ];
-        if($request->hasFile('foto')){
-            $campos=['foto'=>'required|max:10000|mimes:jpeg,png,jpg',];
-        }
-
+        ];  
+        
+        
         $mensaje=[
             'required'=>'Rellene el campo :attribute'
         ];
-
-        
         $this->validate($request,$campos,$mensaje);
-        $datosCombos = request()->except('_token','enviar','_method');
+
+        $datosCombo = request()->except('_token','enviar','_method');
         
         if($request->hasFile('foto')){
-            $field = combos::findOrFail($combo['id']);
-            Storage::delete('public/'.$field->foto);
-            $datosCombos['foto']=$request->file('foto')->store('uploads','public');
+            $campos=['foto'=>'required|max:10000|mimes:jpeg,png,jpg',];
+            $combo = combos::findOrFail($combo['id']);
+            Storage::delete('public/'.$combo->foto);
+            $datosCombo['foto']=$request->file('foto')->store('uploads','public');
         }
-        $combo->combos_update($datosCombos);
+        $combo->combos_update($datosCombo,$request);
         // return view('admin.categorias.edit', compact('categoria'));
         return redirect('dashboard/combos')->with('mensaje','Combo modificado!');
     }
