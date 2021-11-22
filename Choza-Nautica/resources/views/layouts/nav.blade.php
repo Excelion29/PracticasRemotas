@@ -131,7 +131,7 @@
 
                             <svg class="svg-triangle" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.54 107"><defs></defs><title>triangulos</title><polygon class="triangle" points="1.17 106.5 102.77 0.72 204.36 106.5 1.17 106.5"/><path class="triangle-2"  d="M503.47,249.44,603.89,354H403.05L503.47,249.44m0-1.44L400.7,355H606.24L503.47,248Z" transform="translate(-400.7 -248)"/></svg>
                             <ul class="cont-nav-user">
-                            <li><a href="{{ route('mi_cuenta') }}">Ayuda</a></li>
+                            <li><a href="{{ route('mi_cuenta') }}">Nosotros</a></li>
                             <li><a href="{{ route('my_perfil') }}">Detalles de la cuenta</a></li>
                             <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li>
                             <li><a href="{{ route('my_orders') }}">Pedidos</a></li>
@@ -153,7 +153,7 @@
         </div>  
                         
     </div>
-    <div class="modal-container-cart">
+   <div class="modal-container-cart">
                         
                         <div class="container-carrito">
                            
@@ -184,7 +184,16 @@
                                                         <button class="mas"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20"><path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path></svg>
                                                         <span class="icon__fallback-text" aria-hidden="true">+</span></button>
                                                     </div>
-                                                    <div class="pre_content">{{$order_detail->product->precio}} </div>
+                                                    @if($order_detail->product->has_promociones())
+                                                    <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
+                                                    @else 
+                                                    <div class="pre_content">S/. {{$order_detail->product->precio}}.00 </div>
+                                                    @endif
+                                                    <br>
+                                                    <div class="pre_content">S/.{{$order_detail->precio}}</div>
+                                                    <div class="del-icon">
+                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times">sa</i></a>
+                                                    </div>
                                                 </div>
                                         </div>
                                    
@@ -226,7 +235,7 @@
                         </div>
 
                         
-    </div> 
+    </div>  
                    
     <!--Contenido-->
     @yield('content')   
@@ -237,7 +246,7 @@
           <div class="col-md-12">
             <div class="copyright-text">
               <p>© 2021
-                <a href="#">{{$empresa_provider->name}}</a>. Todos los derechos reservados.
+                <a href="{{$empresa_provider->google_maps_link}}">{{$empresa_provider->name}}</a>. Todos los derechos reservados.
               </p>
             </div>
           </div>

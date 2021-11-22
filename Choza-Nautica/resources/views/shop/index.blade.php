@@ -67,6 +67,7 @@
                   </div>
               </div>
           </div>
+          @if($cart->validate_products())
           <div class="cont-s2">
               
               <div class="cont-s2-1">
@@ -170,13 +171,13 @@
                         </tr>
                       </tbody>
                     </table>
-                    <button type="submit" class="btn-evios">Realizar Pago</button>
+                      <button type="submit" class="btn-evios">Realizar Pago</button>
                   </form>
               </div>
               
             
             </div>
-          
+          @endif
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
       <script src="https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js"></script>

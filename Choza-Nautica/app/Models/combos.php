@@ -15,4 +15,8 @@ class combos extends Model
         'precio',
         'created_at',
     ];
+
+    public function compras_detalles(){
+        return $this->hasMany(compras_detalles::class,'id_combo');
+    }
 }

@@ -16,7 +16,8 @@ class ProductosXCombo extends Migration
         Schema::create('Productos_x_combo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_producto');
-            $table->unsignedBigInteger('id_combo');  
+            $table->unsignedBigInteger('id_combo'); 
+             
             $table->timestamp('date_created');           
             $table->timestamps();
 

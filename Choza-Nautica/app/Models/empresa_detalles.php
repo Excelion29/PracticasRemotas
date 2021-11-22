@@ -10,8 +10,13 @@ class empresa_detalles extends Model
      protected $fillable = [
          'name',
          'descripcion',
+         'direccion',
          'horarios',
          'correo',
-         'telefono',
+         'telefono',          
+         'ruc',
+         'latitud',
+         'longitud',
+         'google_maps_link',
      ];
 }

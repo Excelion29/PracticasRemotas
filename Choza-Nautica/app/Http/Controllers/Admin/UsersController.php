@@ -19,7 +19,7 @@ class UsersController extends Controller
         $datos['users']= User::join('roles','roles.id','=','users.id_rol')
         ->select('users.*','roles.nombre')
         ->where('users.id_rol','=','2')
-        ->where('users.estado','=','1')
+        ->where('users.estado','=','1')->orderByDesc('id')
         ->paginate(5);
 
         return view('admin.Users.clientes',$datos);

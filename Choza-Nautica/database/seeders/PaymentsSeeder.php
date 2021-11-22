@@ -15,7 +15,7 @@ class PaymentsSeeder extends Seeder
     public function run()
     {
         payment_platforms::create([
-            'name'=>'Pagar al momento de la entrega',
+            'name'=>'Contraentrega',
             'img'=>'img/pago-contraentrega.png',
         ]);
         payment_platforms::create([

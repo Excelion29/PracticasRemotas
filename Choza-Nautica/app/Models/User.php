@@ -65,4 +65,7 @@ class User extends Authenticatable
             'ruc'=>$request->ruc,
         ]);
     }
+    public function roles(){        
+        return $this->belongsTo(Roles::class,'id_rol');
+    }
 }

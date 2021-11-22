@@ -18,8 +18,8 @@ class Order extends Migration
             $table->unsignedBigInteger('cart_id');   
             $table->unsignedBigInteger('id_producto')->nullable();             
             $table->unsignedBigInteger('id_combo')->nullable();         
-            $table->integer('cantidad')->default(1);
-            $table->integer('precio');
+            $table->integer('cantidad');
+            $table->decimal('precio');
             $table->timestamps();
 
             $table->foreign('id_combo')->references('id')->on('Combos');

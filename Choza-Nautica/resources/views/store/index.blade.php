@@ -4,6 +4,27 @@
 
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.css">
+<link rel="stylesheet" href="{{asset('bootstrap_star_rating/css/star-rating.css')}}">
+<link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{asset('bootstrap_star_rating/js/star-rating.js')}}"></script>
+<script src="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.js')}}"></script>
+
+<style>
+  .row{
+      margin-left: 0px;
+  }
+  .product-card .card .price {
+      font-size: 1.45rem;
+  }
+  .navbar{
+      position: fixed;
+  }
+  .rating-md .caption {
+      font-size: 32%;
+  }
+  </style>
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
@@ -21,6 +42,7 @@
       </form>
     </div>
 
+@include('store.productos_destacados')
 <div class="contenedor-u">
   <div class="contenedor-comida">
     <p class="titulo">CATEGORIAS</p>
@@ -43,6 +65,7 @@
         </a>
     </div>
     @endforeach
+    {!! $categorias->links() !!}
   </div>
 </div>
 

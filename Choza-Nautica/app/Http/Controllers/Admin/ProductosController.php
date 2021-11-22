@@ -18,7 +18,7 @@ class ProductosController extends Controller
 
         $datos['productos']=Productos::join('users','users.id','=','productos.id_administrador')
         ->join('categorias','categorias.id','=','productos.id_categoria')
-        ->select('productos.*','users.name','categorias.nombre as categoria')
+        ->select('productos.*','users.name','categorias.nombre as categoria')->orderByDesc('id')
         ->paginate(5);
         return view('admin.productos.index',$datos);
     }

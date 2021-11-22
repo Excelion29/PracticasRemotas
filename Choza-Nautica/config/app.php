@@ -174,12 +174,14 @@ return [
         App\Providers\CartProvider::class,
         App\Providers\EmpresaProvider::class,
         App\Providers\CategoriaProvider::class,
+        App\Providers\ProductsProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         JeroenNoten\LaravelAdminLte\AdminLteServiceProvider::class,
-
         Collective\Html\HtmlServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
       ],
     /*
     |--------------------------------------------------------------------------

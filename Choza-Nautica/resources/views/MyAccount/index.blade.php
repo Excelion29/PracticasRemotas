@@ -15,4 +15,6 @@
         @yield('change_password')
     </div>
 </div>
+@include('layouts.map')
+
 @endsection

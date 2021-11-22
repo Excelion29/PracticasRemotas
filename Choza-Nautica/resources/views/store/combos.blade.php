@@ -54,5 +54,6 @@
      </div>
     @endforeach 
   </div>
+  @include('store.productos_destacados')
   </div>
 @endsection

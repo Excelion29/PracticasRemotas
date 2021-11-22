@@ -226,16 +226,15 @@ return [
 
     'menu' => [
         // Navbar items:
-        // [
-        //     'type'         => 'navbar-search',
-        //     'text'         => 'search',
-        //     'topnav_right' => true,
-        // ],
+        //  [
+        //      'type'         => 'navbar-search',
+        //      'text'         => 'search',
+        //      'topnav_right' => true,
+        //  ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
         // Sidebar items:
         // [
         //     'type' => 'sidebar-menu-search',
@@ -250,16 +249,16 @@ return [
             'text'        => 'Index',
             'url'         => 'dashboard',
             'icon'        => 'fas fa-home',
-            // 'label'       => 4,
+            //  'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'Perfil'],
+        ['header' => 'Datos de la empresa'],
         [
-            'text' => 'Mi usuario',
-            'url'  => '#',
-            'icon' => 'fas fa-user-shield',
+            'text' => 'Empresa',
+            'url'  => 'dashboard/empresa',
+            'icon' => 'far fa-building',
         ],
-        ['header' => 'Administración de mercado'],
+        ['header' => 'Administración de productos'],
         [
             'text'    => 'Tienda',
             'icon'    => 'fas fa-store',
@@ -275,7 +274,7 @@ return [
                     'icon' => 'fas fa-clipboard-list',
                 ],
                 [
-                    'text' => 'Productos',
+                    'text' => 'Platos',
                     'url'  => 'dashboard/productos',
                     'icon' => 'fas fa-clipboard-list',
                 ],
@@ -332,7 +331,7 @@ return [
         ['header' => 'Administración de mercado'],
         [
             'text'    => 'Puntos de venta',
-            'icon'    => 'fab fa-shopify',
+            'icon'    => 'fas fa-cash-register',
             'submenu' => [
                 // [
                 //     'text' => 'Carritos',
@@ -345,8 +344,13 @@ return [
                     'url'  => 'dashboard/Delivery',
                 ],
                 [
+                    'text' => 'Promociones',
+                    'icon' => 'fas fa-globe-americas',
+                    'url'  => 'dashboard/promociones',
+                ],
+                [
                     'text' => 'Ordenes',
-                    'icon' => 'fas fa-cash-register',
+                    'icon' => 'fab fa-shopify',
                     'url'  => 'dashboard/Ordenes',
                 ],
             ]

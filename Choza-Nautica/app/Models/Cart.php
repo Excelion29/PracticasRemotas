@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Cart extends Model
 {
@@ -21,6 +22,13 @@ class Cart extends Model
     // public function user(){
     //     return $this->belongsTo(User::class,'user_id');
     // }
+    public function validate_products(){
+        if($this->order_details()->count()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public static function findOnCreateBySessionId($CartID){
         if($CartID){
@@ -46,7 +54,7 @@ class Cart extends Model
         $total = 0;
         foreach ($this->order_details as $key => $order_detail) {
             if($order_detail->product){
-            $total += $order_detail->product->precio * $order_detail->cantidad;
+            $total += $order_detail->product->getDiscountAttribute() * $order_detail->cantidad;
             }
             elseif($order_detail->combo){
                 $total += $order_detail->combo->precio * $order_detail->cantidad;
@@ -65,38 +73,39 @@ class Cart extends Model
     //     return $cart;
     // }
     public function my_store($product, $request){
-        $this->order_details()->create([
-            'cart_id'=>$request,
-            'cantidad'=>$request->cantidad,
-            'precio'=>$product->precio*$request->cantidad, 
-            'id_producto'=>$product->id,
-            // 'id_combo'=>$combo->id,
+        $this->order_details()->updateOrCreate(
+            ['id_producto'=>$product->id],
+            [
+            'cantidad'=>DB::raw("cantidad +$request->cantidad"),
+            'precio'=>DB::raw("precio+".$product->getDiscountAttribute()*$request->cantidad),
         ]);
     }
-
     public function store_a_product($product){
-        $this->order_details()->create([
-            'precio'=>$product->precio, 
-            'id_producto'=>$product->id,
-            // 'id_combo'=>$combo->id,
+        $this->order_details()->updateOrCreate(
+            ['id_producto'=>$product->id],
+            [
+            'precio'=>DB::raw("precio+".$product->getDiscountAttribute()), 
+            'cantidad'=>DB::raw('cantidad+1'),
         ]);
     }
     
     public function my_store_combo($combo, $request){
-        $this->order_details()->create([
-            'cart_id'=>$request,
-            'cantidad'=>$request->cantidad,
+        $this->order_details()->updateOrCreate(
+            ['id_combo'=>$combo->id],
+            [
+            'cantidad'=>DB::raw("cantidad +$request->cantidad"),
             'precio'=>$combo->precio*$request->cantidad, 
-            'id_combo'=>$combo->id,
+            
             // 'id_combo'=>$combo->id,
         ]);
     }
 
     public function store_a_product_combo($combo){
-        $this->order_details()->create([
+        $this->order_details()->updateOrCreate(
+            ['id_combo'=>$combo->id],
+            [
             'precio'=>$combo->precio, 
-            'id_combo'=>$combo->id,
-            // 'id_combo'=>$combo->id,
+            'cantidad'=>DB::raw('cantidad+1'),
         ]);
     }
 
