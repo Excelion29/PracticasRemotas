@@ -18,14 +18,14 @@
       </div>
     </div> 
 
-
-    <div style="margin-left:45px;width:100%;">
-        <div style="width:200px;">
-            <form action="{{route('search_products')}}" id="form_search_products" method="GET">
-                <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos">
-                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-              </form>
-        </div>
+    
+    <div class="wrap">
+      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
+      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+      <input type="submit" class="search-imput">
+      </form>
+    </div>
+    <p class="titulo">PLATOS</p>
     </div>
     <style>
         .row{
@@ -53,8 +53,8 @@
                         <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">{{$producto->getTotalDiscountAttribute()}}%</a>
                         @else
                         @endisset
-                        <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 400px;">
-                        <span class="card-title"><span>{{$producto->nombre}}</span></span>
+                        <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 360px;">
+                        <span class="card-title"><span><p>{{$producto->nombre}}</p></span></span>
                     </div>
                     <ul class="card-action-buttons">
                         <li><a id="buy" href="{{route('store_a_product',$producto)}}" class="btn-floating waves-effect waves-light blue"><i class="material-icons buy">add_shopping_cart</i></a>

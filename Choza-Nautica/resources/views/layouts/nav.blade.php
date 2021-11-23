@@ -78,10 +78,15 @@
                     <a href="">Conócenos</a>
                 </li>
                 <li>
-                    <a href="">Preguntas Frecuentes</a>
+                    <a href="" >Preguntas Frecuentes</a>
                 </li>
-                <li>
-                    <a href="{{ url('category') }}">Ordena Aquí</a>
+                <li class="nav-order">
+                    <a href="{{ url('category') }}" >Ordena Aquí</a>
+                        <svg class="svg-triangle2" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.54 107"><defs></defs><title>triangulos</title><polygon class="triangle2" points="1.17 106.5 102.77 0.72 204.36 106.5 1.17 106.5"/><path class="triangle-22"  d="M503.47,249.44,603.89,354H403.05L503.47,249.44m0-1.44L400.7,355H606.24L503.47,248Z" transform="translate(-400.7 -248)"/></svg>
+                            <ul class="cont-nav-order">
+                            <li><a href="{{ url('combos') }}">Combos</a></li>
+                            <li><a href="{{ url('category') }}">Categorias</a></li>
+                            </ul>
                 </li>
                 <li>
                     <div class="cta-mod">
@@ -185,12 +190,12 @@
                                                     @if($order_detail->product->has_promociones())
                                                     <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
                                                     @else 
-                                                    <div class="pre_content">S/. {{$order_detail->product->precio}}.00 </div>
+                                                    <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
                                                     @endif
                                                     <br>
-                                                    <div class="pre_content">S/.{{$order_detail->precio}}</div>
+                                                  
                                                     <div class="del-icon">
-                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times">sa</i></a>
+                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times"></i></a>
                                                     </div>
                                                 </div>
                                         </div>
@@ -238,7 +243,7 @@
                                             
                                             <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/.{{$cart->total_price()}}.00</p></div>
                                             <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
-                                            <div class="btnfip"><button class="realizar"> <a href="{{route('shop.index')}}">Finalizar pedido</a> </button></div>
+                                            <div class="btnfip"><button class="realizar"> <a class="fp" href="{{route('shop.index')}}">Finalizar pedido</a> </button></div>
                                         
                                         </div>
                                     @endif
