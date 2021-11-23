@@ -36,8 +36,10 @@ class MostrarProductos extends Controller
         ->where('productos.id','=',$id)->firstOrFail();
         return view('store.calificar_product',$datos);
     }
+
     public function rating_product(Request $request, Productos $product)
     {
+        dd($product);
         $product->rate($request->rate,$request->comentario);
         return back();
         // dd($product->ratings);

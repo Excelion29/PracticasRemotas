@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body" id="smallBody">
                 <div>
-                  {!! Form::open(['route'=>['rating_product',$productos],'method'=>'POST']) !!}
+                    {!! Form::open(['route'=>['rating_product',$productos],'method'=>'POST']) !!}
                         <div class="form-group">
                             <input id="input-1" name="rate"  class="rating rating-loading" data-min="0" data-max="5" data-theme="krajee-gly" required>
                         </div>

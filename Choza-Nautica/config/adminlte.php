@@ -355,21 +355,21 @@ return [
                 ],
             ]
         ],
-        ['header' => 'labels'],
+        ['header' => 'Calificaciones'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'       => 'Bien',
+            'icon_color' => 'green',
+            'url'        => 'dashboard/starts/succes',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Puede mejorar',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'        => 'dashboard/starts/warning',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'       => 'Mal',
+            'icon_color' => 'red',
+            'url'        => 'dashboard/starts/dunger',
         ],
     ],
 

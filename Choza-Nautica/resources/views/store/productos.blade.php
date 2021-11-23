@@ -138,7 +138,7 @@
                         </div>1
                         <div class="Precio">     
                             @if($producto->has_promociones())                           
-                                <h4><span>S/.{{$producto->getDiscountAttribute()}}</span> <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>   
+                                <h4 style='font-size: 15px;'><span>S/.{{$producto->getDiscountAttribute()}}</span> <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>   
                             @else 
                                 <h4><span>S/.{{$producto->precio}}</span></h4> 
                             @endif
@@ -146,7 +146,7 @@
                         <div class="descripcion">
                             <p>{{($producto->descripcion)}}</p>
                         </div>                              
-                        <div style="margin-top: -90px;" class="cantidad">
+                        <div style="margin-top: -200px;" class="cantidad">
                             {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
                                 <input type="hidden" name="id_producto" value="{{$producto->id}}">    
                                 <div class="quantity">

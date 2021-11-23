@@ -10,8 +10,10 @@
       <p>Productos para ti</p>
     </div>
   </div> 
-    <table class="table">
-        <thead>
+  <div class="card">
+    <div class="card-body">
+        <table id="example1"  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <thead>
             <tr>
                 <th>Orden</th>
                 <th>Fecha</th>
@@ -35,7 +37,9 @@
                 </tr>
             @endforelse
         </tbody>
-    </table>
+    </table>    
+</div>
+</div>
     <style>
         .map_area_wrapper{
             display: none;

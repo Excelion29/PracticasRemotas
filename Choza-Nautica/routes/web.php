@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\EmpleadosController;
 use App\Http\Controllers\Admin\EmpresaController;
 use App\Http\Controllers\Admin\MesaController;
 use App\Http\Controllers\Admin\ProductosController;
+use App\Http\Controllers\Admin\StartsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
@@ -105,6 +106,9 @@ Route::resource('dashboard/Delivery', DeliveryController::class);
 Route::resource('dashboard/mesas', MesaController::class);
 Route::resource('dashboard/promociones', PromocionesController::class)->names('promociones');
 Route::resource('dashboard/empresa',EmpresaController::class)->names('empresa.index');
+Route::get('dashboard/starts/succes',[StartsController::class,'succes']);
+Route::get('dashboard/starts/warning',[StartsController::class,'warning']);
+Route::get('dashboard/starts/dunger',[StartsController::class,'dunger']);
 
 Route::get('dashboard/Ordenes', [CompraController::class,'index'])->name('admin_orders.index');
 Route::get('DetallesOrdenes/{compra}', [CompraController::class,'show'])->name('detalles_orders.show');

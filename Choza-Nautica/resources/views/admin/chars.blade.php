@@ -212,38 +212,66 @@
 
               <div class="progress-group">
                 Productos añadidos al carrito
+                @if ($porcentaje['productos_compras']->ordersdetallesprod !=0)
                 <span class="float-right"><b>{{$porcentaje['productos_compras']->ordersdetallesprod}}</b>/{{$porcentaje['productos_compras']->ordersdetalles}}</span>
                 <div class="progress progress-sm">
                   <div class="progress-bar bg-primary" style="width: {{($porcentaje['productos_compras']->ordersdetallesprod / $porcentaje['productos_compras']->ordersdetalles) *100}}%">{{round(($porcentaje['productos_compras']->ordersdetallesprod / $porcentaje['productos_compras']->ordersdetalles) *100,2)}}%</div>
                 </div>
+                @else
+                <span class="float-right"><b></b></span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-primary"></div>
+                </div>
+                @endif
               </div>
               <!-- /.progress-group -->
 
               <div class="progress-group">
                 Combos añadidos al carrito
+                @if ($porcentaje['productos_combos']->ordersdetallesprod !=0)
                 <span class="float-right"><b>{{$porcentaje['productos_combos']->ordersdetallesprod}}</b>/{{$porcentaje['productos_combos']->ordersdetalles}}</span>
                 <div class="progress progress-sm">
                   <div class="progress-bar bg-success" style="width: {{($porcentaje['productos_combos']->ordersdetallesprod / $porcentaje['productos_combos']->ordersdetalles) *100}}%">{{round(($porcentaje['productos_combos']->ordersdetallesprod / $porcentaje['productos_combos']->ordersdetalles) *100,2)}}%</div>
                 </div>
+                @else
+                <span class="float-right"><b></b></span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-success"></div>
+                </div>
+                @endif
               </div>
               
               <!-- /.progress-group -->
               <div class="progress-group">
-                Productos calificados
+                Productos calificados 
+                @if ($porcentaje['productos_calificados']->productos_calificados !=0)
                 <span class="float-right"><b>{{$porcentaje['productos_calificados']->productos_calificados}}</b>/{{$porcentaje['productos']->productos}}</span>
                 <div class="progress progress-sm">
                   <div class="progress-bar bg-warning" style="width:{{($porcentaje['productos_calificados']->productos_calificados / $porcentaje['productos']->productos) *100}}%">{{round(($porcentaje['productos_calificados']->productos_calificados / $porcentaje['productos']->productos) *100,2)}}%</div>
                 </div>
+                @else
+                <span class="float-right"><b></b></span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-warning"></div>
+                </div>
+                @endif
               </div>
               <!-- /.progress-group -->
               
               <!-- /.progress-group -->
-              <div class="progress-group">
+              <div class="progress-group">                
                 <span class="progress-text">Carritos Abandonados</span>
-                <span class="float-right"><b>{{$porcentaje['carritos_comprados']->compras}}</b>/{{$porcentaje['carritos']->carritos}}</span>
-                <div class="progress progress-sm">
-                  <div class="progress-bar bg-danger" style="width: {{$porcentaje['porcentaje']}}%">{{round($porcentaje['porcentaje'],2)}}%</div>
-                </div>
+                @if ($porcentaje['carritos_comprados']->compras !=0)
+                  <span class="float-right"><b>{{$porcentaje['carritos_comprados']->compras}}</b>/{{$porcentaje['carritos']->carritos}}</span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar bg-danger" style="width: {{$porcentaje['porcentaje']}}%">{{round($porcentaje['porcentaje'],2)}}%</div>
+                  </div>
+                @else
+                  <span class="float-right"><b></b></span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar bg-danger"></div>
+                  </div>
+                @endif
               </div>
               <!-- /.progress-group -->
             </div>
