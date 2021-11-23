@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Productos;
 use App\Models\tipo_compra;
 use Illuminate\Http\Request;
+use willvincent\Rateable\Rateable;
 
 class MostrarProductos extends Controller
 {
+    use Rateable;
     public function show($id){
         $datos['productos']= Productos::join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','categorias.nombre as categoria')
@@ -39,7 +41,6 @@ class MostrarProductos extends Controller
 
     public function rating_product(Request $request, Productos $product)
     {
-        dd($product);
         $product->rate($request->rate,$request->comentario);
         return back();
         // dd($product->ratings);

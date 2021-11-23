@@ -3,13 +3,16 @@
     Productos
 @endsection
 @section('content')
-@push('style')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.css">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/css/star-rating.css')}}">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.css')}}">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-svg/theme.css')}}">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-uni/theme.css')}}"> 
-@endpush
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{asset('bootstrap_star_rating/js/star-rating.js')}}"></script>
+<script src="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.js')}}"></script>
+<script src="{{asset('bootstrap_star_rating/themes/krajee-svg/theme.js')}}"></script>
+<script src="{{asset('bootstrap_star_rating/themes/krajee-gly/theme.js')}}"></script>
+<script src="{{asset('bootstrap_star_rating/themes/krajee-uni/theme.js')}}"></script>
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">

@@ -9,11 +9,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use willvincent\Rateable\Rateable;
 
 use function Composer\Autoload\includeFile;
 
 class Compra extends Model
 {
+    use Rateable;
     protected $fillable = [
         'id',
         'estado',

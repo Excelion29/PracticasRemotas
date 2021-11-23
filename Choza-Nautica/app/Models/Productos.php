@@ -87,15 +87,14 @@ class Productos extends Model
 
     public static function productos_mes(){
         $data_prod = self::SELECT(DB::raw('count(id) as `cantidad`'),DB::raw('YEAR(date_created) as Año, MONTHNAME(date_created) as Mes,MONTH(date_created) as Meses'))
-           ->groupby('Año','Meses','Mes')->take(6)
-           ->get();
+        ->groupby('Año','Meses','Mes')->take(6)
+        ->get();
         return $data_prod;
     }
     public static function productos_destacados(){
         $data_prod_desc = self::SELECT('productos.nombre as nombres', DB::raw('count(productos.id) as `cantidad`'),DB::raw('YEAR(compras_detalles.created_at) as Año, MONTHNAME(compras_detalles.created_at) as Mes,MONTH(compras_detalles.created_at) as Meses'))
-           ->JOIN('compras_detalles','compras_detalles.id_producto','=','productos.id')
-            ->groupby('Año','Meses','Mes',"nombres")->take(5)
-           ->get();
+        ->JOIN('compras_detalles','compras_detalles.id_producto','=','productos.id')
+        ->groupby('Año','Meses','Mes',"nombres")->take(5)->get();
         return $data_prod_desc;
     }
 }

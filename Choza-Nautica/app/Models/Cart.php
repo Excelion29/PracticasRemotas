@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use willvincent\Rateable\Rateable;
 
 class Cart extends Model
 {
@@ -16,6 +17,7 @@ class Cart extends Model
     //     'created_at',
     // ];
     use HasFactory;
+    use Rateable;
     public function order_details(){
         return $this->hasMany(order::class);
     }
