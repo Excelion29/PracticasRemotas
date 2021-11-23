@@ -18,7 +18,7 @@ class CombosController extends Controller
 
         $datos['combos']=combos::join('users','users.id','=','combos.id_administrador')
         ->select('combos.*','users.name','users.apellidos')->orderByDesc('combos.id')
-        ->paginate(5);
+        ->paginate(6);
         return view('admin.Combos.index',$datos);
     }
 

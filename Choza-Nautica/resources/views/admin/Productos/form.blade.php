@@ -13,8 +13,8 @@
 
 </ul>
 
-@endif
 </div>
+@endif
 
 
 <input type="hidden" class="form-control" name="id_administrador" value="{{auth()->id()}}" id="id_administrador">

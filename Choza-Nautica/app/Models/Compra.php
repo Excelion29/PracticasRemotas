@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use function Composer\Autoload\includeFile;
 
@@ -38,10 +39,10 @@ class Compra extends Model
          return $total;
     }
     public function total_impuesto(){
-        return $this->subtotal() * $this->impuesto;
+        return $this->subtotal() + $this->impuesto;
     }
     public function total(){
-        return $this->subtotal() + $this->total_impuesto();
+        return $this->total_impuesto();
     }
 
 
@@ -55,7 +56,7 @@ class Compra extends Model
             'user_id'=>auth()->user()->id,
             'codigo'=> $cart->gen_uid(),
             'subtotal'=>$cart->total_price(),
-            'impuesto'=>0.18,
+            'impuesto'=>5,
         ]);
         foreach ($cart->order_details as $key => $abc) {
             if($cart->order_details[$key]->id_producto!=''){
@@ -85,7 +86,7 @@ class Compra extends Model
             'user_id'=>auth()->user()->id,
             'codigo'=> $cart->gen_uid(),
             'subtotal'=>$cart->total_price(),
-            'impuesto'=>0.18,
+            'impuesto'=>5,
         ]);
         foreach ($cart->order_details as $key => $abc) {
             if($cart->order_details[$key]->id_producto!=''){
@@ -111,6 +112,13 @@ class Compra extends Model
         // ->each(function(User $user) use ($compra){
         //     $user->notify(new ComprasNotification($compra));
         // });
+    }
+
+    public static function compras_mes(){
+        $data = self::SELECT(DB::raw('count(id) as `cantidad`'),DB::raw('YEAR(created_at) as Año, MONTHNAME(created_at) as Mes,MONTH(created_at) as Meses'))
+           ->groupby('Año','Meses','Mes')->orderByDesc('Meses')
+           ->get();
+        return $data;
     }
 }
 

@@ -118,4 +118,17 @@ class Cart extends Model
     public function gen_uid($l=10){
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
     }
+    
+    public static function detalles_progress(){
+        $carritos = self::SELECT(DB::raw('count(carts.id) as `carritos`'))->get()->firstOrFail();
+        $carritos_comprados = Compra::SELECT(DB::raw('count(compras.id) as `compras`'))->get()->firstOrFail();
+        $conteo_subtotal = Compra::SELECT(DB::raw('sum(compras.subtotal+compras.impuesto) as `subtotal`,YEAR(compras.created_at) as Año, MONTHNAME(compras.created_at) as Mes,MONTH(compras.created_at) as Meses'))->groupby('Año','Meses','Mes')->orderByDesc('Meses')->get()->take(6);
+        $productos_compras = order::SELECT(DB::raw('count(orders.id) as `ordersdetalles` , count(orders.id_producto) as `ordersdetallesprod`'))->get()->firstOrFail();
+        $productos_combos = order::SELECT(DB::raw('count(orders.id) as `ordersdetalles` , count(orders.id_combo) as `ordersdetallesprod`'))->get()->firstOrFail();
+        $porcentaje = 100-(($carritos_comprados['compras']/$carritos['carritos']) * 100);
+        $productos = Productos::select(DB::raw('count(productos.id) as `productos`'))->get()->firstOrFail();;
+        $productos_calificados = Productos::select(DB::raw('count(ratings.rateable_id) as `productos_calificados`'))->join('ratings','ratings.rateable_id','=','productos.id')->get()->firstOrFail();;
+
+        return compact('carritos','carritos_comprados','productos_compras','productos_combos','porcentaje','productos','productos_calificados','conteo_subtotal');
+    }
 }

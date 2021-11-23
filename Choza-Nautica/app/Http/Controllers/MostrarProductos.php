@@ -13,7 +13,7 @@ class MostrarProductos extends Controller
         ->select('productos.*','categorias.nombre as categoria')
         ->where('productos.id_categoria','=',$id)
         ->where('productos.estado','=','1')
-        ->paginate(5);
+        ->paginate(6);
         return view('store.productos',$datos);
     }
     public function products_json(){

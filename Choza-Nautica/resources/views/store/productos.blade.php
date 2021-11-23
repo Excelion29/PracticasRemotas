@@ -162,6 +162,36 @@
         </div>
     @endforeach    
 </div>
+<style>
+.pagination > li > a
+{
+    background-color: white;
+    color: purple;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: purple;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: purple;
+    border: solid 1px purple;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: purple;
+    border: solid 1px purple;
+}
+</style>
 <script src="{{asset('js/modal.js')}}"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>

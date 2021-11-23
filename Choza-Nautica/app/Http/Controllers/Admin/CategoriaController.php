@@ -19,7 +19,7 @@ class CategoriaController extends Controller
 
         $datos['categorias']=categorias::join('users','users.id','=','categorias.id_administrador')
         ->select('categorias.*','users.name','users.apellidos')->orderByDesc('categorias.id')
-        ->paginate(5);
+        ->paginate(6);
 
         return view('admin.categorias.index',$datos);
     }

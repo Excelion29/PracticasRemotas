@@ -20,7 +20,7 @@ class EmpleadosController extends Controller
         ->select('users.*','roles.nombre')->orderByDesc('id')
         ->where('users.id_rol','=','3')        
         ->where('users.estado','=','1')
-        ->paginate(5);
+        ->paginate(6);
 
         return view('admin.Users.empleados',$datos);
     }

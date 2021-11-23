@@ -9,9 +9,9 @@
 <br>
 <br>
 
-<section class="content">
+<section class="content" id="content">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" id="seleccion">
         <div class="col-12">
           <!-- Main content -->
           <div class="invoice p-3 mb-3">
@@ -115,7 +115,7 @@
                       <td>S/.{{number_format($compra->subtotal(),2)}}</td>
                     </tr>
                     <tr>
-                      <th>Impuesto ({{$compra->impuesto}}%)</th>
+                      <th>Costo por envío S/.({{$compra->impuesto}})</th>
                       <td>S/.{{number_format($compra->total_impuesto(),2)}}</td>
                     </tr>
                     <tr>
@@ -136,21 +136,26 @@
             <!-- this row will not appear when printing -->
             <div class="row no-print">
               <div class="col-12">
-                <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                  Payment
-                </button>
-                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                  <i class="fas fa-download"></i> Generate PDF
-                </button>
               </div>
             </div>
           </div>
           <!-- /.invoice -->
         </div><!-- /.col -->
       </div><!-- /.row -->
+      <a onclick="javascript:window.print(content)" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
     </div><!-- /.container-fluid -->
   </section>
 <!-- ./wrapper -->
+<script>
+  function imprim1(imp1){
+  var printContents = document.getElementById('imp1').innerHTML;
+          w = window.open();
+          w.document.write(printContents);
+          w.document.close(); // necessary for IE >= 10
+          w.focus(); // necessary for IE >= 10
+      w.print();
+      w.close();
+          return true;}
+  </script>
 
 @endsection

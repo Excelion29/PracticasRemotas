@@ -269,20 +269,20 @@ return [
                     'icon' => 'fas fa-clipboard-list',
                 ],
                 [
-                    'text' => 'Combos',
-                    'url'  => 'dashboard/combos',
-                    'icon' => 'fas fa-clipboard-list',
-                ],
-                [
                     'text' => 'Platos',
                     'url'  => 'dashboard/productos',
                     'icon' => 'fas fa-clipboard-list',
                 ],
                 [
-                    'text' => 'Mesas',
-                    'url'  => 'dashboard/mesas',
+                    'text' => 'Combos',
+                    'url'  => 'dashboard/combos',
                     'icon' => 'fas fa-clipboard-list',
                 ],
+                // [
+                //     'text' => 'Mesas',
+                //     'url'  => 'dashboard/mesas',
+                //     'icon' => 'fas fa-clipboard-list',
+                // ],
             ],
         ],
         ['header' => 'Administración de usuarios'],

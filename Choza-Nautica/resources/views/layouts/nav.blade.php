@@ -124,7 +124,7 @@
                         @endif
                     @else
                         <li class="nav-user">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('mi_cuenta')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
                            
@@ -135,7 +135,7 @@
                             <li><a href="{{ route('my_perfil') }}">Detalles de la cuenta</a></li>
                             <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li>
                             <li><a href="{{ route('my_orders') }}">Pedidos</a></li>
-                            <li><a href="{{ route('my_reserves') }}">Reservaciones</a></li>
+                            {{-- <li><a href="{{ route('my_reserves') }}">Reservaciones</a></li> --}}
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                 </li>

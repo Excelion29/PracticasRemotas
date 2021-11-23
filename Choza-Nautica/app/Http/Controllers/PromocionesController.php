@@ -22,7 +22,7 @@ class PromocionesController extends Controller
     public function index()
     {
         $datos['promociones'] = Promociones::select()
-        ->paginate(5);
+        ->paginate(6);
         return view('admin.Promociones.index',$datos);
     }
 

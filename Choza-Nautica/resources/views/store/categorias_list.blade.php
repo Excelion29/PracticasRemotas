@@ -1,4 +1,4 @@
-<div  style="float: left;width: 15%;">
+<div  style="float: left;width: 15%; height:1800px;">
     <fieldset>
         <legend>Categorias</legend>
         @foreach ($categorias_provider as $categoria_provider)
