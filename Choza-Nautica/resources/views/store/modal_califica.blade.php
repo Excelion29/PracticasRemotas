@@ -1,5 +1,3 @@
-
-
 @isset(auth()->user()->id_rol)
 <div class=" " id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" style="width: 25%" role="document">

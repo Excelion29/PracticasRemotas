@@ -28,8 +28,8 @@
   border-radius: 30px;
   
 }
-.contenedor-comida .titulo{
-  padding-top: 50px;
+.titulo{
+  padding-top: 87px;
   padding-bottom: 50px;
   text-align: center;
   font-size: 50px;
@@ -222,3 +222,7 @@ input[type=number]
   padding: 5px 10px;
 }
 /* Productos cartas stilo */
+
+.card-title span p{
+  text-shadow: 2px 2px 3px #070707d9;
+}

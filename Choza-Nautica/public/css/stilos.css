@@ -8,6 +8,9 @@ a{
   color: white;
   
 }
+.fp{
+  color: white !important;
+}
 @import url(//db.onlinewebfonts.com/c/a16915d9f4c6bd82cbec199a1b330adf?family=Balzac+DB);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
@@ -508,6 +511,106 @@ align-items: center;
 }
 
 
+.svg-triangle{
+display: none;
+position: absolute;
+width: 80px;
+top: 57px;
+right: 11px;
+
+}
+.triangle{
+fill: rgb(255, 255, 255);
+
+}
+.triangle-2{
+fill: #979797;
+
+}
+
+.nav-user:hover .svg-triangle{
+display: block;
+}
+.cont-nav-user{
+display: none;
+position: absolute;
+top: 80px;
+right: 3px;
+min-width: 80px;
+height: 200px;
+background: rgb(255, 255, 255);
+border-radius: 3px;
+border: 1px solid rgb(217 217 217);
+
+
+}
+.cont-nav-user li a{
+color: #000;
+
+}
+.cont-nav-user li a:hover{
+color: #ff7300;
+
+}
+.nav-user:hover ul {
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: space-evenly;
+align-items: center;
+}
+
+
+
+.svg-triangle2{
+  display: none;
+  position: absolute;
+  width: 80px;
+  top: 57px;
+  right: 193px;
+  
+  }
+  .triangle2{
+  fill: rgb(255, 255, 255);
+  
+  }
+  .triangle-22{
+  fill: #979797;
+  
+  }
+  
+  .nav-order:hover .svg-triangle2{
+  display: block;
+  }
+  .cont-nav-order{
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 174px;
+  min-width: 80px;
+  height: 105px;
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
+  border: 1px solid rgb(217 217 217);
+  
+  
+  }
+  .cont-nav-order li a{
+  color: #000;
+  
+  }
+  .cont-nav-order li a:hover{
+  color: #ff7300;
+  
+  }
+  .nav-order:hover ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  }
+
 /* Modal Carrito------------------------------------------------------------------------------------------------------------------------------------------------*/
 .modal-container-cart{
   font-family: 'Arvo', serif;
@@ -612,10 +715,10 @@ align-items: center;
 }
 
 .inputnum{
-  width: 60px;
-  height: 22px;
-  text-align: center;
-  border: 1px solid #e8e8e1;
+  width: 60px !important;
+  height: 22px !important;
+  text-align: center !important;
+  border: 1px solid #e8e8e1 !important;
 }
 
 .menos span{
