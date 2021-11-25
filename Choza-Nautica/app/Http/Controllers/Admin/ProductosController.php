@@ -37,6 +37,10 @@ class ProductosController extends Controller
         $datos['categorias'] = categorias::pluck('nombre','id');
         return view('admin.productos.create',$datos);
     }
+    public function add_stock(Request $request, Productos $producto){ 
+        $producto->update(['cantidad'=> $producto['cantidad'] + $request->cantidad]);
+        return redirect('dashboard/productos')->with('mensaje','Cantidad modificada!');
+    }
 
     public function store(Request $request){
 

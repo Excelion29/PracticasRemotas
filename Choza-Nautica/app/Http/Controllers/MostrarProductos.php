@@ -14,6 +14,7 @@ class MostrarProductos extends Controller
         $datos['productos']= Productos::join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','categorias.nombre as categoria')
         ->where('productos.id_categoria','=',$id)
+        ->where('productos.cantidad','>','0')
         ->where('productos.estado','=','1')
         ->paginate(6);
         return view('store.productos',$datos);
@@ -26,6 +27,7 @@ class MostrarProductos extends Controller
         $datos['search'] = Productos::where('estado','1')->where("nombre","LIKE","%$request->search_products%")->get();
         $datos['productos']= Productos::join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','categorias.nombre as categoria')
+        ->where('productos.cantidad','>','0')
         ->where('productos.estado','1')
         ->where("productos.nombre","LIKE","%$request->search_products%")
         ->paginate(5);
@@ -34,6 +36,7 @@ class MostrarProductos extends Controller
     public function products_calificar($id){
         $datos['productos']= Productos::join('categorias','categorias.id','=','productos.id_categoria')
         ->select('productos.*','categorias.nombre as categoria')
+        ->where('productos.cantidad','>','0')
         ->where('productos.estado','1')
         ->where('productos.id','=',$id)->firstOrFail();
         return view('store.calificar_product',$datos);

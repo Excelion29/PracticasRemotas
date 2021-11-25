@@ -6,10 +6,24 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    @else
     @endif
 </div>
-<a class="btn btn-success" onclick="mostrarregistro()">Registrar nuevo {{$rol}}</a>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Gestión de {{$rol}}</h1>    
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active">{{$rol}}</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <a class="btn btn-success" onclick="mostrarregistro()">Registrar nuevo {{$rol}}</a>
+    </div><!-- /.container-fluid -->
+  </div>
 <br>
 <br>
    
@@ -51,13 +65,18 @@
     </div>
     {!! $users->links() !!}
 </div>
-    <div class="modal" id="modal">
-        <div class="modalcrear">
-            <div class="container" id="container">
+<div class="modal" id="modal">
+    <div class="modalcrear" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" >
+        <div class="container" id="container">
+            <div class="modal-header">
+                <h5 class="modal-title">Gestiónn {{$rol}}</h5>
+                <button type="button" onclick="ocultarrregistro()" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <br>
                 <form method="POST" enctype="multipart/form-data">
                     @csrf 
-                        <h1>Nuevo {{$rol}}</h1>
-
                         @if(count($errors)>0)
 
                             <div class="alert alert-danger" role="alert">
@@ -67,37 +86,40 @@
                                 <li> {{$error}}</li>
                                 @endforeach
 
+                                
                             </ul>
-
+                        </div>
                             @endif
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Nombre</label>
+                                <input type="text" class="form-control" name="name" value="{{ isset($users->name)?$users->name:old('name')}}" id="name" required>
                             </div>
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control" name="name" value="{{ isset($users->name)?$users->name:old('name')}}" id="name" required>
+
+                            <div class="form-group col-md-6">
+                                <label for="apellidos">Apellidos</label>
+                                <input type="text" class="form-control" name="apellidos" value="{{ isset($users->apellidos)?$users->apellidos:old('apellidos')}}" id="apellidos" required>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="apellidos">Apellidos</label>
-                            <input type="text" class="form-control" name="apellidos" value="{{ isset($users->apellidos)?$users->apellidos:old('apellidos')}}" id="apellidos" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Correo</label>
-                            <input type="text" class="form-control" name="email" value="{{ isset($users->email)?$users->email:old('email')}}" id="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Constraseña</label>
-                            <input type="password" class="form-control" name="password" value="{{ isset($users->password)?$users->password:old('password')}}" id="password" required>
+                        
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Correo</label>
+                                <input type="text" class="form-control" name="email" value="{{ isset($users->email)?$users->email:old('email')}}" id="email" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password">Constraseña</label>
+                                <input type="password" class="form-control" name="password" value="{{ isset($users->password)?$users->password:old('password')}}" id="password" required>
+                            </div>
                         </div>
                         
+                    <div class="modal-footer">
                         <input type="hidden" class="form-control" name="id_rol" value="{{$id}}" id="id_rol">
-
-                        <div class="form-group">
                         <input class="btn btn-success" type="submit" name="enviar" value="Crear"  id="enviar">
                         <a class="btn btn-primary" href="{{url('dashboard/'.$rol)}}">Cancelar</a>
-                        </div>
-                        <br>
+                    </div>
+                    <br>
                 </form>
             </div>
         </div>
@@ -105,6 +127,9 @@
     <script type="text/javascript">
         function mostrarregistro() {
             document.getElementById('modal').style.display = 'block';
+        }
+        function ocultarrregistro() {
+            document.getElementById('modal').style.display = 'none';
         }
     </script>
     <style>

@@ -76,7 +76,34 @@ Productos
                 </script>
                 <td>S/.{{$producto->precio}}</td>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->foto}}"  width="100" alt=""></td>
-                <td>{{$producto->cantidad}}</td>
+                <td>
+                    <div class="form-group" id="cant_{{$id}}">
+                        {{$producto->cantidad}}
+                        <a style="float:right;" href="#" id="add_{{$id}}"><i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="form-group form_add" id="form_{{$id}}">
+                        <form action="{{route('productos.add_stock',$producto)}}" method="POST" >
+                            @csrf    
+                            <label for="cantidad">Añadir al carrito</label>
+                            <input type="hidden" name='id' value="{{$producto->id}}">
+                            <input type="number" style="width:80%;" name='cantidad' id="name">
+                            <button style="float:right;" type="submit" href="#" id="close_{{$id}}"><i class="fas fa-calculator"></i></button>
+                        </form>
+                    </div>
+                    <script>
+                        	$(document).ready(function(){
+                                $("#add_{{$id}}").on( "click", function() {
+                                    $('#form_{{$id}}').show(); //muestro mediante id
+                                    $('#cant_{{$id}}').hide(); //oculto mediante id
+                                });
+                                $("#close_{{$id}}").on( "click", function() {
+                                    $('#form_{{$id}}').hide(); //oculto mediante id
+                                    $('#cant_{{$id}}').show(); //muestro mediante clase
+                                });
+                            });
+                    </script>
+                </td>
                 <td>{{$producto->categoria}}</td>
                 <td>{{$producto->name}} {{$producto->apellidos}}</td>
                 <td>{{$producto->date_created}}</td>
@@ -104,5 +131,11 @@ Productos
 </div>
 {!! $productos->links() !!}
 </div>
+
+<style>
+    .form_add{
+        display:none;
+    }
+</style>
 
 @endsection

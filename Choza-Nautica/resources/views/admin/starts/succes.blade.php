@@ -47,32 +47,32 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($productos as $id=>$producto)
-            <tr>                
-                <td>{{$id}}</td>
-                <td>{{$producto->nombre}}</td>  
+            @foreach ($producto as $key=>$produc)
+            <tr>     
+                <td>{{$key}}</td>
+                <td>{{$produc->nombre}} 
+                    <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$produc->foto}}"  width="100" alt="">
+                </td>         
                 <td>
-                    @foreach ($producto->ratings as $key=>$rating)
-                    <span><i class="fa fa-user"> {{$rating->user->name}} </i><br>{{$rating->created_at}}</span>
+                    <span><i class="fa fa-user"> {{$produc->user->name}} </i><br>{{$produc->created_at}}</span>
                     <div class="ratings">
-                        <input id="input_rating_{{$rating->id}}_SPL" value="{{$rating->rating}}" class="rating-loading">
+                        <input id="input_rating_{{$produc->id}}_SPL" value="{{$produc->rating}}" class="rating-loading">
                                 <script>
-                                    $('#input_rating_{{$rating->id}}_SPL').rating({displayOnly: true,size:'xs', showCaption:false, theme:'krajee-fa', starCaptions:{1:'Muy malo',2:'Malo',3:'Está bien',4:'Bueno',5:'Muy Bueno'},step: 0.5,theme:'krajee-fa'});
+                                    $('#input_rating_{{$produc->id}}_SPL').rating({displayOnly: true,size:'xs', showCaption:false, theme:'krajee-fa', starCaptions:{1:'Muy malo',2:'Malo',3:'Está bien',4:'Bueno',5:'Muy Bueno'},step: 0.5,theme:'krajee-fa'});
                                 </script>
-                        <h4>{{$rating->comentario}}</h4>
+                        <h4>{{$produc->comentario}}</h4>
                         <style>
                             .rating-container .rating-stars {
                                 display: block;
                             }
                         </style>
                     </div>  
-                    @endforeach        
                 </td>             
             </tr>
-            @endforeach
+            @endforeach       
         </tbody>
     </table>
 </div>
-{!! $productos->links() !!}
+{!! $producto->links() !!}
 </div>
 @endsection
