@@ -23,7 +23,7 @@ class Promociones extends Model
     }
 
     public function promocion_estado(){
-        if ($this->fecha_final > Carbon::now()) {
+        if ($this->fecha_final < Carbon::now()) {
             return[
                 'color' => 'danger',
                 'text' => 'Expirado'

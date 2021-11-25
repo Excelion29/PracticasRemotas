@@ -47,6 +47,10 @@ class Compra extends Model
         return $this->total_impuesto();
     }
 
+    public static function update_stock($id,$cantidad){
+        $producto = Productos::find($id);
+        $producto->diminish_stock($cantidad);
+    }
 
     public static function  my_store(){
         $cart = Cart::get_session_cart();
@@ -62,6 +66,7 @@ class Compra extends Model
         ]);
         foreach ($cart->order_details as $key => $abc) {
             if($cart->order_details[$key]->id_producto!=''){
+                self::update_stock($cart->order_details[$key]->id_producto, $cart->order_details[$key]->cantidad);        
                 $results[] = array(
                     "cantidad"=>$cart->order_details[$key]->cantidad,
                     "precio"=>$cart->order_details[$key]->precio,
@@ -92,10 +97,12 @@ class Compra extends Model
         ]);
         foreach ($cart->order_details as $key => $abc) {
             if($cart->order_details[$key]->id_producto!=''){
+                self::update_stock($cart->order_details[$key]->id_producto, $cart->order_details[$key]->cantidad);        
                 $results[] = array(
                     "cantidad"=>$cart->order_details[$key]->cantidad,
                     "precio"=>$cart->order_details[$key]->precio,
                     "id_producto"=>$cart->order_details[$key]->id_producto);
+                    
             }
             elseif($cart->order_details[$key]->id_combo!=''){
                 $results[] = array(

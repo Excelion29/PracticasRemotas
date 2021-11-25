@@ -22,9 +22,10 @@ class Productos extends Model
         'id_categoria',
     ];
 
-    public function add_stock(){
-    }
-    public function diminish_stock(){
+    public function diminish_stock($cantidad){
+        $line = $this->update([
+            'cantidad'=>DB::raw("cantidad - $cantidad"),
+        ]);
     }
     public function promociones(){
        return $this->belongsToMany(Promociones::class);

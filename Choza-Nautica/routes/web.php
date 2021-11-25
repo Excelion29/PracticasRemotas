@@ -102,6 +102,7 @@ Route::get('change_status/delivery/{delivery}', [DeliveryController::class,'chan
 Route::get('change_status/carritos/{carrito}', [CarritosController::class,'change_status'])->name('change.status.carritos');
 Route::resource('dashboard/combos', CombosController::class)->names('combos_prod');
 Route::resource('dashboard/productos', ProductosController::class);
+Route::post('add_productos/{producto}', [ProductosController::class,'add_stock'])->name('productos.add_stock');
 Route::resource('dashboard/Delivery', DeliveryController::class);
 Route::resource('dashboard/mesas', MesaController::class);
 Route::resource('dashboard/promociones', PromocionesController::class)->names('promociones');
