@@ -24,8 +24,6 @@
       <a class="btn btn-success" onclick="mostrarregistro()">Registrar nuevo {{$rol}}</a>
     </div><!-- /.container-fluid -->
   </div>
-<br>
-<br>
    
 <div class="card">
     <div class="card-body">

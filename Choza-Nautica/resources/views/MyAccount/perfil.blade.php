@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="{{asset('css/user.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <div class="container">
   <div class="row -spacing-a">
     <div class="col-md-12">
@@ -23,7 +22,6 @@
         </span>
       </div>
       </div>
-      
     </div>
     <div class="col-md-8">
       <h5>Información</h5>
@@ -38,7 +36,6 @@
           <p class="-typo-copy -typo-copy--blue">YSmith</p>
           <p class="-typo-copy -typo-copy--blue">{{old('name',$perfil->name)}}</p>
           <p class="-typo-copy -typo-copy--blue">{{old('apellidos',$perfil->apellidos)}}</p>
-          <p class="-typo-copy -typo-copy--blue">-</p>
           <p class="-typo-copy -typo-copy--blue">{{old('email',$perfil->email)}}</p>
         </div>
         <div class="col-md-3">
@@ -64,10 +61,28 @@
           
         </div>
         <div class="col-md-3">
-        <p class="-typo-copy -typo-copy--blue">{{old('direccion',$perfil->cliente->direccion)}}</p>
+          @if ($perfil->cliente->direccion=="")
+          <p class="-typo-copy -typo-copy--blue" style="color:red;">Necesario para realizar compras</p>
+          @else
+          <p class="-typo-copy -typo-copy--blue">{{old('direccion',$perfil->cliente->direccion)}}</p>
+          @endif
+          @if ($perfil->cliente->celular=="")
+          <p class="-typo-copy -typo-copy--blue" style="color:blue;">Aún no completados</p>
+          @else
           <p class="-typo-copy -typo-copy--blue">{{old('celular',$perfil->cliente->celular)}}</p>
+          @endif
+          
+          @if ($perfil->cliente->dni=="")
+          <p class="-typo-copy -typo-copy--blue" style="color:blue;">Aún no completados</p>
+          @else
           <p class="-typo-copy -typo-copy--blue">{{old('dni',$perfil->cliente->dni)}}</p>
+          @endif
+          
+          @if ($perfil->cliente->ruc=="")
+          <p class="-typo-copy -typo-copy--blue" style="color:blue;">Aún no completados</p>
+          @else
           <p class="-typo-copy -typo-copy--blue">{{old('ruc',$perfil->cliente->ruc)}}</p>
+          @endif
           <p class="-typo-copy -typo-copy--blue">******</p>
         </div>
       </div>
@@ -79,8 +94,7 @@
     .map_area_wrapper{
         display: none;
         }
-    </style>
-
+</style>
 @endsection
 
 

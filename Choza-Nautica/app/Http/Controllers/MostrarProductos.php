@@ -43,8 +43,7 @@ class MostrarProductos extends Controller
     }
 
     public function rating_product(Request $request, Productos $product)
-    {
-        $product->rate($request->rate,$request->comentario);
+    {   $product->rate($request->rate,$request->comentario);
         return back();
         // dd($product->ratings);
     }

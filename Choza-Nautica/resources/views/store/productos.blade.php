@@ -21,8 +21,8 @@
     
     <div class="wrap">
       <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
-      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
-      <input type="submit" class="search-imput">
+        <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+        <input type="submit" class="search-imput">
       </form>
     </div>
     <p class="titulo">PLATOS</p>

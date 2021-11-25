@@ -4,16 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{asset('css/stilos.css')}}">
     <link rel="stylesheet" href="{{asset('css/product.css')}}">
-        
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
-
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-    
-
     <link href="//db.onlinewebfonts.com/c/a16915d9f4c6bd82cbec199a1b330adf?family=Balzac+DB" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,12 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choza N. - @yield('title')</title>
-
-    
+    @yield('estilos')
+    <title>Choza N. - @yield('title')</title>  
 </head>
 <body>
     
@@ -234,25 +226,27 @@
                                     @endif
                                     @endforeach
                                     <div class="btn-actualizar">
-                                    <button type="submit" ><i class="fas fa-redo-alt"></i></button>
-                                        
+                                        <button type="submit" ><i class="fas fa-redo-alt"></i></button> 
                                     </div>
                                     {!! Form::close() !!}
-                                    </div>
-                                    <div class="content-footer">
-                                            
-                                            <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/.{{$cart->total_price()}}.00</p></div>
-                                            <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
-                                            <div class="btnfip"><button class="realizar"> <a class="fp" href="{{route('shop.index')}}">Finalizar pedido</a> </button></div>
-                                        
-                                        </div>
-                                    @endif
-                                    </div>
-                                        
-                                        
-                                   
                                 </div>
+                                <div class="content-footer">
+                                        
+                                        <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/.{{$cart->total_price()}}.00</p></div>
+                                        <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
+                                        <div class="btnfip">
+                                            @if (Auth::user()->direccion=="")
+                                            <button class="realizar"> <a class="fp" href="{{route('my_perfil')}}">Finalizar pedido</a> 
+                                            <button class="realizar"> <a class="fp" href="{{route('shop.index')}}">Finalizar pedido</a> 
+                                            @endif
+                                            </button>
+                                        </div>
+                                    
+                                    </div>
+                                @endif
+                            </div>
                         </div>
+                    </div>
 
                         
     </div>  
@@ -282,6 +276,7 @@
     <script src="{{asset('js/navbar.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/modalcarrito.js')}}"></script>
+    @yield('scripts')
 </body>
 </html>
 
