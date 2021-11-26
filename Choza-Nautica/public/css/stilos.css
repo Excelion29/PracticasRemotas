@@ -11,6 +11,7 @@ a{
 .fp{
   color: white !important;
 }
+
 @import url(//db.onlinewebfonts.com/c/a16915d9f4c6bd82cbec199a1b330adf?family=Balzac+DB);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
@@ -280,29 +281,29 @@ a{
 }
 /* Navbar------------------------------------------------------------------------------------------------------------------------------------------------*/
 .navbar{
-    font-family: 'Bubblegum Sans', cursive;
-    background: rgba(255, 255, 255, 0);
-    color: #ffffff;
-    width: 100%;
-    height: 111px;
-    text-align: center;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    
-    transition:  0.5s ease-in-out ;
+    font-family: 'Bubblegum Sans', cursive !important;
+    background: rgba(255, 255, 255, 0) !important;
+    color: #ffffff !important;
+    width: 100% !important;
+    height: 111px !important;
+    text-align: center !important;
+    position: fixed !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    z-index: 100 !important;
+    padding: 0!important;
+    transition:  0.5s ease-in-out !important;
 }
 .activo{
-  background-color: white;
-  color: rgb(39, 39, 39);
-  box-shadow: 2px 2px 5px #07070781;
+  background-color: white !important;
+  color: rgb(39, 39, 39) !important;
+  box-shadow: 2px 2px 5px #07070781 !important;
 }
 .activo:hover{
-  background-color: white;
-  color: rgb(39, 39, 39);
-  box-shadow: 2px 2px 5px #07070781;
+  background-color: white !important;
+  color: rgb(39, 39, 39) !important;
+  box-shadow: 2px 2px 5px #07070781 !important;
 }
 .cls-1{
   fill: #fff;
@@ -346,27 +347,27 @@ a{
   border-bottom: 1px solid #df6400;
 }
 .svg-triangle{
- display: none;
-  position: absolute;
-  width: 80px;
-  top: 57px;
-  right: 11px;
+  display: none !important;
+  position: absolute !important;
+  width: 80px !important;
+  top: 57px !important;
+  right: 11px !important;
   
 }
 .triangle{
-  fill: rgb(255, 255, 255);
+  fill: rgb(255, 255, 255) !important;
   
 }
 .triangle-2{
-  fill: #979797;
+  fill: #979797 !important;
   
 }
 
 .nav-user:hover .svg-triangle{
-  display: block;
+  display: block !important;
 }
 .cont-nav-user{
-  display: none;
+  display: none ;
   position: absolute;
   top: 80px;
   right: 3px;
@@ -403,6 +404,7 @@ a{
   height: 111px;
   text-align: center;
   position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -772,7 +774,7 @@ align-items: center;
 .tit_content{
   padding: 8px;
   width: 150px;
-  height: 40px;
+  height: 64px;
   text-align: left;
  
   font-size: 18px;
@@ -936,7 +938,7 @@ ul {
 */
 .header {
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("https://images6.alphacoders.com/366/366291.jpg") no-repeat center center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("https://www.wallpapertip.com/wmimgs/50-504378_restaurant-hd-wallpaper-restaurant-hd.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   display: flex;
@@ -1265,7 +1267,7 @@ search-imput:hover {
 /*
   FOOTER
 */
-footer {
+.footer-nav {
   margin: 0;
   position: relative;
   background: #141414;
@@ -1728,7 +1730,9 @@ footer .copyright span {
   padding: 5px 10px;
 }
 
-
+.footer-nav{
+  margin-top: 150px;
+}
 .mini-footer {
  background:#192027;
  text-align:center;
@@ -2025,3 +2029,23 @@ footer .copyright span {
   background-color: #ffffff;
   margin-bottom: 15%;
 }
+
+
+/*Pagina mis ordenes*/
+
+.card-ordenes{
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.card-ordenes-body{
+  background-color: #e4e4e4;
+  margin: auto;
+  width: 60%;
+  height: 50vh;
+}
+
+
+
+

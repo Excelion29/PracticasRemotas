@@ -147,7 +147,7 @@
                           <td>
                             <div>
                               <div class="custom-control custom-radio @if ($loop->first)  show @endif" />
-                                <input type="radio" class="custom-control-input" value="{{$Payment->id}}" name="paymentmethod" id="{{$key}}" 
+                                <input type="radio" class="custom-control-input" value="{{$Payment->id}}" name="paymentmethod" id="cd{{$key}}" 
                                 @if ($loop->first)
                                     checked                    
                                 @endif                
@@ -175,11 +175,8 @@
                   </form>
               </div>
               
-            
-            </div>
           @endif
       </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-      <script src="https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
       <script src="{{asset('js/tarjeta.js')}}"></script>
 @endsection

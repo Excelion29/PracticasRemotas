@@ -2,7 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-
+.row-products{
+  width: 100%;
+  height: auto;
+  max-height: 300vh;
+}
 
 .contenedor-u{
   padding-top: 30px;

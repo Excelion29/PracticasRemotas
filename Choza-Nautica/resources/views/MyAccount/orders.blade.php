@@ -9,10 +9,12 @@
       <span id="asterisk">*</span>
       <p>Productos para ti</p>
     </div>
-  </div> 
-  <div class="card">
-    <div class="card-body">
-        <table id="example1"  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+</div> 
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <div class="card-ordenes">
+    <div class="card-ordenes-body">
+        <table id="example1"  class="table table-striped" style="width:100%">
             <thead>
             <tr>
                 <th>Orden</th>
@@ -21,25 +23,26 @@
                 <th>Total</th>
                 <th>Acción</th>
             </tr>
-        </thead>
-        <tbody>
-            @forelse($orders as  $id=>$orden)
-            <tr>
-                <td scope="row">{{$id}}</td>
-                <td>{{$orden->created_at}}</td>
-                <td>{{$orden->estado}}</td>
-                <td>{{$orden->total()}}</td>
-                <td><a name="" id="" class="btn btn-primary" href="{{route('Mis_detalles_orders.show',$orden->id)}}" role="button">Ver</a></td>
-            </tr>
-            @empty
+            </thead>
+            <tbody>
+                @forelse($orders as  $id=>$orden)
                 <tr>
-                    <td colspan="5">No existente</td>
+                    <td scope="row">{{$id}}</td>
+                    <td>{{$orden->created_at}}</td>
+                    <td>{{$orden->estado}}</td>
+                    <td>{{$orden->total()}}</td>
+                    <td><a name="" id="" class="btn btn-primary" href="{{route('Mis_detalles_orders.show',$orden->id)}}" role="button">Ver</a></td>
                 </tr>
-            @endforelse
-        </tbody>
-    </table>    
-</div>
-</div>
+                @empty
+                    <tr>
+                        <td colspan="5">No existente</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>    
+    </div>
+  </div>
+
     <style>
         .map_area_wrapper{
             display: none;

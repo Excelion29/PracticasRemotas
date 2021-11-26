@@ -70,7 +70,7 @@
                     <a href="{{url('conocenos')}}">Conócenos</a>
                 </li>
                 <li>
-                    <a href="" >Nuesta Gastronomía </a>
+                    <a href="#gastro" >Nuesta Gastronomía </a>
                 </li>
                 <li class="nav-order">
                     <a href="{{ url('category') }}" >Ordena Aquí</a>
@@ -121,14 +121,14 @@
                         @endif
                     @else
                         <li class="nav-user">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="" class="" >
                                 {{ Auth::user()->name }}
                             </a>
                            
 
                             <svg class="svg-triangle" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.54 107"><defs></defs><title>triangulos</title><polygon class="triangle" points="1.17 106.5 102.77 0.72 204.36 106.5 1.17 106.5"/><path class="triangle-2"  d="M503.47,249.44,603.89,354H403.05L503.47,249.44m0-1.44L400.7,355H606.24L503.47,248Z" transform="translate(-400.7 -248)"/></svg>
                             <ul class="cont-nav-user">
-                            <li><a href="{{ route('mi_cuenta') }}">Nosotros</a></li>
+                            <li><a href="{{url('contactanos')}}">Nosotros</a></li>
                             <li><a href="{{ route('my_perfil') }}">Detalles de la cuenta</a></li>
                             {{-- <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li> --}}
                             <li><a href="{{ route('my_orders') }}">Pedidos</a></li>
@@ -170,7 +170,12 @@
                                                 <div class="tit_content">{{$order_detail->product->nombre}}</div>
                                                 <div class="cyp">
                                                     <div class="cant_content">
-                                                        <input class="inputnum" name="cantidad[]" type="number" min="0" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                                        
+                                                        
+                                                      
+                                                        <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                                        
+                                                    
                                                     </div>
                                                     @if($order_detail->product->has_promociones())
                                                         <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
@@ -184,13 +189,25 @@
                                                 </div>
                                             </div>
                                         @elseif($order_detail->id_combo!='')
-                                            <div class="content-pedidos">
-                                                <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
+                                        <div class="content-pedidos">
+                                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
+                                            
+                                            <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                                            <div class="cant_content">
+
+                                                <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
                                                 
-                                                <div class="tit_content">{{$order_detail->combo->nombre}}</div>
-                                                <div class="cant_content">Cantidad </div>
-                                                <div class="pre_content">Precio Producto </div>
                                             </div>
+                                                    @if($order_detail->product->has_promociones())
+                                                    <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
+                                                    @else 
+                                                    <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
+                                                    @endif
+
+                                                    <div class="del-icon">
+                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times"></i></a>
+                                                    </div>
+                                        </div>
 
                                             <div class="content-pedidos">
                                                 <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->combo->foto}})no-repeat center center/cover">  </div>
@@ -243,7 +260,7 @@
                    
     <!--Contenido-->
     @yield('content')   
-    <footer class="footer-area footer--light">
+    <footer class="footer-nav">
     <div class="mini-footer">
       <div class="container">
         <div class="row">
