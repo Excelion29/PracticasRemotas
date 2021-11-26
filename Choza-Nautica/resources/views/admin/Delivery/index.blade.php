@@ -14,11 +14,22 @@
     </button>
     @endif
 </div>
-
-<h1>Gestión de Costo por Distrito</h1>
-<a class="btn btn-success" href="{{url('dashboard/Delivery/create')}}">Registrar nueva Distrito</a>
-<br>
-<br>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Gestión de combos</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active">Delivery</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <a class="btn btn-success" href="{{url('dashboard/Delivery/create')}}">Registrar nueva Distrito</a>
+    </div><!-- /.container-fluid -->
+</div>
 <div class="card">
     <div class="card-body">
         <table id="example1"  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">

@@ -57,8 +57,8 @@
                           <option value="{{$Costo_x_delivery->id}}">{{$Costo_x_delivery->Distrito}}</option>
                         @endforeach
                       </select>  
-                      <input type="text"  placeholder="Dirección" value="{{Auth::user()->cliente->direccion}}" class="dates2">
-                      <input type="email" placeholder="Celular" value="{{Auth::user()->cliente->celular}}" class="dates2">
+                      <input type="text"  placeholder="Dirección" required value="{{Auth::user()->cliente->direccion}}" class="dates2">
+                      <input type="email" placeholder="Celular" required value="{{Auth::user()->cliente->celular}}" class="dates2">
                       <br>
                       
                       <br> 
@@ -120,7 +120,7 @@
                           </div>
                           <div class="product-cost-container2">
                               
-                              <p>Costo por envío</p> <p class="p"></p>
+                              <p>Costo por envío</p> <p class="p">S/5</p>
                           </div>
                       
                       </div> 

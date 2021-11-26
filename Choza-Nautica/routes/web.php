@@ -54,7 +54,7 @@ Route::get('payments/cancelled',[PaymentVistaController::class,'cancelled'])->na
 
 // SERVICIOS DE LA PÄGINA AL USUARIO
 Route::get('category',[MostrarCategorias::class,'index'])->name('category.index');
-Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
+// Route::get('mesa',[MostrarMesas::class,'index'])->name('mesas.index');
 Route::get('combos',[MostraCombos::class,'index'])->name('combos.index');
 Route::get('products/{id}',[MostrarProductos::class,'show'])->name('products.show');
 Route::post('rating_product/{product}',[MostrarProductos::class,'rating_product'])->name('rating_product');
@@ -97,14 +97,14 @@ Route::resource('dashboard/categorias', CategoriaController::class);
 Route::get('change_status/categorias/{categoria}', [CategoriaController::class,'change_status'])->name('change.status.categorias');
 Route::get('change_status/combos/{combo}', [CombosController::class,'change_status'])->name('change_status.combos');
 Route::get('change_status/productos/{producto}', [ProductosController::class,'change_status'])->name('change.status.productos');
-Route::get('change_status/mesas/{mesa}', [MesaController::class,'change_status'])->name('change.status.mesas');
+// Route::get('change_status/mesas/{mesa}', [MesaController::class,'change_status'])->name('change.status.mesas');
 Route::get('change_status/delivery/{delivery}', [DeliveryController::class,'change_status'])->name('change.status.delivery');
 Route::get('change_status/carritos/{carrito}', [CarritosController::class,'change_status'])->name('change.status.carritos');
 Route::resource('dashboard/combos', CombosController::class)->names('combos_prod');
 Route::resource('dashboard/productos', ProductosController::class);
 Route::post('add_productos/{producto}', [ProductosController::class,'add_stock'])->name('productos.add_stock');
 Route::resource('dashboard/Delivery', DeliveryController::class);
-Route::resource('dashboard/mesas', MesaController::class);
+// Route::resource('dashboard/mesas', MesaController::class);
 Route::resource('dashboard/promociones', PromocionesController::class)->names('promociones');
 Route::resource('dashboard/empresa',EmpresaController::class)->names('empresa.index');
 Route::get('dashboard/starts/succes',[StartsController::class,'succes']);

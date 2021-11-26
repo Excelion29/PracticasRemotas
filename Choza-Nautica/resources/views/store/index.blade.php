@@ -2,14 +2,17 @@
 
 @section('title', 'Orden' )
 
-@section('content')
-
+@section('estilos')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.css">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/css/star-rating.css')}}">
 <link rel="stylesheet" href="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.css')}}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('bootstrap_star_rating/js/star-rating.js')}}"></script>
 <script src="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.js')}}"></script>
+@endsection
+@section('content')
+
+
 
 <style>
   .row{
@@ -36,12 +39,12 @@
     
     
     <div class="wrap">
-      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
-      <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
-      <input type="submit" class="search-imput">
+      <form action="{{route('search_categorias')}}" id="form_search_category" method="GET" >
+        <input type="text" name="search_category" id="search_category" placeholder="Buscar Categorias" class="search-text">
+        <input type="submit" class="search-imput">
       </form>
     </div>
-
+    
 @include('store.productos_destacados')
 <div class="contenedor-u">
   <div class="contenedor-comida">
@@ -68,7 +71,8 @@
     {!! $categorias->links() !!}
   </div>
 </div>
-
+@endsection
+@section('scripts')    
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
   <script>
@@ -89,5 +93,4 @@
             $('#form_search_category').submit();
       });
   </script>
-
 @endsection
