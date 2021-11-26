@@ -1,17 +1,26 @@
-<div  style="float: left;width: 15%; height:1800px;">
-    <fieldset>
-        <legend>Categorias</legend>
+<input type="checkbox" id="btn-product-cat">
+
+<div class="btn-product-cat">
+    <label for="btn-product-cat" class=""><i class="fas fa-caret-right"></i></label>
+</div>
+
+
+<div class="product-cat">
+        <label for="btn-product-cat" class=""><i class="fas fa-caret-left"></i></label>
+    <div>
+        <p class="dishes-title">Categorias</p>
         @foreach ($categorias_provider as $categoria_provider)
-        <ul class="row">
-            <li class="col-md-4">
-                <figure class="itemside mb-3">
-                    <div class="aside"><img src="{{asset('storage').'/'.$categoria_provider->foto}}" width="50px"  class="img-sm border"></div>
-                    <figcaption class="info align-self-center">
+        <ul class="row-dishes">
+            <li class="">
+                <div class="content-cat">
+                    <div class="dishes-img"><img src="{{asset('storage').'/'.$categoria_provider->foto}}"></div>
+                    <div class="dishes-info-cat">
                         <a href="{{url('/products/'.$categoria_provider->id)}}">{{$categoria_provider->nombre}}</a>
-                    </figcaption>
-                </figure>
+                    </div>
+                </div>
             </li>
         </ul>
         @endforeach
-    </fieldset>
+    </div>
+    
 </div> 
