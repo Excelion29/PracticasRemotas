@@ -17,11 +17,11 @@ class PaymentVistaController extends Controller
         $this->paymentPlatformResolver = $paymentPlatformResolver;
     }
     public function pays(Request $request){
-        $request->validate([
-            'paymentmethod'=>'required|exists:payment_platforms,id', 
-            'email'=>'nullable|email:rfc,dns',   
-        ]);  
         if ($request->paymentmethod!=1) {
+            $request->validate([
+                'paymentmethod'=>'required|exists:payment_platforms,id', 
+                'email'=>'nullable|email:rfc,dns',   
+            ]);  
             $paymentPlatform = $this->paymentPlatformResolver
             ->resolveService($request->paymentmethod);
             session()->put('paymentPlatformId', $request->paymentmethod);
@@ -34,6 +34,10 @@ class PaymentVistaController extends Controller
             return $paymentPlatform->handlePayment($request);   
         }
         else{
+            $request->validate([
+                'paymentmethod'=>'required|exists:payment_platforms,id', 
+                'email'=>'nullable|email:rfc,dns',   
+            ]); 
             Compra::my_store_contraentrega();
             $orders = auth()->user()->compras;
             return view('MyAccount.orders',compact('orders'));

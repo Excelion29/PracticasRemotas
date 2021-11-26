@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Cart;
-use App\Models\Compra;
 use Illuminate\Http\Request;
+use App\Models\Compra;
 use App\Traits\ConsumesExternalServices;
 use App\Services\CurrencyConversionService;
 
@@ -28,7 +28,6 @@ class MercadoPagoService
         $this->key = config('services.mercadopago.key');
         $this->secret = config('services.mercadopago.secret');
         $this->baseCurrency = config('services.mercadopago.base_currency');
-
         $this->converter = $converter;
     }
 
@@ -54,13 +53,13 @@ class MercadoPagoService
             'card_token' => 'required',
             'email' => 'required',
         ]);
-
+        
         $cart = Cart::get_session_cart();
         $total_price = $cart->total_price();
         $currency = 'pen';
-
+        
         $payment = $this->createPayment(
-            $request->value,
+            $total_price,
             $currency,
             $request->card_network,
             $request->card_token,
@@ -79,7 +78,6 @@ class MercadoPagoService
                 ->route('my_orders')
                 ->withSuccess(['payment' => "Thanks, {$name}. We received your {$originalAmount}{$originalCurrency} payment ({$amount}{$currency})."]);
         }
-
         return redirect()
             ->route('shop.index')
             ->withErrors('We were unable to confirm your payment. Try again, please');
@@ -114,7 +112,6 @@ class MercadoPagoService
 
     public function resolveFactor($currency)
     {
-        return $this->converter
-            ->convertCurrency($currency, $this->baseCurrency);
+        return $this->converter->convertCurrency($currency, $this->baseCurrency);
     }
 }

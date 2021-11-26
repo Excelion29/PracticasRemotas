@@ -56,7 +56,7 @@ class Compra extends Model
         $cart = Cart::get_session_cart();
         $compra = self::create([
             'estado'=>'PENDIENTE',                
-            'direccion'=>'',
+            'direccion'=>auth()->user()->cliente->direccion,
             'estado_pago'=>'PAGADO',
             'created_at' => Carbon::now(),
             'user_id'=>auth()->user()->id,
@@ -87,7 +87,7 @@ class Compra extends Model
         $cart = Cart::get_session_cart();
         $compra = self::create([
             'estado'=>'PENDIENTE',                
-            'direccion'=>'',
+            'direccion'=>auth()->user()->cliente->direccion,
             'estado_pago'=>'PENDIENTE',
             'created_at' => Carbon::now(),
             'user_id'=>auth()->user()->id,
