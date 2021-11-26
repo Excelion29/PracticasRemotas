@@ -155,66 +155,108 @@
     </div>
     <div class="modal-container-cart">
                         
-                        <div class="container-carrito">
-                           
-                            <p class="closeC">X</p>
-                            
-                                <div class="content-carrito ">
-                                <div class="title-cont">
-                                <p class="title">Carrito de compra </p> 
-                                           </div>
-                                <div class="content-pedidosge">
-                                    @if ($cart->quantity_of_products() != 0)
-                                    @foreach ($cart->order_details as $order_detail)
-                                    @if($order_detail->id_producto!='')
+        <div class="container-carrito">
+           
+            <p class="closeC"><i class="fas fa-times"></i></p>
+            
+                <div class="content-carrito ">
+                <div class="title-cont">
+                <p class="title">Carrito de compra </p> 
+                </div>
+                <div class="content-pedidosge">
+                    {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
+                    @if ($cart->quantity_of_products() != 0)
+                    @foreach ($cart->order_details as $order_detail)
+                        @if($order_detail->id_producto!='')                                    
+                            <div class="content-pedidos">
+                                <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
+                                <div class="tit_content">{{$order_detail->product->nombre}}</div>
+                                <div class="cyp">
+                                    <div class="cant_content">
+                                        
+                                        
+                                      
+                                        <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
                                         
                                     
-                                        <div class="content-pedidos">
-                                            <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
-                                            
-                                            <div class="tit_content">{{$order_detail->product->nombre}}</div>
-                                                <div class="cyp">
-                                                    <div class="cant_content">
-                                                        <button class="menos">
-                                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20"><path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path></svg>
-                                                        <span class="icon__fallback-text" aria-hidden="true">−</span>
-                                                        </button>
-                                                        <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
-                                                        <button class="mas"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20"><path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path></svg>
-                                                        <span class="icon__fallback-text" aria-hidden="true">+</span></button>
-                                                    </div>
-                                                    <div class="pre_content">{{$order_detail->product->precio}} </div>
-                                                </div>
-                                        </div>
-                                   
-                                        @elseif($order_detail->id_combo!='')
-                                        <div class="title-cont">
-                                            <p class="title">
-                                                Carrito de Compra 
-                                            </p>
-                                        </div>
-
-                                        <div class="content-pedidos">
-                                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->product->foto}}" alt=""></div>
-                                            
-                                            <div class="tit_content">{{$order_detail->product->nombre}}</div>
-                                            <div class="cant_content">Cantidad </div>
-                                            <div class="pre_content">Precio Producto </div>
-                                        </div>
+                                    </div>
+                                    @if($order_detail->product->has_promociones())
+                                        <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
+                                    @else 
+                                        <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
                                     @endif
-                                    @endforeach
-                                    @endif
-                                    </div> 
-                                        <div class="content-footer">
-                                        <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/. 35.00</p></div>
-                                        <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
-                                        <div class="btnfip"><button class="realizar">Finalizar pedido</button></div>
-                                        
-                                        </div>
-                                        
-                                   
+                                    <br>
+                                    <div class="del-icon">
+                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times"></i></a>
+                                    </div>
                                 </div>
+                            </div>
+                        @elseif($order_detail->id_combo!='')
+                        <div class="content-pedidos">
+                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
+                            
+                            <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                            <div class="cant_content">
+
+                                <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                
+                            </div>
+                                    @if($order_detail->product->has_promociones())
+                                    <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
+                                    @else 
+                                    <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
+                                    @endif
+
+                                    <div class="del-icon">
+                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times"></i></a>
+                                    </div>
                         </div>
+
+                            <div class="content-pedidos">
+                                <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->combo->foto}})no-repeat center center/cover">  </div>
+                                <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                                <div class="cyp">
+                                    <div class="cant_content">
+                                        <button class="menos">
+                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20"><path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path></svg>
+                                        <span class="icon__fallback-text" aria-hidden="true">−</span>
+                                        </button>
+                                        <input class="inputnum" name="cantidad[]" type="number" min="0" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                        <button class="mas"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20"><path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path></svg>
+                                        <span class="icon__fallback-text" aria-hidden="true">+</span></button>
+                                    </div>
+                                    <div class="pre_content">S/. {{$order_detail->combo->precio}}</div>
+                                    <br>
+                                    <div class="pre_content">S/.{{$order_detail->precio}}</div>
+                                    <div class="del-icon">
+                                        <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times">sa</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                    <div class="btn-actualizar">
+                        <button type="submit" ><i class="fas fa-redo-alt"></i></button> 
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="content-footer">
+                        
+                        <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/.{{$cart->total_price()}}.00</p></div>
+                        <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
+                        <div class="btnfip">
+                             @if(isset(auth()->user()->cliente->direccion))
+                                <button class="realizar"> <a class="fp" href="{{route('shop.index')}}">Finalizar pedido</a> </button>
+                             @else
+                                <button class="realizar"> <a class="fp" href="{{route('my_perfil')}}">Finalizar pedido</a> </button>
+                            @endif
+                        </div>
+                    
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
 
                         
     </div> 

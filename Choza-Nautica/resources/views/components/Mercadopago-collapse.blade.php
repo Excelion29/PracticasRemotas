@@ -1,5 +1,5 @@
     
-    <div class="conten-payment" data-method="{{$Payment->id}}">
+    <div class="conten-payment" id="conten-payment" data-method="{{$Payment->id}}">
         <label class="mt-3">Card details:</label>
 
         <div class="form-group form-row">
@@ -130,8 +130,8 @@
             </svg>
         </div>
         <div class="back">
-            <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
+            {{-- <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve"> --}}
                 <g id="Front">
                     <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
                 </g>
@@ -172,11 +172,11 @@
         <input id="cardnumber" type="text" inputmode="numeric">
        
         <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink">
+            {{-- xmlns:xlink="http://www.w3.org/1999/xlink">
 
         </svg>
     </div>
-    <div class="field-container">
+    <div class="field-container"> --}}
         <label for="expirationdate">Expiration (mm/yy)</label>
         <input id="expirationdate" type="text"  inputmode="numeric">
     </div>

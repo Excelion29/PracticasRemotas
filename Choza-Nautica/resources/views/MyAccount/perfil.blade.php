@@ -91,9 +91,9 @@
 </div>
 
 <style>
-    .map_area_wrapper{
-        display: none;
-        }
+  .area-mapa{
+      display:none;
+  }
 </style>
 @endsection
 

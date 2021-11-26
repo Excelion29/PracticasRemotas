@@ -151,10 +151,11 @@
                                 @if ($loop->first)
                                     checked                    
                                 @endif                
-                                required/>                
+                                required/> 
+                                        
+                                     
                                 <label class="custom-control-label" for="{{$key}}">{{$Payment->name}}<br><img src="{{$Payment->img}}" width="45px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></label>
                               </div>
-                              <div class="payment-method-details" data-method="{{$Payment->id}}">
                                 @includeif('components.'.strtolower($Payment->name).'-collapse')
                               </div>
                             </div>
@@ -178,5 +179,24 @@
           @endif
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+          $("#cd2").change(function(){
+              if($("#cd2").is(':checked')){
+                  $(".conten-payment").show();
+              }
+          });
+          $("#cd1").change(function(){
+              if($("#cd1").is(':checked')){
+                  $(".conten-payment").hide();
+              }
+          });
+          $("#cd0").change(function(){
+              if($("#cd0").is(':checked')){
+                  $(".conten-payment").hide();
+              }
+          });
+      </script>
       <script src="{{asset('js/tarjeta.js')}}"></script>
+      
 @endsection

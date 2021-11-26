@@ -1,9 +1,9 @@
 @extends('MyAccount.index')
 @section('content_ordenes')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-{!! Form::model($perfil, ['route'=>['update_cliente',$perfil],'method'=>'PUT']) !!}
 <div class="changep-p">
     <fieldset class="changep-p-cont">
+        {!! Form::model($perfil, ['route'=>['update_cliente',$perfil],'method'=>'PUT']) !!}
         <legend>Configuración de perfil</legend>
         <div class="form-group">
             <small id="helpId" class="text-muted">Nombre</small>
@@ -35,10 +35,15 @@
         </div>     
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         {!! Form::close() !!}
-         <a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a> 
+        <a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a> 
     </fieldset>
-    
 </div>
+
+         <style>
+             .area-mapa{
+                 display:none;
+             }
+         </style>
 
 @endsection
 
