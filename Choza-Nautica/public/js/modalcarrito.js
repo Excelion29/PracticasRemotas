@@ -1,35 +1,35 @@
-let cerrar = document.querySelectorAll(".closeC")[0];
-let abrir = document.querySelectorAll(".cta-mod")[0];
-let modal = document.querySelectorAll(".container-carrito")[0];
-let modalC = document.querySelectorAll(".modal-container-cart")[0];
+let cerrarM = document.querySelectorAll(".closeC")[0];
+let abrirM = document.querySelectorAll(".cta-mod")[0];
+let modalS = document.querySelectorAll(".container-carrito")[0];
+let modalCl = document.querySelectorAll(".modal-container-cart")[0];
 
-  abrir.addEventListener("click", function(e){
+  abrirM.addEventListener("click", function(e){
     e.preventDefault();
-    modalC.style.opacity = "1";
-    modalC.style.visibility = "visible";
-    modal.classList.toggle("modal-closeC");
+    modalCl.style.opacity = "1";
+    modalCl.style.visibility = "visible";
+    modalS.classList.toggle("modal-closeC");
   });
   
-  cerrar.addEventListener("click", function(){
+  cerrarM.addEventListener("click", function(){
 
-    modal.classList.toggle("modal-closeC");
+    modalS.classList.toggle("modal-closeC");
     
     setTimeout(function(){
-      modalC.style.opacity = "0";
-      modalC.style.visibility = "hidden";
+      modalCl.style.opacity = "0";
+      modalCl.style.visibility = "hidden";
     },800)
 
   })
 
   window.addEventListener("click", function(e){
 
-    if(e.target == modalC){
+    if(e.target == modalCl){
 
-    modal.classList.toggle("modal-closeC");
+    modalS.classList.toggle("modal-closeC");
     
     setTimeout(function(){
-      modalC.style.opacity = "0";
-      modalC.style.visibility = "hidden";
+      modalCl.style.opacity = "0";
+      modalCl.style.visibility = "hidden";
     },800)
     }
   })

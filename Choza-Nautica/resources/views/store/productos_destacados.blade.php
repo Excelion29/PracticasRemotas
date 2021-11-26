@@ -12,71 +12,88 @@
     <div class="product-des-container">
     <label for="btn-product-des"><i class="fas fa-angle-double-right"></i></label>
         <div class="detached-dishes">
-            <p>Platos destacados<p>
+            <p class="dishes-title">Platos destacados<p>
             @foreach ($ratings_Productos as $rating_Producto)
                 <ul class="row-dishes">
                     <li class="rowcontent">
-                        <figure class="itemside mb-3">
-                            <div class="aside"><img src="{{asset('storage').'/'.$rating_Producto->foto}}" width="50px"  class="img-sm border"></div>
-                            <figcaption class="info align-self-center">
-                                <p class=""> <a href="{{url('/products_calificar/'.$rating_Producto->id)}}"> {{$rating_Producto->nombre}}</a></p> 
-                                <div class="review-box">
-                                    <div class="ratings">
+                        <div class="row-dishes-container">
+                            <div class="dishes-img">
+                                <img src="{{asset('storage').'/'.$rating_Producto->foto}}"  class="">
+                            </div>
+                            <div class="dishes-info">
+                                <p class=""> 
+                                    <a href="{{url('/products_calificar/'.$rating_Producto->id)}}"> {{$rating_Producto->nombre}}</a>
+                                </p> 
+                                <div class="dishes-stars">
+                                    <div class="">
                                         <input id="input_rating_{{$rating_Producto->id}}_SPL" value="{{round($rating_Producto->averageRating,1)}}" class="rating-loading">
                                         <script>
-                                            $('#input_rating_{{$rating_Producto->id}}_SPL').rating({displayOnly: true,size:'xs', showCaption:false, theme:'krajee-fa', starCaptions:{1:'Muy malo',2:'Malo',3:'Está bien',4:'Bueno',5:'Muy Bueno'},step: 0.5,theme:'krajee-fas'});
+                                            $('#input_rating_{{$rating_Producto->id}}_SPL').rating({displayOnly: true,size:'xs', showCaption:false, theme:'krajee-fa', starCaptions:{1:'Muy malo',2:'Malo',3:'Está bien',4:'Bueno',5:'Muy Bueno'},step: 0.5,theme:'krajee-fa'});
                                         </script>
                                     </div>
                                 </div>
-                                @if($rating_Producto->has_promociones())
-                                <span class="text-muted">S/. {{$rating_Producto->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$rating_Producto->precio}}</span></span>
-                                @else 
-                                <span class="text-muted">S/. {{$rating_Producto->precio}}</span>
-                                @endif
-                            </figcaption>
-                        </figure>
+                                <div class="dishespromotion">
+                                    @if($rating_Producto->has_promociones())
+                                        <span class="">S/. {{$rating_Producto->getDiscountAttribute()}} 
+                                            <span class="text-muted" style="text-decoration: line-through;">
+                                                S/. {{$rating_Producto->precio}}
+                                            </span>
+                                        </span>
+                                    @else 
+                                    <span class="">S/. {{$rating_Producto->precio}}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 @endforeach
         </div>
 
         <div class="dishes-sold">
-                <legend>Platos más vendidos</legend>
+                <p class="dishes-title">Platos más vendidos</p>
                 @foreach ($sale_Productos as $sale_Producto)
-                <ul class="row">
-                    <li class="col-md-4">
-                        <figure class="itemside mb-3">
-                            <div class="aside"><img src="{{asset('storage').'/'.$sale_Producto->foto}}" width="50px"  class="img-sm border"></div>
-                            <figcaption class="info align-self-center">
+                <ul class="row-dishes">
+                    <li class="rowcontent">
+                        <div class="row-dishes-container">
+                            <div class="dishes-img">
+                                <img src="{{asset('storage').'/'.$sale_Producto->foto}}" >
+                            </div>
+                            <div class="dishes-info">
                                 <p class=""> <a href="{{url('/products_calificar/'.$sale_Producto->id)}}"> {{$sale_Producto->nombre}}</a></p> 
                                 @if($sale_Producto->has_promociones())
-                                <span class="text-muted">S/. {{$sale_Producto->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$sale_Producto->precio}}</span></span>
+                                <span class="">S/. {{$sale_Producto->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$sale_Producto->precio}}</span></span>
                                 @else 
-                                <span class="text-muted">S/. {{$sale_Producto->precio}}</span>
+                                <span class="">S/. {{$sale_Producto->precio}}</span>
                                 @endif
-                            </figcaption>
-                        </figure>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 @endforeach
         </div>
 
         <div class="new-dishes">
-                <legend>Nuevos platos</legend>
+                <p class="dishes-title">Nuevos platos</p>
                 @foreach ($productos_nuevos as $producto_nuevo)
-                <ul class="row">
-                    <li class="col-md-4">
-                        <figure class="itemside mb-3">
-                            <div class="aside"><img src="{{asset('storage').'/'.$producto_nuevo->foto}}" width="50px"  class="img-sm border"></div>
-                            <figcaption class="info align-self-center">
-                                <p class=""> <a href="{{url('/products_calificar/'.$producto_nuevo->id)}}"> {{$producto_nuevo->nombre}}</a></p> 
+                <ul class="row-dishes">
+                    <li class="rowcontent">
+                        <div class="row-dishes-container">
+                            <div class="dishes-img">
+                                <img src="{{asset('storage').'/'.$producto_nuevo->foto}}"   class="">
+                            </div>
+
+                            <div class="dishes-info">
+                                <p class="">
+                                     <a href="{{url('/products_calificar/'.$producto_nuevo->id)}}"> {{$producto_nuevo->nombre}}</a>
+                                </p> 
                                 @if($producto_nuevo->has_promociones())
-                                <span class="text-muted">S/. {{$producto_nuevo->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$producto_nuevo->precio}}</span></span>
+                                <span class="">S/. {{$producto_nuevo->getDiscountAttribute()}} <span class="text-muted" style="text-decoration: line-through;">S/. {{$producto_nuevo->precio}}</span></span>
                                 @else 
-                                <span class="text-muted">S/. {{$producto_nuevo->precio}}</span>
+                                <span class="">S/. {{$producto_nuevo->precio}}</span>
                                 @endif
-                            </figcaption>
-                        </figure>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 @endforeach
