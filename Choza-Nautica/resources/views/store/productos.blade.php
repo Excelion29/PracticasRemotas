@@ -78,7 +78,7 @@
                         <div class="row">
                             <div style="width: 95%; margin: auto;">
                                 <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
-                                <div class="chip cta"><a href="#">Mas detalles</a></div> 
+                                <div class="chip cta"><a id="producto_modal_{{$key}}" href="#">Mas detalles</a></div> 
                                 @isset(auth()->user()->id_rol)
                                     <div class="chip cta"><a href="{{url('/products_calificar/'.$producto->id)}}">Calificaciones</a></div>
                                 @endisset                 
@@ -89,9 +89,9 @@
             </div>
         </div>
 
-        <div class="modal-container">
-            <div class="modals1 modal-close">
-                <p class="close">X</p>
+        <div id="producto_container_{{$key}}"class="modal-container">
+            <div id="producto_close_{{$key}}" class="modals1 modal-close">
+                <p  id="producto_close_{{$key}}" class="close">X</p>
                 <div class="modal-img">
                 
                     <div class="CSSgal">
@@ -125,6 +125,7 @@
                             <a href="#s2"></a>
                             <a href="#s3"></a>
                         </div>
+                        
         
                     </div>
                 
