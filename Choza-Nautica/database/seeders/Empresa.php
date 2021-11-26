@@ -25,7 +25,7 @@ class Empresa extends Seeder
             'correo'=>'chozanautica.ica@gmail.com',
             'latitud'=>'-12.085424599629652',
             'longitud'=>'-77.04320687802092',
-            'google_maps_link'=>'https://goo.gl/maps/KpFeoYVR96CwTawJ9',
+            'google_maps_link'=>'https://bookersnap.com/LaChozaNautica',
         ]);
     }
 }
