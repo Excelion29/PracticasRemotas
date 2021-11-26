@@ -164,46 +164,37 @@
                                     {!! Form::open(['route'=>'carrito.update','method'=>'PUT']) !!}
                                     @if ($cart->quantity_of_products() != 0)
                                     @foreach ($cart->order_details as $order_detail)
-                                    @if($order_detail->id_producto!='')                                    
-                                        <div class="content-pedidos">
-                                            <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
-                                            
-                                            <div class="tit_content">{{$order_detail->product->nombre}}</div>
+                                        @if($order_detail->id_producto!='')                                    
+                                            <div class="content-pedidos">
+                                                <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->product->foto}})no-repeat center center/cover">  </div>
+                                                <div class="tit_content">{{$order_detail->product->nombre}}</div>
                                                 <div class="cyp">
                                                     <div class="cant_content">
-                                                        
-                                                        
-                                                        </button>
                                                         <input class="inputnum" name="cantidad[]" type="number" min="0" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
-                                                        
-                                                    
                                                     </div>
                                                     @if($order_detail->product->has_promociones())
-                                                    <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
+                                                        <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
                                                     @else 
-                                                    <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
+                                                        <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
                                                     @endif
                                                     <br>
-                                                  
                                                     <div class="del-icon">
                                                     <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times"></i></a>
                                                     </div>
                                                 </div>
-                                        </div>
-                                   
+                                            </div>
                                         @elseif($order_detail->id_combo!='')
-                                        <div class="content-pedidos">
-                                            <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
-                                            
-                                            <div class="tit_content">{{$order_detail->combo->nombre}}</div>
-                                            <div class="cant_content">Cantidad </div>
-                                            <div class="pre_content">Precio Producto </div>
-                                        </div>
+                                            <div class="content-pedidos">
+                                                <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
+                                                
+                                                <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                                                <div class="cant_content">Cantidad </div>
+                                                <div class="pre_content">Precio Producto </div>
+                                            </div>
 
-                                        <div class="content-pedidos">
-                                            <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->combo->foto}})no-repeat center center/cover">  </div>
-                                            
-                                            <div class="tit_content">{{$order_detail->combo->nombre}}</div>
+                                            <div class="content-pedidos">
+                                                <div class="cont-img" style="background: url({{asset('storage').'/'.$order_detail->combo->foto}})no-repeat center center/cover">  </div>
+                                                <div class="tit_content">{{$order_detail->combo->nombre}}</div>
                                                 <div class="cyp">
                                                     <div class="cant_content">
                                                         <button class="menos">
@@ -218,11 +209,11 @@
                                                     <br>
                                                     <div class="pre_content">S/.{{$order_detail->precio}}</div>
                                                     <div class="del-icon">
-                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times">sa</i></a>
+                                                        <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times">sa</i></a>
                                                     </div>
                                                 </div>
-                                        </div>
-                                    @endif
+                                            </div>
+                                        @endif
                                     @endforeach
                                     <div class="btn-actualizar">
                                         <button type="submit" ><i class="fas fa-redo-alt"></i></button> 

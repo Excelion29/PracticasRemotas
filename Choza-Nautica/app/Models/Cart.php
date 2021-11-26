@@ -74,6 +74,9 @@ class Cart extends Model
     //     $cart = self::findOnCreateByUserId(Auth::user());
     //     return $cart;
     // }
+    public function total_delivery(){
+        return $this->total_price() + 5;
+    }
     public function my_store($product, $request){
         $this->order_details()->updateOrCreate(
             ['id_producto'=>$product->id],
@@ -112,11 +115,12 @@ class Cart extends Model
     }
 
     public function my_update($request){
-        foreach ($this->order_details as $key=> $detail) {
-            $result[] = array("cantidad" => $request->cantidad[$key],"precio"=>$request->precio[$key]*$request->cantidad[$key]);
+        foreach ($this->order_details as $key=>$detail) {        
+            $result[] = array("cantidad" => $request->cantidad[$key],"precio"=>$detail->product->getDiscountAttribute()*$request->cantidad[$key]);
             $detail->update($result[$key]);
         }
     }
+
     public function gen_uid($l=10){
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $l);
     }

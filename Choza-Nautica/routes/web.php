@@ -122,3 +122,4 @@ Route::get('mark_a_notifications/{notification_id}/{compra_id}', [NotificationCo
 
 
 // home
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -126,7 +126,7 @@
                       </div> 
                   </div>
                   <div class="product-total-container">
-                      <p>TOTAL </p> <p class="p"> S/.  {{$cart->total_price()}} </p>
+                      <p>TOTAL </p> <p class="p"> S/.  {{$cart->total_delivery()}} </p>
                       
                   </div>
                   <br>
