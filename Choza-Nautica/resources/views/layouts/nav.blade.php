@@ -64,13 +64,13 @@
                 @endisset
 
                 <li>
-                    <a href="">Contacto</a>
+                    <a href="{{url('contactanos')}}">Contacto</a>
                 </li>
                 <li>
-                    <a href="">Conócenos</a>
+                    <a href="{{url('conocenos')}}">Conócenos</a>
                 </li>
                 <li>
-                    <a href="" >Preguntas Frecuentes</a>
+                    <a href="" >Nuesta Gastronomía </a>
                 </li>
                 <li class="nav-order">
                     <a href="{{ url('category') }}" >Ordena Aquí</a>
@@ -130,7 +130,7 @@
                             <ul class="cont-nav-user">
                             <li><a href="{{ route('mi_cuenta') }}">Nosotros</a></li>
                             <li><a href="{{ route('my_perfil') }}">Detalles de la cuenta</a></li>
-                            <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li>
+                            {{-- <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li> --}}
                             <li><a href="{{ route('my_orders') }}">Pedidos</a></li>
                             {{-- <li><a href="{{ route('my_reserves') }}">Reservaciones</a></li> --}}
                                 <li>

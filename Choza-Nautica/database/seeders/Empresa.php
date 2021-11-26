@@ -19,7 +19,7 @@ class Empresa extends Seeder
             'name_formal'=>'LA CHOZA NAUTICA S.C.R.L ',
             'descripcion'=>'El Restaurant LA CHOZA NAUTICA es una empresa que forma parte de la gastronom a peruana por mas de 20 a os, desde la popular Casita de la Abuelita; en los a os 1993, donde su hijo el propietario Jos Guillian, transforma su negocio de televisores en un pintoresco restaurante.',
             'direccion'=>'Jr. Brigadier Pumacahua 2374, Cercado de Lima 15073',
-            'telefono'=>'(01) 5212153',
+            'telefono'=>'(51) 936 663 475',
             'horarios'=>'6:00 am - 7:00 pm',
             'ruc'=>'20256802351',
             'correo'=>'chozanautica.ica@gmail.com',
