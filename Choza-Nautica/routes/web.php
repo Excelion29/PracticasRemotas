@@ -119,7 +119,12 @@ Route::get('mark_a_notifications/{notification_id}/{compra_id}', [NotificationCo
 // Route::resource('dashboard/carritos', CarritosController::class);
 // Route::get('dashboard/carritos_p/{id}',[CarritosController::class,'show'])->name('carritos.pedidos.productos');
 // Route::get('dashboard/carritos_c/{id}',[CarritosController::class,'show_combo'])->name('carritos.pedidos.combos');
-
+Route::get('contactanos', function () {
+    return view('contactanos');
+});
+Route::get('conocenos', function () {
+    return view('conocenos');
+});
 
 // home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
