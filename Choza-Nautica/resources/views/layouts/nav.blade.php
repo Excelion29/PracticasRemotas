@@ -173,8 +173,8 @@
                                                     <div class="cant_content">
                                                         
                                                         
-                                                        </button>
-                                                        <input class="inputnum" name="cantidad[]" type="number" min="0" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                                      
+                                                        <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->product->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
                                                         
                                                     
                                                     </div>
@@ -196,8 +196,20 @@
                                             <div class="cont-img"> <img src="{{asset('storage').'/'.$order_detail->combo->foto}}" alt=""></div>
                                             
                                             <div class="tit_content">{{$order_detail->combo->nombre}}</div>
-                                            <div class="cant_content">Cantidad </div>
-                                            <div class="pre_content">Precio Producto </div>
+                                            <div class="cant_content">
+
+                                                <input class="inputnum" name="cantidad[]" type="number" min="1" max="{{$order_detail->combo->cantidad}}" step="1" value="{{$order_detail->cantidad}}">
+                                                
+                                            </div>
+                                                    @if($order_detail->product->has_promociones())
+                                                    <div class="pre_content">S/. {{$order_detail->product->getDiscountAttribute()}}.00</div>
+                                                    @else 
+                                                    <div class="pre_content">S/. {{$order_detail->product->precio}} </div>
+                                                    @endif
+
+                                                    <div class="del-icon">
+                                                    <a href="{{route('orders.destroy',$order_detail)}}"><i class="fas fa-times"></i></a>
+                                                    </div>
                                         </div>
 
                                         <div class="content-pedidos">

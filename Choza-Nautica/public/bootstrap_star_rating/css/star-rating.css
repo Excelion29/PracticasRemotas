@@ -69,18 +69,18 @@
     color: #aaa;
 }
 
+
 .rating-container .filled-stars {
     position: absolute;
     left: 0;
     top: 0;
     margin: auto;
-    color: #ffe000;
+    color: #fde16d;
     white-space: nowrap;
     overflow: hidden;
-    
-    text-shadow: 1px 1px 0px #999;
+    -webkit-text-stroke: 1px #777;
+    text-shadow: 1px 1px #999;
 }
-
 .rating-rtl {
     float: right;
 }
