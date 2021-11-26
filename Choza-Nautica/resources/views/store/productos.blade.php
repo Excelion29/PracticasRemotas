@@ -9,6 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('bootstrap_star_rating/js/star-rating.js')}}"></script>
 <script src="{{asset('bootstrap_star_rating/themes/krajee-fa/theme.js')}}"></script>
+
 <div class="header" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url(https://img.bekiacocina.com/articulos/portada/85000/85623.jpg) no-repeat center center; min-height: 60vh; background-attachment: fixed; ">
       <div class="center">
         <h1 class="alex-brush"></h1>
@@ -16,151 +17,183 @@
         <span id="asterisk">*</span>
         <p>Productos para ti</p>
       </div>
-    </div> 
+</div> 
 
+        <div class="wrap">
+            <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
+                <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
+                <input type="submit" class="search-imput">
+            </form>
+        </div>
     
-    <div class="wrap">
-      <form action="{{route('search_products')}}" id="form_search_products" method="GET" >
-        <input type="text" name="search_products" id="search_product" placeholder="Buscar Platos" class="search-text">
-        <input type="submit" class="search-imput">
-      </form>
-    </div>
-    <p class="titulo">PLATOS</p>
-    </div>
-    <style>
-        .row{
-            margin-left: 0px;
-        }
-        .product-card .card .price {
-            font-size: 1.45rem;
-        }
-        .navbar{
-            position: fixed;
-        }
-        .rating-md .caption {
-            font-size: 32%;
-        }
-        </style>
+<p class="titulo">PLATOS</p>
 @include('store.categorias_list')
 @include('store.productos_destacados')
-<div class="row">
-    @foreach ($productos as $key=>$producto)
-        <div class="col l4 m8 s12 offset-m2">
-            <div class="product-card">
-                <div class="card ">
-                    <div class="card-image">                        
-                        @if($producto->has_promociones())
-                        <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">{{$producto->getTotalDiscountAttribute()}}%</a>
-                        @else
-                        @endisset
-                        <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 360px;">
-                        <span class="card-title"><span><p>{{$producto->nombre}}</p></span></span>
-                    </div>
-                    <ul class="card-action-buttons">
-                        <li><a id="buy" href="{{route('store_a_product',$producto)}}" class="btn-floating waves-effect waves-light blue"><i class="material-icons buy">add_shopping_cart</i></a>
-
-                        </li>
-                    </ul>
-                    <div class="card-content">
-                        <div class="row">
-                            <div class="col s12">
-                                @if($producto->has_promociones())
-                                <h4><span>S/.{{$producto->getDiscountAttribute()}}</span>  <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>
-                                @else
-                                <h4><span>S/.{{$producto->precio}}</span></h4>
-                                @endisset
-                                <p>
-                                    <strong>Descripcion:</strong> <br />
-                                    {{substr($producto->descripcion,0,80)}}...
-                                </p>
-                            </div>                        
+<div class="row-products">
+    <div class="row">
+        @foreach ($productos as $key=>$producto)
+            <div class="col l4 m8 s12 offset-m2">
+                <div class="product-card">
+                    <div class="card ">
+                        <div class="card-image">                        
+                            @if($producto->has_promociones())
+                            <a class="btn-floating btn-large price waves-effect waves-light " style="background-color: #e04b4b">{{$producto->getTotalDiscountAttribute()}}%</a>
+                            @else
+                            @endisset
+                            <img src="{{asset('storage').'/'.$producto->foto2}}" alt="product-img" style="height: 360px;">
+                            <span class="card-title"><span><p>{{$producto->nombre}}</p></span></span>
                         </div>
-                        <div class="row">
-                            <div style="width: 95%; margin: auto;">
-                                <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
-                                <div class="chip cta"><a href="#">Mas detalles</a></div> 
-                                @isset(auth()->user()->id_rol)
-                                    <div class="chip cta"><a href="{{url('/products_calificar/'.$producto->id)}}">Calificaciones</a></div>
-                                @endisset                 
+                        <ul class="card-action-buttons">
+                            <li><a id="buy" href="{{route('store_a_product',$producto)}}" class="btn-floating waves-effect waves-light blue"><i class="material-icons buy">add_shopping_cart</i></a>
+
+                            </li>
+                        </ul>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12">
+                                    @if($producto->has_promociones())
+                                    <h4><span>S/.{{$producto->getDiscountAttribute()}}</span>  <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>
+                                    @else
+                                    <h4><span>S/.{{$producto->precio}}</span></h4>
+                                    @endisset
+                                    <p>
+                                        <strong>Descripcion:</strong> <br />
+                                        {{substr($producto->descripcion,0,80)}}...
+                                    </p>
+                                </div>                        
+                            </div>
+                            <div class="row">
+                                <div style="width: 95%; margin: auto;">
+                                    <div class="chip"><a href="{{url('/products/'.$producto->categorias->id)}}">{{$producto->categoria}}</a></div>
+                                    <div class="chip cta{{$key}}" id=""><a href="#">Mas detalles</a></div> 
+                                    @isset(auth()->user()->id_rol)
+                                        <div class="chip cta"><a href="{{url('/products_calificar/'.$producto->id)}}">Calificaciones</a></div>
+                                    @endisset                 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="modal-container">
-            <div class="modals1 modal-close">
-                <p class="close">X</p>
-                <div class="modal-img">
-                
-                    <div class="CSSgal">
-                        <!-- Don't wrap targets in parent -->
-                        <s id="s1"></s> 
-                        <s id="s2"></s>
-                        <s id="s3"></s>
+            <div class="modal-container cd{{$key}}">
+                <div class="modals1 modal-close m1{{$key}}">
+                    <p class="close c{{$key}}">X</p>
+                    <div class="modal-img">
                     
-        
-                        <div class="slider">
-                            <div style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover" >
+                        <div class="CSSgal">
+                            <!-- Don't wrap targets in parent -->
+                            <s id="s1"></s> 
+                            <s id="s2"></s>
+                            <s id="s3"></s>
+                        
+            
+                            <div class="slider">
+                                <div style="background: url({{asset('storage').'/'.$producto->foto}})no-repeat center center/cover" >
+                                </div>
+                                <div style="background: url({{asset('storage').'/'.$producto->foto2}})no-repeat center center/cover" >
+                                    <h2>Foto 2</h2>
+                                </div>
+                                <div style="background: url({{asset('storage').'/'.$producto->foto3}})no-repeat center center/cover" >
+                                    <h2>Foto 3</h2>
+                                </div>
+                        
                             </div>
-                            <div style="background: url({{asset('storage').'/'.$producto->foto2}})no-repeat center center/cover" >
-                                <h2>Foto 2</h2>
+            
+                            <div class="prevNext">
+                                <div><a href="#s3"><i class="fas fa-chevron-circle-left"></i></a><a href="#s2"><i class="fas fa-chevron-circle-right"></i></a></div>
+                                <div><a href="#s1"><i class="fas fa-chevron-circle-left"></i></a><a href="#s3"><i class="fas fa-chevron-circle-right"></i></a></div>
+                                <div><a href="#s2"><i class="fas fa-chevron-circle-left"></i></a><a href="#s4"><i class="fas fa-chevron-circle-right"></i></a></div>
+                                <div><a href="#s3"><i class="fas fa-chevron-circle-left"></i></a><a href="#s1"></a></div>
                             </div>
-                            <div style="background: url({{asset('storage').'/'.$producto->foto3}})no-repeat center center/cover" >
-                                <h2>Foto 3</h2>
+                            
+            
+                            <div class="bullets">
+                                <a href="#s1"></a>
+                                <a href="#s2"></a>
+                                <a href="#s3"></a>
                             </div>
+            
+                        </div>
                     
-                        </div>
-        
-                        <div class="prevNext">
-                            <div><a href="#s3"><i class="fas fa-chevron-circle-left"></i></a><a href="#s2"><i class="fas fa-chevron-circle-right"></i></a></div>
-                            <div><a href="#s1"><i class="fas fa-chevron-circle-left"></i></a><a href="#s3"><i class="fas fa-chevron-circle-right"></i></a></div>
-                            <div><a href="#s2"><i class="fas fa-chevron-circle-left"></i></a><a href="#s4"><i class="fas fa-chevron-circle-right"></i></a></div>
-                            <div><a href="#s3"><i class="fas fa-chevron-circle-left"></i></a><a href="#s1"></a></div>
-                        </div>
-        
-                        <div class="bullets">
-                            <a href="#s1"></a>
-                            <a href="#s2"></a>
-                            <a href="#s3"></a>
-                        </div>
-        
                     </div>
+                    <div class="modal-text">
+                        <div class="modal-text-container">
+                            <div class="Titulo">
+                                <h2>{{$producto->nombre}} 
+                                </h2>
+                                @include('store.ratings',['producto'=>$producto])
+                            </div>1
+                            <div class="Precio">     
+                                @if($producto->has_promociones())                           
+                                    <h4 style='font-size: 15px;'><span>S/.{{$producto->getDiscountAttribute()}}</span> <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>   
+                                @else 
+                                    <h4><span>S/.{{$producto->precio}}</span></h4> 
+                                @endif
+                            </div>
+                            <div class="descripcion">
+                                <p>{{($producto->descripcion)}}</p>
+                            </div>                              
+                            <div style="margin-top: -200px;" class="cantidad">
+                                {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
+                                    <input type="hidden" name="id_producto" value="{{$producto->id}}">    
+                                    <div class="quantity">
+                                        <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
+                                    </div>       
+                                    <button class="ag-carrito"> <span>Agregar al carrito </span></button>
+                                {!! Form::close() !!}  
+                                <button class="ca-ahora"> <span> Comprar ahora </span></button>
+                            </div> 
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <script>
+            let cerrar{{$key}} = document.querySelectorAll(".c{{$key}}")[0];
+
+            let abrir{{$key}} = document.querySelectorAll('.cta{{$key}}')[0];
+
+            let modal{{$key}} = document.querySelectorAll(".m1{{$key}}")[0];
+
+            let modalC{{$key}} = document.querySelectorAll(".cd{{$key}}")[0];
+
+            abrir{{$key}}.addEventListener("click", function(e){
+                e.preventDefault();
+                modalC{{$key}}.style.opacity = "1";
+                modalC{{$key}}.style.visibility = "visible";
+                modal{{$key}}.classList.toggle("modal-close");
+            });
+            
+            cerrar{{$key}}.addEventListener("click", function(){
+
+                modal{{$key}}.classList.toggle("modal-close");
                 
-                </div>
-                <div class="modal-text">
-                    <div class="modal-text-container">
-                        <div class="Titulo">
-                            <h2>{{$producto->nombre}} 
-                            </h2>
-                            @include('store.ratings',['producto'=>$producto])
-                        </div>1
-                        <div class="Precio">     
-                            @if($producto->has_promociones())                           
-                                <h4 style='font-size: 15px;'><span>S/.{{$producto->getDiscountAttribute()}}</span> <span style="text-decoration: line-through;">S/.{{$producto->precio}}</span></h4>   
-                            @else 
-                                <h4><span>S/.{{$producto->precio}}</span></h4> 
-                            @endif
-                        </div>
-                        <div class="descripcion">
-                            <p>{{($producto->descripcion)}}</p>
-                        </div>                              
-                        <div style="margin-top: -200px;" class="cantidad">
-                            {!! Form::open(['route'=>['order.store',$producto],'method'=>'POST']) !!}
-                                <input type="hidden" name="id_producto" value="{{$producto->id}}">    
-                                <div class="quantity">
-                                    <input type="number" name="cantidad" min="1" step="1" value="1" max="{{$producto->cantidad}}">
-                                </div>       
-                                <button class="ag-carrito"> <span>Agregar al carrito </span></button>
-                            {!! Form::close() !!}  
-                            <button class="ca-ahora"> <span> Comprar ahora </span></button>
-                        </div> 
-                    </div>
-                </div>
-            </div>             
-        </div>
-    @endforeach    
+                setTimeout(function(){
+                modalC{{$key}}.style.opacity = "0";
+                modalC{{$key}}.style.visibility = "hidden";
+                },800)
+
+            })
+
+            window.addEventListener("click", function(e){
+
+                
+                if(e.target == modalC{{$key}}){
+
+                modal{{$key}}.classList.toggle("modal-close");
+                
+                setTimeout(function(){
+                modalC{{$key}}.style.opacity = "0";
+                modalC{{$key}}.style.visibility = "hidden";
+                },800)
+                }
+            })
+
+
+            </script>
+
+        @endforeach    
+    </div>
 </div>
 <style>
 .pagination > li > a
@@ -192,7 +225,7 @@
     border: solid 1px purple;
 }
 </style>
-<script src="{{asset('js/modal.js')}}"></script>
+
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="{{asset('js/typeahead.bundle.min.js')}}"></script>
 <script>
@@ -213,5 +246,7 @@
             $('#form_search_products').submit();
         });
 </script>
+
+
 {!! $productos->links() !!}
 @endsection

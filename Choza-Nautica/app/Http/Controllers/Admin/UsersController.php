@@ -68,14 +68,4 @@ class UsersController extends Controller
         User::where('id','=',$id)->update($datoscliente);
         return redirect('dashboard/cliente')->with('mensaje','Cliente desabilitado!');
     }
-
-    public function update_perfil(Request $request, User $user){
-        $user->update_perfil($request);
-        return back();
-    }
-    
-    public function update_password(ChangePasswordRequest $request, User $user){
-        $user->update(['password' => Hash::make($request['password'])]);
-        return back();
-    }
 }

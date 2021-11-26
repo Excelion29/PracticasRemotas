@@ -1,7 +1,9 @@
 @extends('MyAccount.index')
 @section('content_ordenes')
-{!! Form::model($perfil, ['route'=>['update_perfil',$perfil],'method'=>'PUT']) !!}
-    <fieldset>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{!! Form::model($perfil, ['route'=>['update_cliente',$perfil],'method'=>'PUT']) !!}
+<div class="changep-p">
+    <fieldset class="changep-p-cont">
         <legend>Configuración de perfil</legend>
         <div class="form-group">
             <small id="helpId" class="text-muted">Nombre</small>
@@ -32,10 +34,11 @@
             <input type="text" name="celular" id="celular" class="form-control" value="{{old('celular',$perfil->cliente->celular)}}" placeholder="Celular" aria-describedby="helpId">
         </div>     
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        {!! Form::close() !!}
+         <a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a> 
     </fieldset>
-{!! Form::close() !!}
-<a name="" id="" class="btn btn-primary" href="{{ route('change_password') }}" role="button">Cambiar contraseña</a> 
-
+    
+</div>
 
 @endsection
 

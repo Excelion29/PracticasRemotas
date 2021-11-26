@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{asset('css/stilos.css')}}">
     <link rel="stylesheet" href="{{asset('css/product.css')}}">
+    <link rel="stylesheet" href="{{asset('css/myaco.css')}}">
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
@@ -123,7 +124,7 @@
                         @endif
                     @else
                         <li class="nav-user">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('mi_cuenta')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a href="{{ route('mi_cuenta')}}" >
                                 {{ Auth::user()->name }}
                             </a>
                            
@@ -222,7 +223,7 @@
     @yield('content')   
     <footer class="footer-area footer--light">
     <div class="mini-footer">
-      <div class="container">
+      <div class="containerfoter">
         <div class="row">
           <div class="col-md-12">
             <div class="copyright-text">

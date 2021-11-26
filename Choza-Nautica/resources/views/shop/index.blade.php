@@ -21,7 +21,6 @@
                       @endisset
                       <br>
                       <br>
-                      <a href="{{ route('my_perfil') }}">Cambiar Información de usuario</a>
                       <br>
                       <br>
                       {{--<h4>Tipo de compra</h4>
@@ -64,6 +63,7 @@
                       <br> 
                       <br>
         
+                      <a href="{{ route('my_perfil') }}">Cambiar Información de usuario</a>
                   </div>
               </div>
           </div>
@@ -87,7 +87,7 @@
                               </div>
                               <div class="inf_prod">
                                   <div class="inf_prod_p"><p>{{$order_detail->product->nombre}}</p></div>
-                                  <div class="inf_prod_ps"><p>{{$order_detail->precio}} PEN</p></div>     
+                                  <div class="inf_prod_ps"><p>S/. {{$order_detail->precio}}</p></div>     
                               </div>
                               
                       </div>
@@ -101,7 +101,7 @@
                                   </div>
                                   <div class="inf_prod">
                                       <div class="inf_prod_p"><p>{{$order_detail->combo->nombre}}</p></div>
-                                      <div class="inf_prod_ps"><p>{{$order_detail->precio}} PEN</p></div>     
+                                      <div class="inf_prod_ps"><p>S/.  {{$order_detail->precio}}</p></div>     
                                   </div>
                               </div>
 
@@ -116,17 +116,17 @@
                   <div class="product-cost"> 
                       <div class="product-cost-gen">
                           <div class="product-cost-container1">
-                          <p> Subtotal </p> <p class="p">{{$cart->total_price()}} </p>
+                          <p> Subtotal </p> <p class="p">S/.  {{$cart->total_price()}} </p>
                           </div>
                           <div class="product-cost-container2">
                               
-                              <p>Costo por envío</p> <p class="p">S/5</p>
+                              <p>Costo por envío</p> <p class="p">S/. 5</p>
                           </div>
                       
                       </div> 
                   </div>
                   <div class="product-total-container">
-                      <p>TOTAL </p> <p class="p">{{$cart->total_price()}} </p>
+                      <p>TOTAL </p> <p class="p"> S/.  {{$cart->total_delivery()}} </p>
                       
                   </div>
                   <br>
