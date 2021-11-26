@@ -938,7 +938,7 @@ ul {
 */
 .header {
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("https://images6.alphacoders.com/366/366291.jpg") no-repeat center center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("https://www.wallpapertip.com/wmimgs/50-504378_restaurant-hd-wallpaper-restaurant-hd.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   display: flex;
@@ -2045,3 +2045,7 @@ footer .copyright span {
   width: 60%;
   height: 50vh;
 }
+
+
+
+

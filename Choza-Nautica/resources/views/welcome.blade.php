@@ -59,7 +59,7 @@
       <h1 class="custom-h1"><span class="custom-font alex-brush">Contactanos</span><br />Estamos a tu servicio</h1>
     </section>
 
-    <section class="add-flex reservation-section">
+    <section class="add-flex reservation-section" id="gastro">
       <div class="center-text add-padding">
         <h1><span class="custom-font alex-brush">
 </span><br />EXPERIENCIA GASTRONÓMICA</h1>

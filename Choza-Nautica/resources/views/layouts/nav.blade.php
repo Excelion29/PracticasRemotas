@@ -70,7 +70,7 @@
                     <a href="{{url('conocenos')}}">Conócenos</a>
                 </li>
                 <li>
-                    <a href="" >Nuesta Gastronomía </a>
+                    <a href="#gastro" >Nuesta Gastronomía </a>
                 </li>
                 <li class="nav-order">
                     <a href="{{ url('category') }}" >Ordena Aquí</a>
@@ -128,7 +128,7 @@
 
                             <svg class="svg-triangle" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.54 107"><defs></defs><title>triangulos</title><polygon class="triangle" points="1.17 106.5 102.77 0.72 204.36 106.5 1.17 106.5"/><path class="triangle-2"  d="M503.47,249.44,603.89,354H403.05L503.47,249.44m0-1.44L400.7,355H606.24L503.47,248Z" transform="translate(-400.7 -248)"/></svg>
                             <ul class="cont-nav-user">
-                            <li><a href="{{ route('mi_cuenta') }}">Nosotros</a></li>
+                            <li><a href="{{url('contactanos')}}">Nosotros</a></li>
                             <li><a href="{{ route('my_perfil') }}">Detalles de la cuenta</a></li>
                             {{-- <li><a href="{{ route('mis_deseos') }}">Mi lista de deseos</a></li> --}}
                             <li><a href="{{ route('my_orders') }}">Pedidos</a></li>
