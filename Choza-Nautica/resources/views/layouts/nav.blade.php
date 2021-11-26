@@ -235,11 +235,11 @@
                                         <div class="cf-subtotal"><p>Subtotal</p><p class="sub">S/.{{$cart->total_price()}}.00</p></div>
                                         <div class="cf-relleno"><p>Los códigos de descuento, los costes de envío y los impuestos se añaden durante el pago.</p></div>
                                         <div class="btnfip">
-                                            @if (Auth::user()->direccion=="")
-                                            <button class="realizar"> <a class="fp" href="{{route('my_perfil')}}">Finalizar pedido</a> 
-                                            <button class="realizar"> <a class="fp" href="{{route('shop.index')}}">Finalizar pedido</a> 
+                                            @if (Auth::user()->cliente->direccion=="")
+                                            <button class="realizar"> <a class="fp" href="{{route('my_perfil')}}">Finalizar pedido</a> </button>
+                                            @else
+                                            <button class="realizar"> <a class="fp" href="{{route('shop.index')}}">Finalizar pedido</a> </button>
                                             @endif
-                                            </button>
                                         </div>
                                     
                                     </div>

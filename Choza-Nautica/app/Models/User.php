@@ -57,7 +57,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     
     public function update_perfil($request){
-        $this->update($request->all());
         $this->cliente()->update([
             'direccion'=>$request->direccion,
             'celular'=>$request->celular,

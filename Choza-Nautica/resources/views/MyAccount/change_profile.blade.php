@@ -1,6 +1,6 @@
 @extends('MyAccount.index')
 @section('content_ordenes')
-{!! Form::model($perfil, ['route'=>['update_perfil',$perfil],'method'=>'PUT']) !!}
+{!! Form::model($perfil, ['route'=>['update_cliente',$perfil],'method'=>'PUT']) !!}
     <fieldset>
         <legend>Configuración de perfil</legend>
         <div class="form-group">

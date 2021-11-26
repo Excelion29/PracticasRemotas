@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Compra;
 use App\Models\Costo_x_deliverys;
 use App\Models\payment_platforms;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MyAccountController extends Controller
 {
@@ -49,6 +51,17 @@ class MyAccountController extends Controller
         $user = $compra->user;
         $detalles = $compra->compras_detalles;
         return view('MyAccount.order_detaills',compact('compra','user','detalles'));
+    }
+    public function update_cliente(Request $request, User $user){
+        $user->update_perfil($request);
+        $perfil = auth()->user();
+        return view('MyAccount.perfil',compact('perfil'));
+    }
+    
+    public function update_password(ChangePasswordRequest $request, User $user){
+        $user->update(['password' => Hash::make($request['password'])]);
+        $perfil = auth()->user();
+        return view('MyAccount.perfil',compact('perfil'));
     }
 }
 
